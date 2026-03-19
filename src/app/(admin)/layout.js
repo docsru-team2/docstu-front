@@ -5,7 +5,9 @@ export default function AdminLayout({ children }) {
   return (
     <>
       <AdminHeader />
-      <Container bg="gray">{children}</Container>
+      <main>
+        <Container bg="gray">{children}</Container>
+      </main>
     </>
   );
 }
