@@ -12,6 +12,7 @@ export const [themeClass, vars] = createTheme({
     gray200: '#E5E5E5',
     gray100: '#F5F5F5',
     gray50: '#FAFAFA',
+    white: '#FFFFFF',
 
     brandDark: '#262626',
     brandYellow: '#FFC117',
@@ -43,3 +44,8 @@ export const [themeClass, vars] = createTheme({
     },
   },
 });
+
+export const media = {
+  tablet: 'screen and (min-width: 768px)',
+  desktop: 'screen and (min-width: 1280px)',
+};
