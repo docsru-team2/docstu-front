@@ -1,11 +1,12 @@
-import { Hero } from '@/components/Lending/hero';
+import { Hero } from '@/components/Lending/Hero';
+import { Section } from '@/components/Lending/Section';
+
 
 export default function Rending() {
   return (
     <>
       <Hero />
-      <div>gg</div>
-      <div>네비게이션</div>
+      <Section />
     </>
   );
 }
