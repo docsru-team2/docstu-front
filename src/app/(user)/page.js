@@ -1,8 +1,11 @@
+import Hero from '@/components/Lending/hero/Hero';
+
 export default function Rending() {
   return (
-    <div style={{ width: '100%' }}>
+    <>
+      <Hero />
       <div>gg</div>
       <div>네비게이션</div>
-    </div>
+    </>
   );
 }
