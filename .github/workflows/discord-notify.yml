@@ -30,16 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            CONTENT=$(cat <<EOF
-📌 ${{ github.repository }}
-🔀 PR 알림
-🌿 대상 브랜치: ${{ github.event.pull_request.base.ref }}
-🪴 작업 브랜치: ${{ github.event.pull_request.head.ref }}
-👤 작성자: ${{ github.actor }}
-📝 제목: ${{ github.event.pull_request.title }}
-🔗 ${{ github.event.pull_request.html_url }}
-EOF
-)
+            CONTENT="📌 ${{ github.repository }}\n🔀 PR 알림\n🌿 대상 브랜치: ${{ github.event.pull_request.base.ref }}\n🪴 작업 브랜치: ${{ github.event.pull_request.head.ref }}\n👤 작성자: ${{ github.actor }}\n📝 제목: ${{ github.event.pull_request.title }}\n🔗 ${{ github.event.pull_request.html_url }}"
           else
             PR_DATA=$(curl -s \
               -H "Authorization: Bearer $GITHUB_TOKEN" \
@@ -51,29 +42,13 @@ EOF
             PR_NUMBER=$(echo "$PR_DATA" | jq -r 'try (if type=="array" and length>0 then .[0].number else empty end) catch empty')
 
             if [ -n "$PR_TITLE" ]; then
-              CONTENT=$(cat <<EOF
-📌 ${{ github.repository }}
-🚀 Push 알림
-🌿 브랜치: ${{ github.ref_name }}
-👤 작성자: ${{ github.actor }}
-📝 PR 제목: $PR_TITLE (#$PR_NUMBER)
-🔗 $PR_URL
-EOF
-)
+              CONTENT="📌 ${{ github.repository }}\n🚀 Push 알림\n🌿 브랜치: ${{ github.ref_name }}\n👤 작성자: ${{ github.actor }}\n📝 PR 제목: $PR_TITLE (#$PR_NUMBER)\n🔗 $PR_URL"
             else
-              CONTENT=$(cat <<EOF
-📌 ${{ github.repository }}
-🚀 Push 알림
-🌿 브랜치: ${{ github.ref_name }}
-👤 작성자: ${{ github.actor }}
-📝 커밋: ${{ github.event.head_commit.message }}
-🔗 ${{ github.event.head_commit.url }}
-EOF
-)
+              CONTENT="📌 ${{ github.repository }}\n🚀 Push 알림\n🌿 브랜치: ${{ github.ref_name }}\n👤 작성자: ${{ github.actor }}\n📝 커밋: ${{ github.event.head_commit.message }}\n🔗 ${{ github.event.head_commit.url }}"
             fi
           fi
 
           curl -s -H "Content-Type: application/json" \
             -X POST \
-            -d "$(jq -n --arg content "$CONTENT" '{content: $content}')" \
+            -d "$(jq -n --arg content "$(printf '%b' "$CONTENT")" '{content: $content}')" \
             "$DISCORD_WEBHOOK_URL"
