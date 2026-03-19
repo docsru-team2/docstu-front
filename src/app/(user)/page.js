@@ -1,4 +1,4 @@
-import Hero from '@/components/Lending/hero/Hero';
+import { Hero } from '@/components/Lending/hero';
 
 export default function Rending() {
   return (
