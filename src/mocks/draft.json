@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "data": {
+    "id": "drf_01",
+    "challengeId": "chl_01",
+    "userId": "usr_01",
+    "title": "Next.js App Router 번역 초안",
+    "content": "# Next.js App Router\n\nApp Router는 Next.js 13에서 도입된 새로운 라우팅 시스템입니다.\n\n## 주요 특징\n\n- 서버 컴포넌트 (작성 중...)\n- 레이아웃\n- 데이터 페칭",
+    "createdAt": "2026-01-01T12:35:00.000Z",
+    "updatedAt": "2026-01-01T12:40:00.000Z"
+  }
+}

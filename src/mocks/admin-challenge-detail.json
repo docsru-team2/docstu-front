@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": {
+    "id": "chl_02",
+    "title": "React Query 가이드 번역",
+    "description": "TanStack Query(React Query) 공식 가이드를 한국어로 번역하는 챌린지입니다.",
+    "field": "REACT",
+    "sourceUrl": "https://tanstack.com/query/latest/docs/react/overview",
+    "documentType": "OFFICIAL_DOC",
+    "reviewStatus": "APPROVED",
+    "progressStatus": "OPEN",
+    "author": {
+      "id": "usr_02",
+      "nickname": "영서"
+    },
+    "maxParticipants": 10,
+    "currentParticipants": 1,
+    "deadline": "2026-02-02T23:59:59.000Z",
+    "createdAt": "2026-01-02T10:00:00.000Z",
+    "updatedAt": "2026-01-02T10:00:00.000Z",
+    "navigation": {
+      "prevId": "chl_01",
+      "nextId": "chl_03"
+    }
+  }
+}

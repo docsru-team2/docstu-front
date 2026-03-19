@@ -1,0 +1,1111 @@
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": "fb_01",
+        "author": {
+          "id": "usr_02",
+          "nickname": "영서"
+        },
+        "content": "번역 표현이 자연스럽습니다.",
+        "createdAt": "2026-01-01T14:00:00.000Z",
+        "updatedAt": "2026-01-01T14:00:00.000Z",
+        "submissionId": "sub_01"
+      },
+      {
+        "id": "fb_02",
+        "author": {
+          "id": "usr_03",
+          "nickname": "하림"
+        },
+        "content": "전문 용어 처리가 깔끔하네요.",
+        "createdAt": "2026-01-02T14:00:00.000Z",
+        "updatedAt": "2026-01-02T14:00:00.000Z",
+        "submissionId": "sub_02"
+      },
+      {
+        "id": "fb_03",
+        "author": {
+          "id": "usr_04",
+          "nickname": "코딩왕"
+        },
+        "content": "문장 흐름이 매끄럽습니다.",
+        "createdAt": "2026-01-03T14:00:00.000Z",
+        "updatedAt": "2026-01-03T14:00:00.000Z",
+        "submissionId": "sub_03"
+      },
+      {
+        "id": "fb_04",
+        "author": {
+          "id": "usr_05",
+          "nickname": "개발하는곰"
+        },
+        "content": "일부 표현을 더 자연스럽게 바꿔보는 건 어떨까요?",
+        "createdAt": "2026-01-04T14:00:00.000Z",
+        "updatedAt": "2026-01-04T14:00:00.000Z",
+        "submissionId": "sub_04"
+      },
+      {
+        "id": "fb_05",
+        "author": {
+          "id": "usr_06",
+          "nickname": "아키텍트킴"
+        },
+        "content": "원문 의도를 잘 살렸습니다.",
+        "createdAt": "2026-01-05T14:00:00.000Z",
+        "updatedAt": "2026-01-05T14:00:00.000Z",
+        "submissionId": "sub_05"
+      },
+      {
+        "id": "fb_06",
+        "author": {
+          "id": "usr_07",
+          "nickname": "번역달인"
+        },
+        "content": "코드 블록 주석도 번역해주셨으면 좋겠어요.",
+        "createdAt": "2026-01-06T14:00:00.000Z",
+        "updatedAt": "2026-01-06T14:00:00.000Z",
+        "submissionId": "sub_06"
+      },
+      {
+        "id": "fb_07",
+        "author": {
+          "id": "usr_08",
+          "nickname": "문서왕"
+        },
+        "content": "전체적으로 완성도가 높습니다.",
+        "createdAt": "2026-01-07T14:00:00.000Z",
+        "updatedAt": "2026-01-07T14:00:00.000Z",
+        "submissionId": "sub_07"
+      },
+      {
+        "id": "fb_08",
+        "author": {
+          "id": "usr_09",
+          "nickname": "리액트고수"
+        },
+        "content": "기술 용어 통일이 잘 되어있네요.",
+        "createdAt": "2026-01-08T14:00:00.000Z",
+        "updatedAt": "2026-01-08T14:00:00.000Z",
+        "submissionId": "sub_08"
+      },
+      {
+        "id": "fb_09",
+        "author": {
+          "id": "usr_10",
+          "nickname": "타입마스터"
+        },
+        "content": "독자 입장에서 이해하기 쉽게 번역했어요.",
+        "createdAt": "2026-01-09T14:00:00.000Z",
+        "updatedAt": "2026-01-09T14:00:00.000Z",
+        "submissionId": "sub_09"
+      },
+      {
+        "id": "fb_10",
+        "author": {
+          "id": "usr_11",
+          "nickname": "넥스트초보"
+        },
+        "content": "처음 읽는 사람도 이해할 수 있을 것 같아요.",
+        "createdAt": "2026-01-10T14:00:00.000Z",
+        "updatedAt": "2026-01-10T14:00:00.000Z",
+        "submissionId": "sub_10"
+      },
+      {
+        "id": "fb_11",
+        "author": {
+          "id": "usr_12",
+          "nickname": "쿼리전문가"
+        },
+        "content": "번역 품질이 매우 높습니다.",
+        "createdAt": "2026-01-11T14:00:00.000Z",
+        "updatedAt": "2026-01-11T14:00:00.000Z",
+        "submissionId": "sub_11"
+      },
+      {
+        "id": "fb_12",
+        "author": {
+          "id": "usr_13",
+          "nickname": "풀스택개발자"
+        },
+        "content": "일부 문장이 너무 직역된 느낌이 있어요.",
+        "createdAt": "2026-01-12T14:00:00.000Z",
+        "updatedAt": "2026-01-12T14:00:00.000Z",
+        "submissionId": "sub_12"
+      },
+      {
+        "id": "fb_13",
+        "author": {
+          "id": "usr_14",
+          "nickname": "프론트장인"
+        },
+        "content": "각주 설명이 있으면 더 좋을 것 같아요.",
+        "createdAt": "2026-01-13T14:00:00.000Z",
+        "updatedAt": "2026-01-13T14:00:00.000Z",
+        "submissionId": "sub_13"
+      },
+      {
+        "id": "fb_14",
+        "author": {
+          "id": "usr_15",
+          "nickname": "주니어개발자"
+        },
+        "content": "많이 배웠습니다. 감사해요!",
+        "createdAt": "2026-01-14T14:00:00.000Z",
+        "updatedAt": "2026-01-14T14:00:00.000Z",
+        "submissionId": "sub_14"
+      },
+      {
+        "id": "fb_15",
+        "author": {
+          "id": "usr_16",
+          "nickname": "시니어개발자"
+        },
+        "content": "전문성이 느껴지는 번역입니다.",
+        "createdAt": "2026-01-15T14:00:00.000Z",
+        "updatedAt": "2026-01-15T14:00:00.000Z",
+        "submissionId": "sub_15"
+      },
+      {
+        "id": "fb_16",
+        "author": {
+          "id": "usr_17",
+          "nickname": "테크리더"
+        },
+        "content": "팀 내 공유 자료로 활용하고 싶네요.",
+        "createdAt": "2026-01-16T14:00:00.000Z",
+        "updatedAt": "2026-01-16T14:00:00.000Z",
+        "submissionId": "sub_16"
+      },
+      {
+        "id": "fb_17",
+        "author": {
+          "id": "usr_18",
+          "nickname": "오픈소스기여자"
+        },
+        "content": "오픈소스 기여에도 활용할 수 있을 것 같아요.",
+        "createdAt": "2026-01-17T14:00:00.000Z",
+        "updatedAt": "2026-01-17T14:00:00.000Z",
+        "submissionId": "sub_17"
+      },
+      {
+        "id": "fb_18",
+        "author": {
+          "id": "usr_19",
+          "nickname": "문서번역가"
+        },
+        "content": "번역 일관성이 잘 유지되었습니다.",
+        "createdAt": "2026-01-18T14:00:00.000Z",
+        "updatedAt": "2026-01-18T14:00:00.000Z",
+        "submissionId": "sub_18"
+      },
+      {
+        "id": "fb_19",
+        "author": {
+          "id": "usr_20",
+          "nickname": "깃헙스타"
+        },
+        "content": "깃헙에 올려도 손색없는 수준이에요.",
+        "createdAt": "2026-01-19T14:00:00.000Z",
+        "updatedAt": "2026-01-19T14:00:00.000Z",
+        "submissionId": "sub_19"
+      },
+      {
+        "id": "fb_20",
+        "author": {
+          "id": "usr_01",
+          "nickname": "한준"
+        },
+        "content": "수고하셨습니다. 완성도가 높네요.",
+        "createdAt": "2026-01-20T14:00:00.000Z",
+        "updatedAt": "2026-01-20T14:00:00.000Z",
+        "submissionId": "sub_20"
+      },
+      {
+        "id": "fb_21",
+        "author": {
+          "id": "usr_02",
+          "nickname": "영서"
+        },
+        "content": "가독성이 뛰어납니다.",
+        "createdAt": "2026-01-21T14:00:00.000Z",
+        "updatedAt": "2026-01-21T14:00:00.000Z",
+        "submissionId": "sub_01"
+      },
+      {
+        "id": "fb_22",
+        "author": {
+          "id": "usr_03",
+          "nickname": "하림"
+        },
+        "content": "번역 속도도 빠르고 품질도 좋네요.",
+        "createdAt": "2026-01-22T14:00:00.000Z",
+        "updatedAt": "2026-01-22T14:00:00.000Z",
+        "submissionId": "sub_02"
+      },
+      {
+        "id": "fb_23",
+        "author": {
+          "id": "usr_04",
+          "nickname": "코딩왕"
+        },
+        "content": "전체 구조를 잘 파악하고 번역했어요.",
+        "createdAt": "2026-01-23T14:00:00.000Z",
+        "updatedAt": "2026-01-23T14:00:00.000Z",
+        "submissionId": "sub_03"
+      },
+      {
+        "id": "fb_24",
+        "author": {
+          "id": "usr_05",
+          "nickname": "개발하는곰"
+        },
+        "content": "완벽한 번역입니다!",
+        "createdAt": "2026-01-24T14:00:00.000Z",
+        "updatedAt": "2026-01-24T14:00:00.000Z",
+        "submissionId": "sub_04"
+      },
+      {
+        "id": "fb_25",
+        "author": {
+          "id": "usr_06",
+          "nickname": "아키텍트킴"
+        },
+        "content": "아키텍처 관련 용어 번역이 정확합니다.",
+        "createdAt": "2026-01-25T14:00:00.000Z",
+        "updatedAt": "2026-01-25T14:00:00.000Z",
+        "submissionId": "sub_05"
+      },
+      {
+        "id": "fb_26",
+        "author": {
+          "id": "usr_07",
+          "nickname": "번역달인"
+        },
+        "content": "이 챌린지 최고의 번역본입니다.",
+        "createdAt": "2026-02-01T14:00:00.000Z",
+        "updatedAt": "2026-02-01T14:00:00.000Z",
+        "submissionId": "sub_06"
+      },
+      {
+        "id": "fb_27",
+        "author": {
+          "id": "usr_08",
+          "nickname": "문서왕"
+        },
+        "content": "문서 형식도 원본과 잘 맞추었네요.",
+        "createdAt": "2026-02-02T14:00:00.000Z",
+        "updatedAt": "2026-02-02T14:00:00.000Z",
+        "submissionId": "sub_07"
+      },
+      {
+        "id": "fb_28",
+        "author": {
+          "id": "usr_09",
+          "nickname": "리액트고수"
+        },
+        "content": "리액트 관련 용어 번역이 정확합니다.",
+        "createdAt": "2026-02-03T14:00:00.000Z",
+        "updatedAt": "2026-02-03T14:00:00.000Z",
+        "submissionId": "sub_08"
+      },
+      {
+        "id": "fb_29",
+        "author": {
+          "id": "usr_10",
+          "nickname": "타입마스터"
+        },
+        "content": "타입 관련 설명이 명확하게 번역되었네요.",
+        "createdAt": "2026-02-04T14:00:00.000Z",
+        "updatedAt": "2026-02-04T14:00:00.000Z",
+        "submissionId": "sub_09"
+      },
+      {
+        "id": "fb_30",
+        "author": {
+          "id": "usr_11",
+          "nickname": "넥스트초보"
+        },
+        "content": "초보자도 이해하기 쉬운 번역이에요.",
+        "createdAt": "2026-02-05T14:00:00.000Z",
+        "updatedAt": "2026-02-05T14:00:00.000Z",
+        "submissionId": "sub_10"
+      },
+      {
+        "id": "fb_31",
+        "author": {
+          "id": "usr_12",
+          "nickname": "쿼리전문가"
+        },
+        "content": "쿼리 관련 용어 번역이 일관성 있게 잘 되었어요.",
+        "createdAt": "2026-02-06T14:00:00.000Z",
+        "updatedAt": "2026-02-06T14:00:00.000Z",
+        "submissionId": "sub_11"
+      },
+      {
+        "id": "fb_32",
+        "author": {
+          "id": "usr_13",
+          "nickname": "풀스택개발자"
+        },
+        "content": "프론트엔드와 백엔드 모두 자연스럽게 번역됐어요.",
+        "createdAt": "2026-02-07T14:00:00.000Z",
+        "updatedAt": "2026-02-07T14:00:00.000Z",
+        "submissionId": "sub_12"
+      },
+      {
+        "id": "fb_33",
+        "author": {
+          "id": "usr_14",
+          "nickname": "프론트장인"
+        },
+        "content": "UI 관련 용어 번역이 매우 적절합니다.",
+        "createdAt": "2026-02-08T14:00:00.000Z",
+        "updatedAt": "2026-02-08T14:00:00.000Z",
+        "submissionId": "sub_13"
+      },
+      {
+        "id": "fb_34",
+        "author": {
+          "id": "usr_15",
+          "nickname": "주니어개발자"
+        },
+        "content": "이 번역 덕분에 공식 문서 이해가 쉬워졌어요.",
+        "createdAt": "2026-02-09T14:00:00.000Z",
+        "updatedAt": "2026-02-09T14:00:00.000Z",
+        "submissionId": "sub_14"
+      },
+      {
+        "id": "fb_35",
+        "author": {
+          "id": "usr_16",
+          "nickname": "시니어개발자"
+        },
+        "content": "현업에서 바로 사용할 수 있는 번역입니다.",
+        "createdAt": "2026-02-10T14:00:00.000Z",
+        "updatedAt": "2026-02-10T14:00:00.000Z",
+        "submissionId": "sub_15"
+      },
+      {
+        "id": "fb_36",
+        "author": {
+          "id": "usr_17",
+          "nickname": "테크리더"
+        },
+        "content": "팀 온보딩 자료로 활용하겠습니다.",
+        "createdAt": "2026-02-11T14:00:00.000Z",
+        "updatedAt": "2026-02-11T14:00:00.000Z",
+        "submissionId": "sub_16"
+      },
+      {
+        "id": "fb_37",
+        "author": {
+          "id": "usr_18",
+          "nickname": "오픈소스기여자"
+        },
+        "content": "공식 문서 기여에도 활용할 수 있겠어요.",
+        "createdAt": "2026-02-12T14:00:00.000Z",
+        "updatedAt": "2026-02-12T14:00:00.000Z",
+        "submissionId": "sub_17"
+      },
+      {
+        "id": "fb_38",
+        "author": {
+          "id": "usr_19",
+          "nickname": "문서번역가"
+        },
+        "content": "문서 번역의 모범이 되는 작업물입니다.",
+        "createdAt": "2026-02-13T14:00:00.000Z",
+        "updatedAt": "2026-02-13T14:00:00.000Z",
+        "submissionId": "sub_18"
+      },
+      {
+        "id": "fb_39",
+        "author": {
+          "id": "usr_20",
+          "nickname": "깃헙스타"
+        },
+        "content": "스타를 주고 싶은 번역본이에요.",
+        "createdAt": "2026-02-14T14:00:00.000Z",
+        "updatedAt": "2026-02-14T14:00:00.000Z",
+        "submissionId": "sub_19"
+      },
+      {
+        "id": "fb_40",
+        "author": {
+          "id": "usr_01",
+          "nickname": "한준"
+        },
+        "content": "노력이 느껴지는 번역입니다.",
+        "createdAt": "2026-02-15T14:00:00.000Z",
+        "updatedAt": "2026-02-15T14:00:00.000Z",
+        "submissionId": "sub_20"
+      },
+      {
+        "id": "fb_41",
+        "author": {
+          "id": "usr_02",
+          "nickname": "영서"
+        },
+        "content": "개념 설명이 명확하게 잘 전달됩니다.",
+        "createdAt": "2026-02-16T14:00:00.000Z",
+        "updatedAt": "2026-02-16T14:00:00.000Z",
+        "submissionId": "sub_01"
+      },
+      {
+        "id": "fb_42",
+        "author": {
+          "id": "usr_03",
+          "nickname": "하림"
+        },
+        "content": "한국 개발자 커뮤니티에 공유하고 싶어요.",
+        "createdAt": "2026-02-17T14:00:00.000Z",
+        "updatedAt": "2026-02-17T14:00:00.000Z",
+        "submissionId": "sub_02"
+      },
+      {
+        "id": "fb_43",
+        "author": {
+          "id": "usr_04",
+          "nickname": "코딩왕"
+        },
+        "content": "코드 예시도 적절하게 설명해줬네요.",
+        "createdAt": "2026-02-18T14:00:00.000Z",
+        "updatedAt": "2026-02-18T14:00:00.000Z",
+        "submissionId": "sub_03"
+      },
+      {
+        "id": "fb_44",
+        "author": {
+          "id": "usr_05",
+          "nickname": "개발하는곰"
+        },
+        "content": "이 챌린지에서 가장 마음에 드는 번역본이에요.",
+        "createdAt": "2026-02-19T14:00:00.000Z",
+        "updatedAt": "2026-02-19T14:00:00.000Z",
+        "submissionId": "sub_04"
+      },
+      {
+        "id": "fb_45",
+        "author": {
+          "id": "usr_06",
+          "nickname": "아키텍트킴"
+        },
+        "content": "구조적으로도 잘 정리된 번역입니다.",
+        "createdAt": "2026-02-20T14:00:00.000Z",
+        "updatedAt": "2026-02-20T14:00:00.000Z",
+        "submissionId": "sub_05"
+      },
+      {
+        "id": "fb_46",
+        "author": {
+          "id": "usr_07",
+          "nickname": "번역달인"
+        },
+        "content": "번역의 완성도가 매우 높습니다.",
+        "createdAt": "2026-02-21T14:00:00.000Z",
+        "updatedAt": "2026-02-21T14:00:00.000Z",
+        "submissionId": "sub_06"
+      },
+      {
+        "id": "fb_47",
+        "author": {
+          "id": "usr_08",
+          "nickname": "문서왕"
+        },
+        "content": "레퍼런스로 보관할게요.",
+        "createdAt": "2026-02-22T14:00:00.000Z",
+        "updatedAt": "2026-02-22T14:00:00.000Z",
+        "submissionId": "sub_07"
+      },
+      {
+        "id": "fb_48",
+        "author": {
+          "id": "usr_09",
+          "nickname": "리액트고수"
+        },
+        "content": "원문보다 이해하기 쉬운 번역이에요.",
+        "createdAt": "2026-02-23T14:00:00.000Z",
+        "updatedAt": "2026-02-23T14:00:00.000Z",
+        "submissionId": "sub_08"
+      },
+      {
+        "id": "fb_49",
+        "author": {
+          "id": "usr_10",
+          "nickname": "타입마스터"
+        },
+        "content": "타입 시스템 설명이 정말 명확합니다.",
+        "createdAt": "2026-02-24T14:00:00.000Z",
+        "updatedAt": "2026-02-24T14:00:00.000Z",
+        "submissionId": "sub_09"
+      },
+      {
+        "id": "fb_50",
+        "author": {
+          "id": "usr_11",
+          "nickname": "넥스트초보"
+        },
+        "content": "이 번역 덕분에 Next.js를 이해했어요!",
+        "createdAt": "2026-02-25T14:00:00.000Z",
+        "updatedAt": "2026-02-25T14:00:00.000Z",
+        "submissionId": "sub_10"
+      },
+      {
+        "id": "fb_51",
+        "author": {
+          "id": "usr_12",
+          "nickname": "쿼리전문가"
+        },
+        "content": "데이터 페칭 관련 설명이 아주 좋아요.",
+        "createdAt": "2026-03-01T14:00:00.000Z",
+        "updatedAt": "2026-03-01T14:00:00.000Z",
+        "submissionId": "sub_11"
+      },
+      {
+        "id": "fb_52",
+        "author": {
+          "id": "usr_13",
+          "nickname": "풀스택개발자"
+        },
+        "content": "백엔드 개발자도 이해할 수 있는 번역이에요.",
+        "createdAt": "2026-03-02T14:00:00.000Z",
+        "updatedAt": "2026-03-02T14:00:00.000Z",
+        "submissionId": "sub_12"
+      },
+      {
+        "id": "fb_53",
+        "author": {
+          "id": "usr_14",
+          "nickname": "프론트장인"
+        },
+        "content": "컴포넌트 관련 용어가 잘 통일되었네요.",
+        "createdAt": "2026-03-03T14:00:00.000Z",
+        "updatedAt": "2026-03-03T14:00:00.000Z",
+        "submissionId": "sub_13"
+      },
+      {
+        "id": "fb_54",
+        "author": {
+          "id": "usr_15",
+          "nickname": "주니어개발자"
+        },
+        "content": "취준생에게 추천하고 싶은 번역본이에요.",
+        "createdAt": "2026-03-04T14:00:00.000Z",
+        "updatedAt": "2026-03-04T14:00:00.000Z",
+        "submissionId": "sub_14"
+      },
+      {
+        "id": "fb_55",
+        "author": {
+          "id": "usr_16",
+          "nickname": "시니어개발자"
+        },
+        "content": "코드 리뷰 때 공유하겠습니다.",
+        "createdAt": "2026-03-05T14:00:00.000Z",
+        "updatedAt": "2026-03-05T14:00:00.000Z",
+        "submissionId": "sub_15"
+      },
+      {
+        "id": "fb_56",
+        "author": {
+          "id": "usr_17",
+          "nickname": "테크리더"
+        },
+        "content": "기술 블로그에 올려도 좋을 품질이에요.",
+        "createdAt": "2026-03-06T14:00:00.000Z",
+        "updatedAt": "2026-03-06T14:00:00.000Z",
+        "submissionId": "sub_16"
+      },
+      {
+        "id": "fb_57",
+        "author": {
+          "id": "usr_18",
+          "nickname": "오픈소스기여자"
+        },
+        "content": "PR 설명에도 활용할 수 있겠네요.",
+        "createdAt": "2026-03-07T14:00:00.000Z",
+        "updatedAt": "2026-03-07T14:00:00.000Z",
+        "submissionId": "sub_17"
+      },
+      {
+        "id": "fb_58",
+        "author": {
+          "id": "usr_19",
+          "nickname": "문서번역가"
+        },
+        "content": "이런 번역본이 많아졌으면 좋겠어요.",
+        "createdAt": "2026-03-08T14:00:00.000Z",
+        "updatedAt": "2026-03-08T14:00:00.000Z",
+        "submissionId": "sub_18"
+      },
+      {
+        "id": "fb_59",
+        "author": {
+          "id": "usr_20",
+          "nickname": "깃헙스타"
+        },
+        "content": "최고의 번역본입니다. 잘 배웠어요.",
+        "createdAt": "2026-03-09T14:00:00.000Z",
+        "updatedAt": "2026-03-09T14:00:00.000Z",
+        "submissionId": "sub_19"
+      },
+      {
+        "id": "fb_60",
+        "author": {
+          "id": "usr_01",
+          "nickname": "한준"
+        },
+        "content": "다음 챌린지도 기대됩니다!",
+        "createdAt": "2026-03-10T14:00:00.000Z",
+        "updatedAt": "2026-03-10T14:00:00.000Z",
+        "submissionId": "sub_20"
+      },
+      {
+        "id": "fb_61",
+        "author": {
+          "id": "usr_02",
+          "nickname": "영서"
+        },
+        "content": "문장 길이 조절이 적절합니다.",
+        "createdAt": "2026-03-11T14:00:00.000Z",
+        "updatedAt": "2026-03-11T14:00:00.000Z",
+        "submissionId": "sub_01"
+      },
+      {
+        "id": "fb_62",
+        "author": {
+          "id": "usr_03",
+          "nickname": "하림"
+        },
+        "content": "원문의 뉘앙스를 잘 살렸어요.",
+        "createdAt": "2026-03-12T14:00:00.000Z",
+        "updatedAt": "2026-03-12T14:00:00.000Z",
+        "submissionId": "sub_02"
+      },
+      {
+        "id": "fb_63",
+        "author": {
+          "id": "usr_04",
+          "nickname": "코딩왕"
+        },
+        "content": "기술 문서 번역의 좋은 예시입니다.",
+        "createdAt": "2026-03-13T14:00:00.000Z",
+        "updatedAt": "2026-03-13T14:00:00.000Z",
+        "submissionId": "sub_03"
+      },
+      {
+        "id": "fb_64",
+        "author": {
+          "id": "usr_05",
+          "nickname": "개발하는곰"
+        },
+        "content": "번역 작업에 많은 시간을 쏟으신 것 같아요.",
+        "createdAt": "2026-03-14T14:00:00.000Z",
+        "updatedAt": "2026-03-14T14:00:00.000Z",
+        "submissionId": "sub_04"
+      },
+      {
+        "id": "fb_65",
+        "author": {
+          "id": "usr_06",
+          "nickname": "아키텍트킴"
+        },
+        "content": "시스템 설계 관련 내용이 명확히 전달됩니다.",
+        "createdAt": "2026-03-15T14:00:00.000Z",
+        "updatedAt": "2026-03-15T14:00:00.000Z",
+        "submissionId": "sub_05"
+      },
+      {
+        "id": "fb_66",
+        "author": {
+          "id": "usr_07",
+          "nickname": "번역달인"
+        },
+        "content": "번역달인이 인정하는 번역본이에요.",
+        "createdAt": "2026-03-16T14:00:00.000Z",
+        "updatedAt": "2026-03-16T14:00:00.000Z",
+        "submissionId": "sub_06"
+      },
+      {
+        "id": "fb_67",
+        "author": {
+          "id": "usr_08",
+          "nickname": "문서왕"
+        },
+        "content": "문서화의 중요성을 다시 느끼게 해줍니다.",
+        "createdAt": "2026-03-17T14:00:00.000Z",
+        "updatedAt": "2026-03-17T14:00:00.000Z",
+        "submissionId": "sub_07"
+      },
+      {
+        "id": "fb_68",
+        "author": {
+          "id": "usr_09",
+          "nickname": "리액트고수"
+        },
+        "content": "렌더링 관련 설명이 정말 명확해요.",
+        "createdAt": "2026-03-18T14:00:00.000Z",
+        "updatedAt": "2026-03-18T14:00:00.000Z",
+        "submissionId": "sub_08"
+      },
+      {
+        "id": "fb_69",
+        "author": {
+          "id": "usr_10",
+          "nickname": "타입마스터"
+        },
+        "content": "제네릭 타입 설명이 이해하기 쉽게 번역됐네요.",
+        "createdAt": "2026-03-19T14:00:00.000Z",
+        "updatedAt": "2026-03-19T14:00:00.000Z",
+        "submissionId": "sub_09"
+      },
+      {
+        "id": "fb_70",
+        "author": {
+          "id": "usr_11",
+          "nickname": "넥스트초보"
+        },
+        "content": "이 번역 보고 공식 문서 읽는 법을 배웠어요.",
+        "createdAt": "2026-03-20T14:00:00.000Z",
+        "updatedAt": "2026-03-20T14:00:00.000Z",
+        "submissionId": "sub_10"
+      },
+      {
+        "id": "fb_71",
+        "author": {
+          "id": "usr_12",
+          "nickname": "쿼리전문가"
+        },
+        "content": "캐싱 관련 설명이 특히 잘 번역됐어요.",
+        "createdAt": "2026-03-21T14:00:00.000Z",
+        "updatedAt": "2026-03-21T14:00:00.000Z",
+        "submissionId": "sub_11"
+      },
+      {
+        "id": "fb_72",
+        "author": {
+          "id": "usr_13",
+          "nickname": "풀스택개발자"
+        },
+        "content": "API 설명이 아주 명확합니다.",
+        "createdAt": "2026-03-22T14:00:00.000Z",
+        "updatedAt": "2026-03-22T14:00:00.000Z",
+        "submissionId": "sub_12"
+      },
+      {
+        "id": "fb_73",
+        "author": {
+          "id": "usr_14",
+          "nickname": "프론트장인"
+        },
+        "content": "상태관리 개념이 잘 전달됩니다.",
+        "createdAt": "2026-03-23T14:00:00.000Z",
+        "updatedAt": "2026-03-23T14:00:00.000Z",
+        "submissionId": "sub_13"
+      },
+      {
+        "id": "fb_74",
+        "author": {
+          "id": "usr_15",
+          "nickname": "주니어개발자"
+        },
+        "content": "신입 때 이런 자료가 있었으면 좋았을 텐데요.",
+        "createdAt": "2026-03-24T14:00:00.000Z",
+        "updatedAt": "2026-03-24T14:00:00.000Z",
+        "submissionId": "sub_14"
+      },
+      {
+        "id": "fb_75",
+        "author": {
+          "id": "usr_16",
+          "nickname": "시니어개발자"
+        },
+        "content": "시니어도 배울 점이 있는 번역입니다.",
+        "createdAt": "2026-03-25T14:00:00.000Z",
+        "updatedAt": "2026-03-25T14:00:00.000Z",
+        "submissionId": "sub_15"
+      },
+      {
+        "id": "fb_76",
+        "author": {
+          "id": "usr_17",
+          "nickname": "테크리더"
+        },
+        "content": "기술 리더십 관점에서도 훌륭한 기여입니다.",
+        "createdAt": "2026-04-01T14:00:00.000Z",
+        "updatedAt": "2026-04-01T14:00:00.000Z",
+        "submissionId": "sub_16"
+      },
+      {
+        "id": "fb_77",
+        "author": {
+          "id": "usr_18",
+          "nickname": "오픈소스기여자"
+        },
+        "content": "오픈소스 생태계에 큰 기여를 하셨네요.",
+        "createdAt": "2026-04-02T14:00:00.000Z",
+        "updatedAt": "2026-04-02T14:00:00.000Z",
+        "submissionId": "sub_17"
+      },
+      {
+        "id": "fb_78",
+        "author": {
+          "id": "usr_19",
+          "nickname": "문서번역가"
+        },
+        "content": "전문 번역가 수준의 번역입니다.",
+        "createdAt": "2026-04-03T14:00:00.000Z",
+        "updatedAt": "2026-04-03T14:00:00.000Z",
+        "submissionId": "sub_18"
+      },
+      {
+        "id": "fb_79",
+        "author": {
+          "id": "usr_20",
+          "nickname": "깃헙스타"
+        },
+        "content": "이 레포에 스타 1000개 붙여드리고 싶어요.",
+        "createdAt": "2026-04-04T14:00:00.000Z",
+        "updatedAt": "2026-04-04T14:00:00.000Z",
+        "submissionId": "sub_19"
+      },
+      {
+        "id": "fb_80",
+        "author": {
+          "id": "usr_01",
+          "nickname": "한준"
+        },
+        "content": "앞으로의 번역도 기대됩니다.",
+        "createdAt": "2026-04-05T14:00:00.000Z",
+        "updatedAt": "2026-04-05T14:00:00.000Z",
+        "submissionId": "sub_20"
+      },
+      {
+        "id": "fb_81",
+        "author": {
+          "id": "usr_02",
+          "nickname": "영서"
+        },
+        "content": "번역이 읽기 편해서 빠르게 학습했어요.",
+        "createdAt": "2026-04-06T14:00:00.000Z",
+        "updatedAt": "2026-04-06T14:00:00.000Z",
+        "submissionId": "sub_01"
+      },
+      {
+        "id": "fb_82",
+        "author": {
+          "id": "usr_03",
+          "nickname": "하림"
+        },
+        "content": "이 정도 품질이면 공식 한국어 문서 수준이에요.",
+        "createdAt": "2026-04-07T14:00:00.000Z",
+        "updatedAt": "2026-04-07T14:00:00.000Z",
+        "submissionId": "sub_02"
+      },
+      {
+        "id": "fb_83",
+        "author": {
+          "id": "usr_04",
+          "nickname": "코딩왕"
+        },
+        "content": "다양한 예시를 통해 개념을 잘 설명했네요.",
+        "createdAt": "2026-04-08T14:00:00.000Z",
+        "updatedAt": "2026-04-08T14:00:00.000Z",
+        "submissionId": "sub_03"
+      },
+      {
+        "id": "fb_84",
+        "author": {
+          "id": "usr_05",
+          "nickname": "개발하는곰"
+        },
+        "content": "곰도 이해할 수 있는 번역이에요!",
+        "createdAt": "2026-04-09T14:00:00.000Z",
+        "updatedAt": "2026-04-09T14:00:00.000Z",
+        "submissionId": "sub_04"
+      },
+      {
+        "id": "fb_85",
+        "author": {
+          "id": "usr_06",
+          "nickname": "아키텍트킴"
+        },
+        "content": "아키텍처 패턴 설명이 정확합니다.",
+        "createdAt": "2026-04-10T14:00:00.000Z",
+        "updatedAt": "2026-04-10T14:00:00.000Z",
+        "submissionId": "sub_05"
+      },
+      {
+        "id": "fb_86",
+        "author": {
+          "id": "usr_07",
+          "nickname": "번역달인"
+        },
+        "content": "이 번역본을 기준으로 삼겠습니다.",
+        "createdAt": "2026-04-11T14:00:00.000Z",
+        "updatedAt": "2026-04-11T14:00:00.000Z",
+        "submissionId": "sub_06"
+      },
+      {
+        "id": "fb_87",
+        "author": {
+          "id": "usr_08",
+          "nickname": "문서왕"
+        },
+        "content": "문서 관리 측면에서도 완벽합니다.",
+        "createdAt": "2026-04-12T14:00:00.000Z",
+        "updatedAt": "2026-04-12T14:00:00.000Z",
+        "submissionId": "sub_07"
+      },
+      {
+        "id": "fb_88",
+        "author": {
+          "id": "usr_09",
+          "nickname": "리액트고수"
+        },
+        "content": "hooks 설명이 특히 인상적이에요.",
+        "createdAt": "2026-04-13T14:00:00.000Z",
+        "updatedAt": "2026-04-13T14:00:00.000Z",
+        "submissionId": "sub_08"
+      },
+      {
+        "id": "fb_89",
+        "author": {
+          "id": "usr_10",
+          "nickname": "타입마스터"
+        },
+        "content": "타입 추론 설명이 정말 명확합니다.",
+        "createdAt": "2026-04-14T14:00:00.000Z",
+        "updatedAt": "2026-04-14T14:00:00.000Z",
+        "submissionId": "sub_09"
+      },
+      {
+        "id": "fb_90",
+        "author": {
+          "id": "usr_11",
+          "nickname": "넥스트초보"
+        },
+        "content": "초보자 눈높이에서 번역해주신 것 같아요.",
+        "createdAt": "2026-04-15T14:00:00.000Z",
+        "updatedAt": "2026-04-15T14:00:00.000Z",
+        "submissionId": "sub_10"
+      },
+      {
+        "id": "fb_91",
+        "author": {
+          "id": "usr_12",
+          "nickname": "쿼리전문가"
+        },
+        "content": "invalidation 개념이 잘 전달됩니다.",
+        "createdAt": "2026-04-16T14:00:00.000Z",
+        "updatedAt": "2026-04-16T14:00:00.000Z",
+        "submissionId": "sub_11"
+      },
+      {
+        "id": "fb_92",
+        "author": {
+          "id": "usr_13",
+          "nickname": "풀스택개발자"
+        },
+        "content": "서버와 클라이언트 개념 구분이 명확해요.",
+        "createdAt": "2026-04-17T14:00:00.000Z",
+        "updatedAt": "2026-04-17T14:00:00.000Z",
+        "submissionId": "sub_12"
+      },
+      {
+        "id": "fb_93",
+        "author": {
+          "id": "usr_14",
+          "nickname": "프론트장인"
+        },
+        "content": "이벤트 처리 설명이 자연스럽습니다.",
+        "createdAt": "2026-04-18T14:00:00.000Z",
+        "updatedAt": "2026-04-18T14:00:00.000Z",
+        "submissionId": "sub_13"
+      },
+      {
+        "id": "fb_94",
+        "author": {
+          "id": "usr_15",
+          "nickname": "주니어개발자"
+        },
+        "content": "덕분에 공식 문서 공부가 즐거워졌어요.",
+        "createdAt": "2026-04-19T14:00:00.000Z",
+        "updatedAt": "2026-04-19T14:00:00.000Z",
+        "submissionId": "sub_14"
+      },
+      {
+        "id": "fb_95",
+        "author": {
+          "id": "usr_16",
+          "nickname": "시니어개발자"
+        },
+        "content": "실무 적용을 고려한 번역이 인상적입니다.",
+        "createdAt": "2026-04-20T14:00:00.000Z",
+        "updatedAt": "2026-04-20T14:00:00.000Z",
+        "submissionId": "sub_15"
+      },
+      {
+        "id": "fb_96",
+        "author": {
+          "id": "usr_17",
+          "nickname": "테크리더"
+        },
+        "content": "기술 문서 표준화에 기여하는 작업입니다.",
+        "createdAt": "2026-04-21T14:00:00.000Z",
+        "updatedAt": "2026-04-21T14:00:00.000Z",
+        "submissionId": "sub_16"
+      },
+      {
+        "id": "fb_97",
+        "author": {
+          "id": "usr_18",
+          "nickname": "오픈소스기여자"
+        },
+        "content": "커뮤니티에 큰 자산이 될 번역본입니다.",
+        "createdAt": "2026-04-22T14:00:00.000Z",
+        "updatedAt": "2026-04-22T14:00:00.000Z",
+        "submissionId": "sub_17"
+      },
+      {
+        "id": "fb_98",
+        "author": {
+          "id": "usr_19",
+          "nickname": "문서번역가"
+        },
+        "content": "번역가 입장에서도 배울 점이 많아요.",
+        "createdAt": "2026-04-23T14:00:00.000Z",
+        "updatedAt": "2026-04-23T14:00:00.000Z",
+        "submissionId": "sub_18"
+      },
+      {
+        "id": "fb_99",
+        "author": {
+          "id": "usr_20",
+          "nickname": "깃헙스타"
+        },
+        "content": "이 번역본으로 스터디를 진행하겠습니다.",
+        "createdAt": "2026-04-24T14:00:00.000Z",
+        "updatedAt": "2026-04-24T14:00:00.000Z",
+        "submissionId": "sub_19"
+      },
+      {
+        "id": "fb_100",
+        "author": {
+          "id": "usr_01",
+          "nickname": "한준"
+        },
+        "content": "최고의 번역 챌린지 참여자입니다!",
+        "createdAt": "2026-04-25T14:00:00.000Z",
+        "updatedAt": "2026-04-25T14:00:00.000Z",
+        "submissionId": "sub_20"
+      }
+    ],
+    "pagination": {
+      "totalCount": 100,
+      "hasNext": false
+    }
+  }
+}

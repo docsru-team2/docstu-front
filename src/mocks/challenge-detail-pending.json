@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "data": {
+    "id": "chl_03",
+    "title": "TypeScript 핸드북 번역",
+    "sourceUrl": "https://www.typescriptlang.org/docs/handbook",
+    "field": "TYPESCRIPT",
+    "documentType": "OFFICIAL_DOC",
+    "description": "TypeScript 공식 핸드북을 한국어로 번역하는 챌린지입니다.",
+    "deadline": "2026-02-03T23:59:59.000Z",
+    "maxParticipants": 15,
+    "currentParticipants": 0,
+    "reviewStatus": "PENDING",
+    "progressStatus": null,
+    "rejectReason": null,
+    "deleteReason": null,
+    "creatorId": "usr_03",
+    "createdAt": "2026-01-03T10:00:00.000Z",
+    "updatedAt": "2026-01-03T10:00:00.000Z"
+  }
+}

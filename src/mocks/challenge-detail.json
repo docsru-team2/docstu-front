@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "data": {
+    "id": "chl_01",
+    "title": "Next.js App Router 번역",
+    "sourceUrl": "https://nextjs.org/docs/app",
+    "field": "NEXT_JS",
+    "documentType": "OFFICIAL_DOC",
+    "description": "Next.js 공식 문서의 App Router 섹션을 한국어로 번역하는 챌린지입니다. App Router의 핵심 개념인 레이아웃, 라우팅, 데이터 페칭 등을 다룹니다.",
+    "deadline": "2026-02-01T23:59:59.000Z",
+    "maxParticipants": 5,
+    "currentParticipants": 2,
+    "createdAt": "2026-01-01T10:00:00.000Z",
+    "updatedAt": "2026-01-01T10:00:00.000Z"
+  }
+}

@@ -1,0 +1,2002 @@
+{
+  "sub_01": {
+    "success": true,
+    "data": {
+      "id": "sub_01",
+      "challengeId": "chl_01",
+      "isMine": true,
+      "author": {
+        "id": "usr_01",
+        "nickname": "한준",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js App Router 번역본",
+      "content": "# Next.js App Router\n\nApp Router는 Next.js 13에서 도입된 새로운 라우팅 시스템입니다.\n\n## 주요 특징\n\n- **서버 컴포넌트**: 기본적으로 모든 컴포넌트는 서버 컴포넌트입니다.\n- **레이아웃**: 중첩 레이아웃을 통해 UI를 효율적으로 구성할 수 있습니다.\n- **데이터 페칭**: `fetch` API를 활용한 서버 사이드 데이터 페칭을 지원합니다.\n\n## 파일 시스템 라우팅\n\n`app` 디렉토리 내의 폴더 구조가 URL 경로를 결정합니다.\n\n```\napp/\n├── page.tsx        → /\n├── about/\n│   └── page.tsx    → /about\n└── blog/\n    └── [slug]/\n        └── page.tsx → /blog/:slug\n```",
+      "isDeleted": false,
+      "likeCount": 103,
+      "feedbackCount": 25,
+      "createdAt": "2026-01-01T13:00:00.000Z",
+      "updatedAt": "2026-01-01T13:00:00.000Z"
+    }
+  },
+  "sub_02": {
+    "success": true,
+    "data": {
+      "id": "sub_02",
+      "challengeId": "chl_02",
+      "isMine": false,
+      "author": {
+        "id": "usr_02",
+        "nickname": "영서",
+        "grade": "NORMAL"
+      },
+      "title": "React Query 가이드 번역본",
+      "content": "# React Query 가이드\n\nReact Query는 서버 상태 관리를 위한 강력한 라이브러리입니다.\n\n## 핵심 개념\n\n- **쿼리**: 비동기 데이터를 가져오는 선언적 방법입니다.\n- **뮤테이션**: 서버 데이터를 변경하는 작업입니다.\n- **캐싱**: 자동 캐싱으로 불필요한 네트워크 요청을 방지합니다.\n\n## 기본 사용법\n\n```tsx\nconst { data, isLoading } = useQuery({\n  queryKey: ['todos'],\n  queryFn: fetchTodos,\n})\n```",
+      "isDeleted": false,
+      "likeCount": 45,
+      "feedbackCount": 11,
+      "createdAt": "2026-01-02T13:00:00.000Z",
+      "updatedAt": "2026-01-02T13:00:00.000Z"
+    }
+  },
+  "sub_03": {
+    "success": true,
+    "data": {
+      "id": "sub_03",
+      "challengeId": "chl_03",
+      "isMine": false,
+      "author": {
+        "id": "usr_03",
+        "nickname": "하림",
+        "grade": "PRO"
+      },
+      "title": "TypeScript 핸드북 번역본",
+      "content": "# TypeScript 핸드북\n\nTypeScript는 JavaScript에 정적 타입을 추가한 언어입니다.\n\n## 기본 타입\n\n- `string`: 문자열\n- `number`: 숫자\n- `boolean`: 불리언\n- `any`: 모든 타입\n\n## 인터페이스\n\n```ts\ninterface User {\n  id: number;\n  name: string;\n  email?: string;\n}\n```\n\n## 제네릭\n\n제네릭을 사용하면 타입을 파라미터처럼 다룰 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 78,
+      "feedbackCount": 19,
+      "createdAt": "2026-01-03T13:00:00.000Z",
+      "updatedAt": "2026-01-03T13:00:00.000Z"
+    }
+  },
+  "sub_04": {
+    "success": true,
+    "data": {
+      "id": "sub_04",
+      "challengeId": "chl_04",
+      "isMine": false,
+      "author": {
+        "id": "usr_04",
+        "nickname": "코딩왕",
+        "grade": "NORMAL"
+      },
+      "title": "Node.js 공식 문서 번역본",
+      "content": "# Node.js 공식 문서\n\nNode.js는 Chrome V8 엔진으로 구동되는 JavaScript 런타임입니다.\n\n## 이벤트 루프\n\nNode.js의 핵심은 비동기 I/O를 처리하는 이벤트 루프입니다.\n\n## 모듈 시스템\n\n```js\n// CommonJS\nconst fs = require('fs');\n\n// ES Modules\nimport fs from 'fs';\n```\n\n## 스트림\n\n스트림은 대용량 데이터를 효율적으로 처리하는 방법입니다.",
+      "isDeleted": false,
+      "likeCount": 12,
+      "feedbackCount": 3,
+      "createdAt": "2026-01-04T13:00:00.000Z",
+      "updatedAt": "2026-01-04T13:00:00.000Z"
+    }
+  },
+  "sub_05": {
+    "success": true,
+    "data": {
+      "id": "sub_05",
+      "challengeId": "chl_05",
+      "isMine": false,
+      "author": {
+        "id": "usr_05",
+        "nickname": "개발하는곰",
+        "grade": "EXPERT"
+      },
+      "title": "Vue.js 컴포지션 API 번역본",
+      "content": "# Vue.js 컴포지션 API\n\n컴포지션 API는 Vue 3에서 도입된 새로운 컴포넌트 로직 구성 방식입니다.\n\n## setup() 함수\n\n```js\nimport { ref, computed } from 'vue'\n\nexport default {\n  setup() {\n    const count = ref(0)\n    const doubled = computed(() => count.value * 2)\n    return { count, doubled }\n  }\n}\n```\n\n## 반응성 시스템\n\n`ref()`와 `reactive()`를 통해 반응형 데이터를 선언합니다.",
+      "isDeleted": false,
+      "likeCount": 200,
+      "feedbackCount": 50,
+      "createdAt": "2026-01-05T13:00:00.000Z",
+      "updatedAt": "2026-01-05T13:00:00.000Z"
+    }
+  },
+  "sub_06": {
+    "success": true,
+    "data": {
+      "id": "sub_06",
+      "challengeId": "chl_06",
+      "isMine": false,
+      "author": {
+        "id": "usr_06",
+        "nickname": "아키텍트킴",
+        "grade": "PRO"
+      },
+      "title": "React 공식 문서 번역본",
+      "content": "# React 공식 문서\n\nReact는 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리입니다.\n\n## 컴포넌트\n\n컴포넌트는 UI를 독립적이고 재사용 가능한 조각으로 나눕니다.\n\n```jsx\nfunction Welcome({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n```\n\n## Hooks\n\n- `useState`: 상태 관리\n- `useEffect`: 사이드 이펙트 처리\n- `useContext`: 컨텍스트 사용",
+      "isDeleted": false,
+      "likeCount": 56,
+      "feedbackCount": 14,
+      "createdAt": "2026-01-06T13:00:00.000Z",
+      "updatedAt": "2026-01-06T13:00:00.000Z"
+    }
+  },
+  "sub_07": {
+    "success": true,
+    "data": {
+      "id": "sub_07",
+      "challengeId": "chl_07",
+      "isMine": false,
+      "author": {
+        "id": "usr_07",
+        "nickname": "번역달인",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js 최적화 가이드 번역본",
+      "content": "# Next.js 최적화 가이드\n\nNext.js 애플리케이션의 성능을 극대화하는 방법을 알아봅니다.\n\n## 이미지 최적화\n\n`next/image` 컴포넌트를 사용하면 이미지를 자동으로 최적화합니다.\n\n## 코드 분할\n\nNext.js는 페이지별로 자동 코드 분할을 수행합니다.\n\n## 캐싱 전략\n\n```js\nfetch(url, { next: { revalidate: 3600 } })\n```",
+      "isDeleted": false,
+      "likeCount": 33,
+      "feedbackCount": 8,
+      "createdAt": "2026-01-07T13:00:00.000Z",
+      "updatedAt": "2026-01-07T13:00:00.000Z"
+    }
+  },
+  "sub_08": {
+    "success": true,
+    "data": {
+      "id": "sub_08",
+      "challengeId": "chl_08",
+      "isMine": false,
+      "author": {
+        "id": "usr_08",
+        "nickname": "문서왕",
+        "grade": "PRO"
+      },
+      "title": "TanStack Query 번역본",
+      "content": "# TanStack Query\n\nTanStack Query(구 React Query)는 서버 상태 관리를 단순화합니다.\n\n## QueryClient 설정\n\n```tsx\nconst queryClient = new QueryClient({\n  defaultOptions: {\n    queries: {\n      staleTime: 1000 * 60 * 5,\n    },\n  },\n})\n```\n\n## Infinite Query\n\n무한 스크롤 구현에 `useInfiniteQuery`를 활용할 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 89,
+      "feedbackCount": 22,
+      "createdAt": "2026-01-08T13:00:00.000Z",
+      "updatedAt": "2026-01-08T13:00:00.000Z"
+    }
+  },
+  "sub_09": {
+    "success": true,
+    "data": {
+      "id": "sub_09",
+      "challengeId": "chl_09",
+      "isMine": false,
+      "author": {
+        "id": "usr_09",
+        "nickname": "리액트고수",
+        "grade": "NORMAL"
+      },
+      "title": "Prisma 공식 문서 번역본",
+      "content": "# Prisma 공식 문서\n\nPrisma는 Node.js와 TypeScript를 위한 차세대 ORM입니다.\n\n## 스키마 정의\n\n```prisma\nmodel User {\n  id    Int    @id @default(autoincrement())\n  email String @unique\n  name  String?\n  posts Post[]\n}\n```\n\n## 쿼리 실행\n\n```ts\nconst users = await prisma.user.findMany({\n  where: { email: { contains: '@gmail.com' } }\n})\n```",
+      "isDeleted": false,
+      "likeCount": 7,
+      "feedbackCount": 1,
+      "createdAt": "2026-01-09T13:00:00.000Z",
+      "updatedAt": "2026-01-09T13:00:00.000Z"
+    }
+  },
+  "sub_10": {
+    "success": true,
+    "data": {
+      "id": "sub_10",
+      "challengeId": "chl_10",
+      "isMine": false,
+      "author": {
+        "id": "usr_10",
+        "nickname": "타입마스터",
+        "grade": "EXPERT"
+      },
+      "title": "Zod 라이브러리 가이드 번역본",
+      "content": "# Zod 라이브러리 가이드\n\nZod는 TypeScript-first 스키마 선언 및 유효성 검사 라이브러리입니다.\n\n## 기본 사용법\n\n```ts\nconst UserSchema = z.object({\n  id: z.number(),\n  name: z.string().min(1),\n  email: z.string().email(),\n})\n\ntype User = z.infer<typeof UserSchema>\n```\n\n## 유효성 검사\n\n```ts\nconst result = UserSchema.safeParse(data)\nif (result.success) {\n  console.log(result.data)\n}\n```",
+      "isDeleted": false,
+      "likeCount": 150,
+      "feedbackCount": 37,
+      "createdAt": "2026-01-10T13:00:00.000Z",
+      "updatedAt": "2026-01-10T13:00:00.000Z"
+    }
+  },
+  "sub_11": {
+    "success": true,
+    "data": {
+      "id": "sub_11",
+      "challengeId": "chl_11",
+      "isMine": false,
+      "author": {
+        "id": "usr_11",
+        "nickname": "넥스트초보",
+        "grade": "NORMAL"
+      },
+      "title": "Tailwind CSS 공식 문서 번역본",
+      "content": "# Tailwind CSS 공식 문서\n\nTailwind CSS는 유틸리티 우선 CSS 프레임워크입니다.\n\n## 핵심 개념\n\n유틸리티 클래스를 조합하여 스타일을 구성합니다.\n\n```html\n<div class=\"flex items-center justify-between p-4 bg-white shadow-md rounded-lg\">\n  <h2 class=\"text-xl font-bold text-gray-900\">제목</h2>\n</div>\n```\n\n## 반응형 디자인\n\n`sm:`, `md:`, `lg:` 접두사로 반응형 스타일을 적용합니다.",
+      "isDeleted": false,
+      "likeCount": 22,
+      "feedbackCount": 5,
+      "createdAt": "2026-01-11T13:00:00.000Z",
+      "updatedAt": "2026-01-11T13:00:00.000Z"
+    }
+  },
+  "sub_12": {
+    "success": true,
+    "data": {
+      "id": "sub_12",
+      "challengeId": "chl_12",
+      "isMine": false,
+      "author": {
+        "id": "usr_12",
+        "nickname": "쿼리전문가",
+        "grade": "PRO"
+      },
+      "title": "Vercel 배포 가이드 번역본",
+      "content": "# Vercel 배포 가이드\n\nVercel은 프론트엔드 애플리케이션을 위한 클라우드 플랫폼입니다.\n\n## 배포 방법\n\n1. GitHub 저장소 연결\n2. 프레임워크 자동 감지\n3. 자동 배포 실행\n\n## 환경 변수 설정\n\nVercel 대시보드에서 프로젝트별 환경 변수를 관리합니다.\n\n## Edge Functions\n\nEdge Runtime에서 실행되는 서버리스 함수를 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 67,
+      "feedbackCount": 16,
+      "createdAt": "2026-01-12T13:00:00.000Z",
+      "updatedAt": "2026-01-12T13:00:00.000Z"
+    }
+  },
+  "sub_13": {
+    "success": true,
+    "data": {
+      "id": "sub_13",
+      "challengeId": "chl_13",
+      "isMine": false,
+      "author": {
+        "id": "usr_13",
+        "nickname": "풀스택개발자",
+        "grade": "NORMAL"
+      },
+      "title": "GraphQL 공식 문서 번역본",
+      "content": "# GraphQL 공식 문서\n\nGraphQL은 API를 위한 쿼리 언어이자 런타임입니다.\n\n## 쿼리\n\n```graphql\nquery GetUser($id: ID!) {\n  user(id: $id) {\n    name\n    email\n    posts {\n      title\n    }\n  }\n}\n```\n\n## 뮤테이션\n\n```graphql\nmutation CreatePost($input: PostInput!) {\n  createPost(input: $input) {\n    id\n    title\n  }\n}\n```",
+      "isDeleted": false,
+      "likeCount": 18,
+      "feedbackCount": 4,
+      "createdAt": "2026-01-13T13:00:00.000Z",
+      "updatedAt": "2026-01-13T13:00:00.000Z"
+    }
+  },
+  "sub_14": {
+    "success": true,
+    "data": {
+      "id": "sub_14",
+      "challengeId": "chl_14",
+      "isMine": false,
+      "author": {
+        "id": "usr_14",
+        "nickname": "프론트장인",
+        "grade": "PRO"
+      },
+      "title": "tRPC 가이드 번역본",
+      "content": "# tRPC 가이드\n\ntRPC는 TypeScript를 활용한 End-to-End 타입 안전 API 구축 도구입니다.\n\n## 라우터 정의\n\n```ts\nconst appRouter = router({\n  hello: publicProcedure\n    .input(z.object({ name: z.string() }))\n    .query(({ input }) => {\n      return { greeting: `Hello ${input.name}` }\n    }),\n})\n```\n\n## 클라이언트 사용\n\n```ts\nconst { data } = trpc.hello.useQuery({ name: '세계' })\n```",
+      "isDeleted": false,
+      "likeCount": 92,
+      "feedbackCount": 23,
+      "createdAt": "2026-01-14T13:00:00.000Z",
+      "updatedAt": "2026-01-14T13:00:00.000Z"
+    }
+  },
+  "sub_15": {
+    "success": true,
+    "data": {
+      "id": "sub_15",
+      "challengeId": "chl_15",
+      "isMine": false,
+      "author": {
+        "id": "usr_15",
+        "nickname": "주니어개발자",
+        "grade": "NORMAL"
+      },
+      "title": "Zustand 상태관리 번역본",
+      "content": "# Zustand 상태관리\n\nZustand는 간단하고 빠른 React 상태관리 라이브러리입니다.\n\n## 스토어 생성\n\n```ts\nconst useStore = create<State>((set) => ({\n  count: 0,\n  increment: () => set((state) => ({ count: state.count + 1 })),\n  decrement: () => set((state) => ({ count: state.count - 1 })),\n}))\n```\n\n## 컴포넌트에서 사용\n\n```tsx\nconst { count, increment } = useStore()\n```",
+      "isDeleted": false,
+      "likeCount": 5,
+      "feedbackCount": 1,
+      "createdAt": "2026-01-15T13:00:00.000Z",
+      "updatedAt": "2026-01-15T13:00:00.000Z"
+    }
+  },
+  "sub_16": {
+    "success": true,
+    "data": {
+      "id": "sub_16",
+      "challengeId": "chl_16",
+      "isMine": false,
+      "author": {
+        "id": "usr_16",
+        "nickname": "시니어개발자",
+        "grade": "EXPERT"
+      },
+      "title": "React Hook Form 번역본",
+      "content": "# React Hook Form\n\nReact Hook Form은 성능 최적화된 폼 관리 라이브러리입니다.\n\n## 기본 사용법\n\n```tsx\nconst { register, handleSubmit, formState: { errors } } = useForm<FormData>()\n\nconst onSubmit = (data: FormData) => console.log(data)\n\nreturn (\n  <form onSubmit={handleSubmit(onSubmit)}>\n    <input {...register('email', { required: true })} />\n    <button type=\"submit\">제출</button>\n  </form>\n)\n```",
+      "isDeleted": false,
+      "likeCount": 180,
+      "feedbackCount": 45,
+      "createdAt": "2026-01-16T13:00:00.000Z",
+      "updatedAt": "2026-01-16T13:00:00.000Z"
+    }
+  },
+  "sub_17": {
+    "success": true,
+    "data": {
+      "id": "sub_17",
+      "challengeId": "chl_17",
+      "isMine": false,
+      "author": {
+        "id": "usr_17",
+        "nickname": "테크리더",
+        "grade": "PRO"
+      },
+      "title": "NextAuth.js 공식 문서 번역본",
+      "content": "# NextAuth.js 공식 문서\n\nNextAuth.js는 Next.js를 위한 완전한 인증 솔루션입니다.\n\n## 프로바이더 설정\n\n```ts\nexport const authOptions: NextAuthOptions = {\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_ID,\n      clientSecret: process.env.GOOGLE_SECRET,\n    }),\n  ],\n}\n```\n\n## 세션 사용\n\n```tsx\nconst { data: session } = useSession()\n```",
+      "isDeleted": false,
+      "likeCount": 41,
+      "feedbackCount": 10,
+      "createdAt": "2026-01-17T13:00:00.000Z",
+      "updatedAt": "2026-01-17T13:00:00.000Z"
+    }
+  },
+  "sub_18": {
+    "success": true,
+    "data": {
+      "id": "sub_18",
+      "challengeId": "chl_18",
+      "isMine": false,
+      "author": {
+        "id": "usr_18",
+        "nickname": "오픈소스기여자",
+        "grade": "NORMAL"
+      },
+      "title": "Drizzle ORM 번역본",
+      "content": "# Drizzle ORM\n\nDrizzle ORM은 TypeScript-first SQL ORM입니다.\n\n## 스키마 정의\n\n```ts\nexport const users = pgTable('users', {\n  id: serial('id').primaryKey(),\n  name: text('name').notNull(),\n  email: text('email').unique(),\n})\n```\n\n## 쿼리 실행\n\n```ts\nconst result = await db.select()\n  .from(users)\n  .where(eq(users.id, 1))\n```",
+      "isDeleted": false,
+      "likeCount": 29,
+      "feedbackCount": 7,
+      "createdAt": "2026-01-18T13:00:00.000Z",
+      "updatedAt": "2026-01-18T13:00:00.000Z"
+    }
+  },
+  "sub_19": {
+    "success": true,
+    "data": {
+      "id": "sub_19",
+      "challengeId": "chl_19",
+      "isMine": false,
+      "author": {
+        "id": "usr_19",
+        "nickname": "문서번역가",
+        "grade": "NORMAL"
+      },
+      "title": "Vitest 테스팅 가이드 번역본",
+      "content": "# Vitest 테스팅 가이드\n\nVitest는 Vite 기반의 빠른 테스팅 프레임워크입니다.\n\n## 기본 테스트\n\n```ts\nimport { describe, it, expect } from 'vitest'\n\ndescribe('Calculator', () => {\n  it('adds two numbers', () => {\n    expect(1 + 2).toBe(3)\n  })\n})\n```\n\n## 모킹\n\n```ts\nvi.mock('./module', () => ({\n  fetchData: vi.fn().mockResolvedValue({ data: 'mocked' })\n}))\n```",
+      "isDeleted": false,
+      "likeCount": 14,
+      "feedbackCount": 3,
+      "createdAt": "2026-01-19T13:00:00.000Z",
+      "updatedAt": "2026-01-19T13:00:00.000Z"
+    }
+  },
+  "sub_20": {
+    "success": true,
+    "data": {
+      "id": "sub_20",
+      "challengeId": "chl_20",
+      "isMine": false,
+      "author": {
+        "id": "usr_20",
+        "nickname": "깃헙스타",
+        "grade": "PRO"
+      },
+      "title": "Storybook 공식 문서 번역본",
+      "content": "# Storybook 공식 문서\n\nStorybook은 UI 컴포넌트를 독립적으로 개발하고 테스트하는 도구입니다.\n\n## Story 작성\n\n```tsx\nexport default {\n  title: 'Components/Button',\n  component: Button,\n} satisfies Meta<typeof Button>\n\nexport const Primary: Story = {\n  args: {\n    variant: 'primary',\n    children: '버튼',\n  },\n}\n```\n\n## 애드온\n\n접근성, 반응형, 인터랙션 테스트 등 다양한 애드온을 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 73,
+      "feedbackCount": 18,
+      "createdAt": "2026-01-20T13:00:00.000Z",
+      "updatedAt": "2026-01-20T13:00:00.000Z"
+    }
+  },
+  "sub_21": {
+    "success": true,
+    "data": {
+      "id": "sub_21",
+      "challengeId": "chl_01",
+      "isMine": true,
+      "author": {
+        "id": "usr_01",
+        "nickname": "한준",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js App Router 번역본",
+      "content": "# Next.js App Router\n\nApp Router는 Next.js 13에서 도입된 새로운 라우팅 시스템입니다.\n\n## 주요 특징\n\n- **서버 컴포넌트**: 기본적으로 모든 컴포넌트는 서버 컴포넌트입니다.\n- **레이아웃**: 중첩 레이아웃을 통해 UI를 효율적으로 구성할 수 있습니다.\n- **데이터 페칭**: `fetch` API를 활용한 서버 사이드 데이터 페칭을 지원합니다.\n\n## 파일 시스템 라우팅\n\n`app` 디렉토리 내의 폴더 구조가 URL 경로를 결정합니다.\n\n```\napp/\n├── page.tsx        → /\n├── about/\n│   └── page.tsx    → /about\n└── blog/\n    └── [slug]/\n        └── page.tsx → /blog/:slug\n```",
+      "isDeleted": false,
+      "likeCount": 38,
+      "feedbackCount": 9,
+      "createdAt": "2026-01-21T13:00:00.000Z",
+      "updatedAt": "2026-01-21T13:00:00.000Z"
+    }
+  },
+  "sub_22": {
+    "success": true,
+    "data": {
+      "id": "sub_22",
+      "challengeId": "chl_02",
+      "isMine": false,
+      "author": {
+        "id": "usr_02",
+        "nickname": "영서",
+        "grade": "NORMAL"
+      },
+      "title": "React Query 가이드 번역본",
+      "content": "# React Query 가이드\n\nReact Query는 서버 상태 관리를 위한 강력한 라이브러리입니다.\n\n## 핵심 개념\n\n- **쿼리**: 비동기 데이터를 가져오는 선언적 방법입니다.\n- **뮤테이션**: 서버 데이터를 변경하는 작업입니다.\n- **캐싱**: 자동 캐싱으로 불필요한 네트워크 요청을 방지합니다.\n\n## 기본 사용법\n\n```tsx\nconst { data, isLoading } = useQuery({\n  queryKey: ['todos'],\n  queryFn: fetchTodos,\n})\n```",
+      "isDeleted": false,
+      "likeCount": 61,
+      "feedbackCount": 15,
+      "createdAt": "2026-01-22T13:00:00.000Z",
+      "updatedAt": "2026-01-22T13:00:00.000Z"
+    }
+  },
+  "sub_23": {
+    "success": true,
+    "data": {
+      "id": "sub_23",
+      "challengeId": "chl_03",
+      "isMine": false,
+      "author": {
+        "id": "usr_03",
+        "nickname": "하림",
+        "grade": "PRO"
+      },
+      "title": "TypeScript 핸드북 번역본",
+      "content": "# TypeScript 핸드북\n\nTypeScript는 JavaScript에 정적 타입을 추가한 언어입니다.\n\n## 기본 타입\n\n- `string`: 문자열\n- `number`: 숫자\n- `boolean`: 불리언\n- `any`: 모든 타입\n\n## 인터페이스\n\n```ts\ninterface User {\n  id: number;\n  name: string;\n  email?: string;\n}\n```\n\n## 제네릭\n\n제네릭을 사용하면 타입을 파라미터처럼 다룰 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 95,
+      "feedbackCount": 23,
+      "createdAt": "2026-01-23T13:00:00.000Z",
+      "updatedAt": "2026-01-23T13:00:00.000Z"
+    }
+  },
+  "sub_24": {
+    "success": true,
+    "data": {
+      "id": "sub_24",
+      "challengeId": "chl_04",
+      "isMine": false,
+      "author": {
+        "id": "usr_04",
+        "nickname": "코딩왕",
+        "grade": "NORMAL"
+      },
+      "title": "Node.js 공식 문서 번역본",
+      "content": "# Node.js 공식 문서\n\nNode.js는 Chrome V8 엔진으로 구동되는 JavaScript 런타임입니다.\n\n## 이벤트 루프\n\nNode.js의 핵심은 비동기 I/O를 처리하는 이벤트 루프입니다.\n\n## 모듈 시스템\n\n```js\n// CommonJS\nconst fs = require('fs');\n\n// ES Modules\nimport fs from 'fs';\n```\n\n## 스트림\n\n스트림은 대용량 데이터를 효율적으로 처리하는 방법입니다.",
+      "isDeleted": false,
+      "likeCount": 3,
+      "feedbackCount": 1,
+      "createdAt": "2026-01-24T13:00:00.000Z",
+      "updatedAt": "2026-01-24T13:00:00.000Z"
+    }
+  },
+  "sub_25": {
+    "success": true,
+    "data": {
+      "id": "sub_25",
+      "challengeId": "chl_05",
+      "isMine": false,
+      "author": {
+        "id": "usr_05",
+        "nickname": "개발하는곰",
+        "grade": "EXPERT"
+      },
+      "title": "Vue.js 컴포지션 API 번역본",
+      "content": "# Vue.js 컴포지션 API\n\n컴포지션 API는 Vue 3에서 도입된 새로운 컴포넌트 로직 구성 방식입니다.\n\n## setup() 함수\n\n```js\nimport { ref, computed } from 'vue'\n\nexport default {\n  setup() {\n    const count = ref(0)\n    const doubled = computed(() => count.value * 2)\n    return { count, doubled }\n  }\n}\n```\n\n## 반응성 시스템\n\n`ref()`와 `reactive()`를 통해 반응형 데이터를 선언합니다.",
+      "isDeleted": false,
+      "likeCount": 127,
+      "feedbackCount": 31,
+      "createdAt": "2026-01-25T13:00:00.000Z",
+      "updatedAt": "2026-01-25T13:00:00.000Z"
+    }
+  },
+  "sub_26": {
+    "success": true,
+    "data": {
+      "id": "sub_26",
+      "challengeId": "chl_06",
+      "isMine": false,
+      "author": {
+        "id": "usr_06",
+        "nickname": "아키텍트킴",
+        "grade": "PRO"
+      },
+      "title": "React 공식 문서 번역본",
+      "content": "# React 공식 문서\n\nReact는 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리입니다.\n\n## 컴포넌트\n\n컴포넌트는 UI를 독립적이고 재사용 가능한 조각으로 나눕니다.\n\n```jsx\nfunction Welcome({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n```\n\n## Hooks\n\n- `useState`: 상태 관리\n- `useEffect`: 사이드 이펙트 처리\n- `useContext`: 컨텍스트 사용",
+      "isDeleted": false,
+      "likeCount": 84,
+      "feedbackCount": 21,
+      "createdAt": "2026-02-01T13:00:00.000Z",
+      "updatedAt": "2026-02-01T13:00:00.000Z"
+    }
+  },
+  "sub_27": {
+    "success": true,
+    "data": {
+      "id": "sub_27",
+      "challengeId": "chl_07",
+      "isMine": false,
+      "author": {
+        "id": "usr_07",
+        "nickname": "번역달인",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js 최적화 가이드 번역본",
+      "content": "# Next.js 최적화 가이드\n\nNext.js 애플리케이션의 성능을 극대화하는 방법을 알아봅니다.\n\n## 이미지 최적화\n\n`next/image` 컴포넌트를 사용하면 이미지를 자동으로 최적화합니다.\n\n## 코드 분할\n\nNext.js는 페이지별로 자동 코드 분할을 수행합니다.\n\n## 캐싱 전략\n\n```js\nfetch(url, { next: { revalidate: 3600 } })\n```",
+      "isDeleted": false,
+      "likeCount": 47,
+      "feedbackCount": 11,
+      "createdAt": "2026-02-02T13:00:00.000Z",
+      "updatedAt": "2026-02-02T13:00:00.000Z"
+    }
+  },
+  "sub_28": {
+    "success": true,
+    "data": {
+      "id": "sub_28",
+      "challengeId": "chl_08",
+      "isMine": false,
+      "author": {
+        "id": "usr_08",
+        "nickname": "문서왕",
+        "grade": "PRO"
+      },
+      "title": "TanStack Query 번역본",
+      "content": "# TanStack Query\n\nTanStack Query(구 React Query)는 서버 상태 관리를 단순화합니다.\n\n## QueryClient 설정\n\n```tsx\nconst queryClient = new QueryClient({\n  defaultOptions: {\n    queries: {\n      staleTime: 1000 * 60 * 5,\n    },\n  },\n})\n```\n\n## Infinite Query\n\n무한 스크롤 구현에 `useInfiniteQuery`를 활용할 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 112,
+      "feedbackCount": 28,
+      "createdAt": "2026-02-03T13:00:00.000Z",
+      "updatedAt": "2026-02-03T13:00:00.000Z"
+    }
+  },
+  "sub_29": {
+    "success": true,
+    "data": {
+      "id": "sub_29",
+      "challengeId": "chl_09",
+      "isMine": false,
+      "author": {
+        "id": "usr_09",
+        "nickname": "리액트고수",
+        "grade": "NORMAL"
+      },
+      "title": "Prisma 공식 문서 번역본",
+      "content": "# Prisma 공식 문서\n\nPrisma는 Node.js와 TypeScript를 위한 차세대 ORM입니다.\n\n## 스키마 정의\n\n```prisma\nmodel User {\n  id    Int    @id @default(autoincrement())\n  email String @unique\n  name  String?\n  posts Post[]\n}\n```\n\n## 쿼리 실행\n\n```ts\nconst users = await prisma.user.findMany({\n  where: { email: { contains: '@gmail.com' } }\n})\n```",
+      "isDeleted": false,
+      "likeCount": 16,
+      "feedbackCount": 4,
+      "createdAt": "2026-02-04T13:00:00.000Z",
+      "updatedAt": "2026-02-04T13:00:00.000Z"
+    }
+  },
+  "sub_30": {
+    "success": true,
+    "data": {
+      "id": "sub_30",
+      "challengeId": "chl_10",
+      "isMine": false,
+      "author": {
+        "id": "usr_10",
+        "nickname": "타입마스터",
+        "grade": "EXPERT"
+      },
+      "title": "Zod 라이브러리 가이드 번역본",
+      "content": "# Zod 라이브러리 가이드\n\nZod는 TypeScript-first 스키마 선언 및 유효성 검사 라이브러리입니다.\n\n## 기본 사용법\n\n```ts\nconst UserSchema = z.object({\n  id: z.number(),\n  name: z.string().min(1),\n  email: z.string().email(),\n})\n\ntype User = z.infer<typeof UserSchema>\n```\n\n## 유효성 검사\n\n```ts\nconst result = UserSchema.safeParse(data)\nif (result.success) {\n  console.log(result.data)\n}\n```",
+      "isDeleted": false,
+      "likeCount": 58,
+      "feedbackCount": 14,
+      "createdAt": "2026-02-05T13:00:00.000Z",
+      "updatedAt": "2026-02-05T13:00:00.000Z"
+    }
+  },
+  "sub_31": {
+    "success": true,
+    "data": {
+      "id": "sub_31",
+      "challengeId": "chl_11",
+      "isMine": false,
+      "author": {
+        "id": "usr_11",
+        "nickname": "넥스트초보",
+        "grade": "NORMAL"
+      },
+      "title": "Tailwind CSS 공식 문서 번역본",
+      "content": "# Tailwind CSS 공식 문서\n\nTailwind CSS는 유틸리티 우선 CSS 프레임워크입니다.\n\n## 핵심 개념\n\n유틸리티 클래스를 조합하여 스타일을 구성합니다.\n\n```html\n<div class=\"flex items-center justify-between p-4 bg-white shadow-md rounded-lg\">\n  <h2 class=\"text-xl font-bold text-gray-900\">제목</h2>\n</div>\n```\n\n## 반응형 디자인\n\n`sm:`, `md:`, `lg:` 접두사로 반응형 스타일을 적용합니다.",
+      "isDeleted": false,
+      "likeCount": 29,
+      "feedbackCount": 7,
+      "createdAt": "2026-02-06T13:00:00.000Z",
+      "updatedAt": "2026-02-06T13:00:00.000Z"
+    }
+  },
+  "sub_32": {
+    "success": true,
+    "data": {
+      "id": "sub_32",
+      "challengeId": "chl_12",
+      "isMine": false,
+      "author": {
+        "id": "usr_12",
+        "nickname": "쿼리전문가",
+        "grade": "PRO"
+      },
+      "title": "Vercel 배포 가이드 번역본",
+      "content": "# Vercel 배포 가이드\n\nVercel은 프론트엔드 애플리케이션을 위한 클라우드 플랫폼입니다.\n\n## 배포 방법\n\n1. GitHub 저장소 연결\n2. 프레임워크 자동 감지\n3. 자동 배포 실행\n\n## 환경 변수 설정\n\nVercel 대시보드에서 프로젝트별 환경 변수를 관리합니다.\n\n## Edge Functions\n\nEdge Runtime에서 실행되는 서버리스 함수를 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 143,
+      "feedbackCount": 35,
+      "createdAt": "2026-02-07T13:00:00.000Z",
+      "updatedAt": "2026-02-07T13:00:00.000Z"
+    }
+  },
+  "sub_33": {
+    "success": true,
+    "data": {
+      "id": "sub_33",
+      "challengeId": "chl_13",
+      "isMine": false,
+      "author": {
+        "id": "usr_13",
+        "nickname": "풀스택개발자",
+        "grade": "NORMAL"
+      },
+      "title": "GraphQL 공식 문서 번역본",
+      "content": "# GraphQL 공식 문서\n\nGraphQL은 API를 위한 쿼리 언어이자 런타임입니다.\n\n## 쿼리\n\n```graphql\nquery GetUser($id: ID!) {\n  user(id: $id) {\n    name\n    email\n    posts {\n      title\n    }\n  }\n}\n```\n\n## 뮤테이션\n\n```graphql\nmutation CreatePost($input: PostInput!) {\n  createPost(input: $input) {\n    id\n    title\n  }\n}\n```",
+      "isDeleted": false,
+      "likeCount": 8,
+      "feedbackCount": 2,
+      "createdAt": "2026-02-08T13:00:00.000Z",
+      "updatedAt": "2026-02-08T13:00:00.000Z"
+    }
+  },
+  "sub_34": {
+    "success": true,
+    "data": {
+      "id": "sub_34",
+      "challengeId": "chl_14",
+      "isMine": false,
+      "author": {
+        "id": "usr_14",
+        "nickname": "프론트장인",
+        "grade": "PRO"
+      },
+      "title": "tRPC 가이드 번역본",
+      "content": "# tRPC 가이드\n\ntRPC는 TypeScript를 활용한 End-to-End 타입 안전 API 구축 도구입니다.\n\n## 라우터 정의\n\n```ts\nconst appRouter = router({\n  hello: publicProcedure\n    .input(z.object({ name: z.string() }))\n    .query(({ input }) => {\n      return { greeting: `Hello ${input.name}` }\n    }),\n})\n```\n\n## 클라이언트 사용\n\n```ts\nconst { data } = trpc.hello.useQuery({ name: '세계' })\n```",
+      "isDeleted": false,
+      "likeCount": 76,
+      "feedbackCount": 19,
+      "createdAt": "2026-02-09T13:00:00.000Z",
+      "updatedAt": "2026-02-09T13:00:00.000Z"
+    }
+  },
+  "sub_35": {
+    "success": true,
+    "data": {
+      "id": "sub_35",
+      "challengeId": "chl_15",
+      "isMine": false,
+      "author": {
+        "id": "usr_15",
+        "nickname": "주니어개발자",
+        "grade": "NORMAL"
+      },
+      "title": "Zustand 상태관리 번역본",
+      "content": "# Zustand 상태관리\n\nZustand는 간단하고 빠른 React 상태관리 라이브러리입니다.\n\n## 스토어 생성\n\n```ts\nconst useStore = create<State>((set) => ({\n  count: 0,\n  increment: () => set((state) => ({ count: state.count + 1 })),\n  decrement: () => set((state) => ({ count: state.count - 1 })),\n}))\n```\n\n## 컴포넌트에서 사용\n\n```tsx\nconst { count, increment } = useStore()\n```",
+      "isDeleted": false,
+      "likeCount": 31,
+      "feedbackCount": 7,
+      "createdAt": "2026-02-10T13:00:00.000Z",
+      "updatedAt": "2026-02-10T13:00:00.000Z"
+    }
+  },
+  "sub_36": {
+    "success": true,
+    "data": {
+      "id": "sub_36",
+      "challengeId": "chl_16",
+      "isMine": false,
+      "author": {
+        "id": "usr_16",
+        "nickname": "시니어개발자",
+        "grade": "EXPERT"
+      },
+      "title": "React Hook Form 번역본",
+      "content": "# React Hook Form\n\nReact Hook Form은 성능 최적화된 폼 관리 라이브러리입니다.\n\n## 기본 사용법\n\n```tsx\nconst { register, handleSubmit, formState: { errors } } = useForm<FormData>()\n\nconst onSubmit = (data: FormData) => console.log(data)\n\nreturn (\n  <form onSubmit={handleSubmit(onSubmit)}>\n    <input {...register('email', { required: true })} />\n    <button type=\"submit\">제출</button>\n  </form>\n)\n```",
+      "isDeleted": false,
+      "likeCount": 99,
+      "feedbackCount": 24,
+      "createdAt": "2026-02-11T13:00:00.000Z",
+      "updatedAt": "2026-02-11T13:00:00.000Z"
+    }
+  },
+  "sub_37": {
+    "success": true,
+    "data": {
+      "id": "sub_37",
+      "challengeId": "chl_17",
+      "isMine": false,
+      "author": {
+        "id": "usr_17",
+        "nickname": "테크리더",
+        "grade": "PRO"
+      },
+      "title": "NextAuth.js 공식 문서 번역본",
+      "content": "# NextAuth.js 공식 문서\n\nNextAuth.js는 Next.js를 위한 완전한 인증 솔루션입니다.\n\n## 프로바이더 설정\n\n```ts\nexport const authOptions: NextAuthOptions = {\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_ID,\n      clientSecret: process.env.GOOGLE_SECRET,\n    }),\n  ],\n}\n```\n\n## 세션 사용\n\n```tsx\nconst { data: session } = useSession()\n```",
+      "isDeleted": false,
+      "likeCount": 23,
+      "feedbackCount": 5,
+      "createdAt": "2026-02-12T13:00:00.000Z",
+      "updatedAt": "2026-02-12T13:00:00.000Z"
+    }
+  },
+  "sub_38": {
+    "success": true,
+    "data": {
+      "id": "sub_38",
+      "challengeId": "chl_18",
+      "isMine": false,
+      "author": {
+        "id": "usr_18",
+        "nickname": "오픈소스기여자",
+        "grade": "NORMAL"
+      },
+      "title": "Drizzle ORM 번역본",
+      "content": "# Drizzle ORM\n\nDrizzle ORM은 TypeScript-first SQL ORM입니다.\n\n## 스키마 정의\n\n```ts\nexport const users = pgTable('users', {\n  id: serial('id').primaryKey(),\n  name: text('name').notNull(),\n  email: text('email').unique(),\n})\n```\n\n## 쿼리 실행\n\n```ts\nconst result = await db.select()\n  .from(users)\n  .where(eq(users.id, 1))\n```",
+      "isDeleted": false,
+      "likeCount": 65,
+      "feedbackCount": 16,
+      "createdAt": "2026-02-13T13:00:00.000Z",
+      "updatedAt": "2026-02-13T13:00:00.000Z"
+    }
+  },
+  "sub_39": {
+    "success": true,
+    "data": {
+      "id": "sub_39",
+      "challengeId": "chl_19",
+      "isMine": false,
+      "author": {
+        "id": "usr_19",
+        "nickname": "문서번역가",
+        "grade": "NORMAL"
+      },
+      "title": "Vitest 테스팅 가이드 번역본",
+      "content": "# Vitest 테스팅 가이드\n\nVitest는 Vite 기반의 빠른 테스팅 프레임워크입니다.\n\n## 기본 테스트\n\n```ts\nimport { describe, it, expect } from 'vitest'\n\ndescribe('Calculator', () => {\n  it('adds two numbers', () => {\n    expect(1 + 2).toBe(3)\n  })\n})\n```\n\n## 모킹\n\n```ts\nvi.mock('./module', () => ({\n  fetchData: vi.fn().mockResolvedValue({ data: 'mocked' })\n}))\n```",
+      "isDeleted": false,
+      "likeCount": 11,
+      "feedbackCount": 2,
+      "createdAt": "2026-02-14T13:00:00.000Z",
+      "updatedAt": "2026-02-14T13:00:00.000Z"
+    }
+  },
+  "sub_40": {
+    "success": true,
+    "data": {
+      "id": "sub_40",
+      "challengeId": "chl_20",
+      "isMine": false,
+      "author": {
+        "id": "usr_20",
+        "nickname": "깃헙스타",
+        "grade": "PRO"
+      },
+      "title": "Storybook 공식 문서 번역본",
+      "content": "# Storybook 공식 문서\n\nStorybook은 UI 컴포넌트를 독립적으로 개발하고 테스트하는 도구입니다.\n\n## Story 작성\n\n```tsx\nexport default {\n  title: 'Components/Button',\n  component: Button,\n} satisfies Meta<typeof Button>\n\nexport const Primary: Story = {\n  args: {\n    variant: 'primary',\n    children: '버튼',\n  },\n}\n```\n\n## 애드온\n\n접근성, 반응형, 인터랙션 테스트 등 다양한 애드온을 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 87,
+      "feedbackCount": 21,
+      "createdAt": "2026-02-15T13:00:00.000Z",
+      "updatedAt": "2026-02-15T13:00:00.000Z"
+    }
+  },
+  "sub_41": {
+    "success": true,
+    "data": {
+      "id": "sub_41",
+      "challengeId": "chl_01",
+      "isMine": true,
+      "author": {
+        "id": "usr_01",
+        "nickname": "한준",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js App Router 번역본",
+      "content": "# Next.js App Router\n\nApp Router는 Next.js 13에서 도입된 새로운 라우팅 시스템입니다.\n\n## 주요 특징\n\n- **서버 컴포넌트**: 기본적으로 모든 컴포넌트는 서버 컴포넌트입니다.\n- **레이아웃**: 중첩 레이아웃을 통해 UI를 효율적으로 구성할 수 있습니다.\n- **데이터 페칭**: `fetch` API를 활용한 서버 사이드 데이터 페칭을 지원합니다.\n\n## 파일 시스템 라우팅\n\n`app` 디렉토리 내의 폴더 구조가 URL 경로를 결정합니다.\n\n```\napp/\n├── page.tsx        → /\n├── about/\n│   └── page.tsx    → /about\n└── blog/\n    └── [slug]/\n        └── page.tsx → /blog/:slug\n```",
+      "isDeleted": false,
+      "likeCount": 54,
+      "feedbackCount": 13,
+      "createdAt": "2026-02-16T13:00:00.000Z",
+      "updatedAt": "2026-02-16T13:00:00.000Z"
+    }
+  },
+  "sub_42": {
+    "success": true,
+    "data": {
+      "id": "sub_42",
+      "challengeId": "chl_02",
+      "isMine": false,
+      "author": {
+        "id": "usr_02",
+        "nickname": "영서",
+        "grade": "NORMAL"
+      },
+      "title": "React Query 가이드 번역본",
+      "content": "# React Query 가이드\n\nReact Query는 서버 상태 관리를 위한 강력한 라이브러리입니다.\n\n## 핵심 개념\n\n- **쿼리**: 비동기 데이터를 가져오는 선언적 방법입니다.\n- **뮤테이션**: 서버 데이터를 변경하는 작업입니다.\n- **캐싱**: 자동 캐싱으로 불필요한 네트워크 요청을 방지합니다.\n\n## 기본 사용법\n\n```tsx\nconst { data, isLoading } = useQuery({\n  queryKey: ['todos'],\n  queryFn: fetchTodos,\n})\n```",
+      "isDeleted": false,
+      "likeCount": 19,
+      "feedbackCount": 4,
+      "createdAt": "2026-02-17T13:00:00.000Z",
+      "updatedAt": "2026-02-17T13:00:00.000Z"
+    }
+  },
+  "sub_43": {
+    "success": true,
+    "data": {
+      "id": "sub_43",
+      "challengeId": "chl_03",
+      "isMine": false,
+      "author": {
+        "id": "usr_03",
+        "nickname": "하림",
+        "grade": "PRO"
+      },
+      "title": "TypeScript 핸드북 번역본",
+      "content": "# TypeScript 핸드북\n\nTypeScript는 JavaScript에 정적 타입을 추가한 언어입니다.\n\n## 기본 타입\n\n- `string`: 문자열\n- `number`: 숫자\n- `boolean`: 불리언\n- `any`: 모든 타입\n\n## 인터페이스\n\n```ts\ninterface User {\n  id: number;\n  name: string;\n  email?: string;\n}\n```\n\n## 제네릭\n\n제네릭을 사용하면 타입을 파라미터처럼 다룰 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 136,
+      "feedbackCount": 34,
+      "createdAt": "2026-02-18T13:00:00.000Z",
+      "updatedAt": "2026-02-18T13:00:00.000Z"
+    }
+  },
+  "sub_44": {
+    "success": true,
+    "data": {
+      "id": "sub_44",
+      "challengeId": "chl_04",
+      "isMine": false,
+      "author": {
+        "id": "usr_04",
+        "nickname": "코딩왕",
+        "grade": "NORMAL"
+      },
+      "title": "Node.js 공식 문서 번역본",
+      "content": "# Node.js 공식 문서\n\nNode.js는 Chrome V8 엔진으로 구동되는 JavaScript 런타임입니다.\n\n## 이벤트 루프\n\nNode.js의 핵심은 비동기 I/O를 처리하는 이벤트 루프입니다.\n\n## 모듈 시스템\n\n```js\n// CommonJS\nconst fs = require('fs');\n\n// ES Modules\nimport fs from 'fs';\n```\n\n## 스트림\n\n스트림은 대용량 데이터를 효율적으로 처리하는 방법입니다.",
+      "isDeleted": false,
+      "likeCount": 72,
+      "feedbackCount": 18,
+      "createdAt": "2026-02-19T13:00:00.000Z",
+      "updatedAt": "2026-02-19T13:00:00.000Z"
+    }
+  },
+  "sub_45": {
+    "success": true,
+    "data": {
+      "id": "sub_45",
+      "challengeId": "chl_05",
+      "isMine": false,
+      "author": {
+        "id": "usr_05",
+        "nickname": "개발하는곰",
+        "grade": "EXPERT"
+      },
+      "title": "Vue.js 컴포지션 API 번역본",
+      "content": "# Vue.js 컴포지션 API\n\n컴포지션 API는 Vue 3에서 도입된 새로운 컴포넌트 로직 구성 방식입니다.\n\n## setup() 함수\n\n```js\nimport { ref, computed } from 'vue'\n\nexport default {\n  setup() {\n    const count = ref(0)\n    const doubled = computed(() => count.value * 2)\n    return { count, doubled }\n  }\n}\n```\n\n## 반응성 시스템\n\n`ref()`와 `reactive()`를 통해 반응형 데이터를 선언합니다.",
+      "isDeleted": false,
+      "likeCount": 44,
+      "feedbackCount": 11,
+      "createdAt": "2026-02-20T13:00:00.000Z",
+      "updatedAt": "2026-02-20T13:00:00.000Z"
+    }
+  },
+  "sub_46": {
+    "success": true,
+    "data": {
+      "id": "sub_46",
+      "challengeId": "chl_06",
+      "isMine": false,
+      "author": {
+        "id": "usr_06",
+        "nickname": "아키텍트킴",
+        "grade": "PRO"
+      },
+      "title": "React 공식 문서 번역본",
+      "content": "# React 공식 문서\n\nReact는 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리입니다.\n\n## 컴포넌트\n\n컴포넌트는 UI를 독립적이고 재사용 가능한 조각으로 나눕니다.\n\n```jsx\nfunction Welcome({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n```\n\n## Hooks\n\n- `useState`: 상태 관리\n- `useEffect`: 사이드 이펙트 처리\n- `useContext`: 컨텍스트 사용",
+      "isDeleted": false,
+      "likeCount": 108,
+      "feedbackCount": 27,
+      "createdAt": "2026-02-21T13:00:00.000Z",
+      "updatedAt": "2026-02-21T13:00:00.000Z"
+    }
+  },
+  "sub_47": {
+    "success": true,
+    "data": {
+      "id": "sub_47",
+      "challengeId": "chl_07",
+      "isMine": false,
+      "author": {
+        "id": "usr_07",
+        "nickname": "번역달인",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js 최적화 가이드 번역본",
+      "content": "# Next.js 최적화 가이드\n\nNext.js 애플리케이션의 성능을 극대화하는 방법을 알아봅니다.\n\n## 이미지 최적화\n\n`next/image` 컴포넌트를 사용하면 이미지를 자동으로 최적화합니다.\n\n## 코드 분할\n\nNext.js는 페이지별로 자동 코드 분할을 수행합니다.\n\n## 캐싱 전략\n\n```js\nfetch(url, { next: { revalidate: 3600 } })\n```",
+      "isDeleted": false,
+      "likeCount": 25,
+      "feedbackCount": 6,
+      "createdAt": "2026-02-22T13:00:00.000Z",
+      "updatedAt": "2026-02-22T13:00:00.000Z"
+    }
+  },
+  "sub_48": {
+    "success": true,
+    "data": {
+      "id": "sub_48",
+      "challengeId": "chl_08",
+      "isMine": false,
+      "author": {
+        "id": "usr_08",
+        "nickname": "문서왕",
+        "grade": "PRO"
+      },
+      "title": "TanStack Query 번역본",
+      "content": "# TanStack Query\n\nTanStack Query(구 React Query)는 서버 상태 관리를 단순화합니다.\n\n## QueryClient 설정\n\n```tsx\nconst queryClient = new QueryClient({\n  defaultOptions: {\n    queries: {\n      staleTime: 1000 * 60 * 5,\n    },\n  },\n})\n```\n\n## Infinite Query\n\n무한 스크롤 구현에 `useInfiniteQuery`를 활용할 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 82,
+      "feedbackCount": 20,
+      "createdAt": "2026-02-23T13:00:00.000Z",
+      "updatedAt": "2026-02-23T13:00:00.000Z"
+    }
+  },
+  "sub_49": {
+    "success": true,
+    "data": {
+      "id": "sub_49",
+      "challengeId": "chl_09",
+      "isMine": false,
+      "author": {
+        "id": "usr_09",
+        "nickname": "리액트고수",
+        "grade": "NORMAL"
+      },
+      "title": "Prisma 공식 문서 번역본",
+      "content": "# Prisma 공식 문서\n\nPrisma는 Node.js와 TypeScript를 위한 차세대 ORM입니다.\n\n## 스키마 정의\n\n```prisma\nmodel User {\n  id    Int    @id @default(autoincrement())\n  email String @unique\n  name  String?\n  posts Post[]\n}\n```\n\n## 쿼리 실행\n\n```ts\nconst users = await prisma.user.findMany({\n  where: { email: { contains: '@gmail.com' } }\n})\n```",
+      "isDeleted": false,
+      "likeCount": 6,
+      "feedbackCount": 1,
+      "createdAt": "2026-02-24T13:00:00.000Z",
+      "updatedAt": "2026-02-24T13:00:00.000Z"
+    }
+  },
+  "sub_50": {
+    "success": true,
+    "data": {
+      "id": "sub_50",
+      "challengeId": "chl_10",
+      "isMine": false,
+      "author": {
+        "id": "usr_10",
+        "nickname": "타입마스터",
+        "grade": "EXPERT"
+      },
+      "title": "Zod 라이브러리 가이드 번역본",
+      "content": "# Zod 라이브러리 가이드\n\nZod는 TypeScript-first 스키마 선언 및 유효성 검사 라이브러리입니다.\n\n## 기본 사용법\n\n```ts\nconst UserSchema = z.object({\n  id: z.number(),\n  name: z.string().min(1),\n  email: z.string().email(),\n})\n\ntype User = z.infer<typeof UserSchema>\n```\n\n## 유효성 검사\n\n```ts\nconst result = UserSchema.safeParse(data)\nif (result.success) {\n  console.log(result.data)\n}\n```",
+      "isDeleted": false,
+      "likeCount": 167,
+      "feedbackCount": 41,
+      "createdAt": "2026-02-25T13:00:00.000Z",
+      "updatedAt": "2026-02-25T13:00:00.000Z"
+    }
+  },
+  "sub_51": {
+    "success": true,
+    "data": {
+      "id": "sub_51",
+      "challengeId": "chl_11",
+      "isMine": false,
+      "author": {
+        "id": "usr_11",
+        "nickname": "넥스트초보",
+        "grade": "NORMAL"
+      },
+      "title": "Tailwind CSS 공식 문서 번역본",
+      "content": "# Tailwind CSS 공식 문서\n\nTailwind CSS는 유틸리티 우선 CSS 프레임워크입니다.\n\n## 핵심 개념\n\n유틸리티 클래스를 조합하여 스타일을 구성합니다.\n\n```html\n<div class=\"flex items-center justify-between p-4 bg-white shadow-md rounded-lg\">\n  <h2 class=\"text-xl font-bold text-gray-900\">제목</h2>\n</div>\n```\n\n## 반응형 디자인\n\n`sm:`, `md:`, `lg:` 접두사로 반응형 스타일을 적용합니다.",
+      "isDeleted": false,
+      "likeCount": 37,
+      "feedbackCount": 9,
+      "createdAt": "2026-03-01T13:00:00.000Z",
+      "updatedAt": "2026-03-01T13:00:00.000Z"
+    }
+  },
+  "sub_52": {
+    "success": true,
+    "data": {
+      "id": "sub_52",
+      "challengeId": "chl_12",
+      "isMine": false,
+      "author": {
+        "id": "usr_12",
+        "nickname": "쿼리전문가",
+        "grade": "PRO"
+      },
+      "title": "Vercel 배포 가이드 번역본",
+      "content": "# Vercel 배포 가이드\n\nVercel은 프론트엔드 애플리케이션을 위한 클라우드 플랫폼입니다.\n\n## 배포 방법\n\n1. GitHub 저장소 연결\n2. 프레임워크 자동 감지\n3. 자동 배포 실행\n\n## 환경 변수 설정\n\nVercel 대시보드에서 프로젝트별 환경 변수를 관리합니다.\n\n## Edge Functions\n\nEdge Runtime에서 실행되는 서버리스 함수를 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 93,
+      "feedbackCount": 23,
+      "createdAt": "2026-03-02T13:00:00.000Z",
+      "updatedAt": "2026-03-02T13:00:00.000Z"
+    }
+  },
+  "sub_53": {
+    "success": true,
+    "data": {
+      "id": "sub_53",
+      "challengeId": "chl_13",
+      "isMine": false,
+      "author": {
+        "id": "usr_13",
+        "nickname": "풀스택개발자",
+        "grade": "NORMAL"
+      },
+      "title": "GraphQL 공식 문서 번역본",
+      "content": "# GraphQL 공식 문서\n\nGraphQL은 API를 위한 쿼리 언어이자 런타임입니다.\n\n## 쿼리\n\n```graphql\nquery GetUser($id: ID!) {\n  user(id: $id) {\n    name\n    email\n    posts {\n      title\n    }\n  }\n}\n```\n\n## 뮤테이션\n\n```graphql\nmutation CreatePost($input: PostInput!) {\n  createPost(input: $input) {\n    id\n    title\n  }\n}\n```",
+      "isDeleted": false,
+      "likeCount": 48,
+      "feedbackCount": 12,
+      "createdAt": "2026-03-03T13:00:00.000Z",
+      "updatedAt": "2026-03-03T13:00:00.000Z"
+    }
+  },
+  "sub_54": {
+    "success": true,
+    "data": {
+      "id": "sub_54",
+      "challengeId": "chl_14",
+      "isMine": false,
+      "author": {
+        "id": "usr_14",
+        "nickname": "프론트장인",
+        "grade": "PRO"
+      },
+      "title": "tRPC 가이드 번역본",
+      "content": "# tRPC 가이드\n\ntRPC는 TypeScript를 활용한 End-to-End 타입 안전 API 구축 도구입니다.\n\n## 라우터 정의\n\n```ts\nconst appRouter = router({\n  hello: publicProcedure\n    .input(z.object({ name: z.string() }))\n    .query(({ input }) => {\n      return { greeting: `Hello ${input.name}` }\n    }),\n})\n```\n\n## 클라이언트 사용\n\n```ts\nconst { data } = trpc.hello.useQuery({ name: '세계' })\n```",
+      "isDeleted": false,
+      "likeCount": 15,
+      "feedbackCount": 3,
+      "createdAt": "2026-03-04T13:00:00.000Z",
+      "updatedAt": "2026-03-04T13:00:00.000Z"
+    }
+  },
+  "sub_55": {
+    "success": true,
+    "data": {
+      "id": "sub_55",
+      "challengeId": "chl_15",
+      "isMine": false,
+      "author": {
+        "id": "usr_15",
+        "nickname": "주니어개발자",
+        "grade": "NORMAL"
+      },
+      "title": "Zustand 상태관리 번역본",
+      "content": "# Zustand 상태관리\n\nZustand는 간단하고 빠른 React 상태관리 라이브러리입니다.\n\n## 스토어 생성\n\n```ts\nconst useStore = create<State>((set) => ({\n  count: 0,\n  increment: () => set((state) => ({ count: state.count + 1 })),\n  decrement: () => set((state) => ({ count: state.count - 1 })),\n}))\n```\n\n## 컴포넌트에서 사용\n\n```tsx\nconst { count, increment } = useStore()\n```",
+      "isDeleted": false,
+      "likeCount": 71,
+      "feedbackCount": 17,
+      "createdAt": "2026-03-05T13:00:00.000Z",
+      "updatedAt": "2026-03-05T13:00:00.000Z"
+    }
+  },
+  "sub_56": {
+    "success": true,
+    "data": {
+      "id": "sub_56",
+      "challengeId": "chl_16",
+      "isMine": false,
+      "author": {
+        "id": "usr_16",
+        "nickname": "시니어개발자",
+        "grade": "EXPERT"
+      },
+      "title": "React Hook Form 번역본",
+      "content": "# React Hook Form\n\nReact Hook Form은 성능 최적화된 폼 관리 라이브러리입니다.\n\n## 기본 사용법\n\n```tsx\nconst { register, handleSubmit, formState: { errors } } = useForm<FormData>()\n\nconst onSubmit = (data: FormData) => console.log(data)\n\nreturn (\n  <form onSubmit={handleSubmit(onSubmit)}>\n    <input {...register('email', { required: true })} />\n    <button type=\"submit\">제출</button>\n  </form>\n)\n```",
+      "isDeleted": false,
+      "likeCount": 156,
+      "feedbackCount": 39,
+      "createdAt": "2026-03-06T13:00:00.000Z",
+      "updatedAt": "2026-03-06T13:00:00.000Z"
+    }
+  },
+  "sub_57": {
+    "success": true,
+    "data": {
+      "id": "sub_57",
+      "challengeId": "chl_17",
+      "isMine": false,
+      "author": {
+        "id": "usr_17",
+        "nickname": "테크리더",
+        "grade": "PRO"
+      },
+      "title": "NextAuth.js 공식 문서 번역본",
+      "content": "# NextAuth.js 공식 문서\n\nNextAuth.js는 Next.js를 위한 완전한 인증 솔루션입니다.\n\n## 프로바이더 설정\n\n```ts\nexport const authOptions: NextAuthOptions = {\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_ID,\n      clientSecret: process.env.GOOGLE_SECRET,\n    }),\n  ],\n}\n```\n\n## 세션 사용\n\n```tsx\nconst { data: session } = useSession()\n```",
+      "isDeleted": false,
+      "likeCount": 28,
+      "feedbackCount": 7,
+      "createdAt": "2026-03-07T13:00:00.000Z",
+      "updatedAt": "2026-03-07T13:00:00.000Z"
+    }
+  },
+  "sub_58": {
+    "success": true,
+    "data": {
+      "id": "sub_58",
+      "challengeId": "chl_18",
+      "isMine": false,
+      "author": {
+        "id": "usr_18",
+        "nickname": "오픈소스기여자",
+        "grade": "NORMAL"
+      },
+      "title": "Drizzle ORM 번역본",
+      "content": "# Drizzle ORM\n\nDrizzle ORM은 TypeScript-first SQL ORM입니다.\n\n## 스키마 정의\n\n```ts\nexport const users = pgTable('users', {\n  id: serial('id').primaryKey(),\n  name: text('name').notNull(),\n  email: text('email').unique(),\n})\n```\n\n## 쿼리 실행\n\n```ts\nconst result = await db.select()\n  .from(users)\n  .where(eq(users.id, 1))\n```",
+      "isDeleted": false,
+      "likeCount": 63,
+      "feedbackCount": 15,
+      "createdAt": "2026-03-08T13:00:00.000Z",
+      "updatedAt": "2026-03-08T13:00:00.000Z"
+    }
+  },
+  "sub_59": {
+    "success": true,
+    "data": {
+      "id": "sub_59",
+      "challengeId": "chl_19",
+      "isMine": false,
+      "author": {
+        "id": "usr_19",
+        "nickname": "문서번역가",
+        "grade": "NORMAL"
+      },
+      "title": "Vitest 테스팅 가이드 번역본",
+      "content": "# Vitest 테스팅 가이드\n\nVitest는 Vite 기반의 빠른 테스팅 프레임워크입니다.\n\n## 기본 테스트\n\n```ts\nimport { describe, it, expect } from 'vitest'\n\ndescribe('Calculator', () => {\n  it('adds two numbers', () => {\n    expect(1 + 2).toBe(3)\n  })\n})\n```\n\n## 모킹\n\n```ts\nvi.mock('./module', () => ({\n  fetchData: vi.fn().mockResolvedValue({ data: 'mocked' })\n}))\n```",
+      "isDeleted": false,
+      "likeCount": 9,
+      "feedbackCount": 2,
+      "createdAt": "2026-03-09T13:00:00.000Z",
+      "updatedAt": "2026-03-09T13:00:00.000Z"
+    }
+  },
+  "sub_60": {
+    "success": true,
+    "data": {
+      "id": "sub_60",
+      "challengeId": "chl_20",
+      "isMine": false,
+      "author": {
+        "id": "usr_20",
+        "nickname": "깃헙스타",
+        "grade": "PRO"
+      },
+      "title": "Storybook 공식 문서 번역본",
+      "content": "# Storybook 공식 문서\n\nStorybook은 UI 컴포넌트를 독립적으로 개발하고 테스트하는 도구입니다.\n\n## Story 작성\n\n```tsx\nexport default {\n  title: 'Components/Button',\n  component: Button,\n} satisfies Meta<typeof Button>\n\nexport const Primary: Story = {\n  args: {\n    variant: 'primary',\n    children: '버튼',\n  },\n}\n```\n\n## 애드온\n\n접근성, 반응형, 인터랙션 테스트 등 다양한 애드온을 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 119,
+      "feedbackCount": 29,
+      "createdAt": "2026-03-10T13:00:00.000Z",
+      "updatedAt": "2026-03-10T13:00:00.000Z"
+    }
+  },
+  "sub_61": {
+    "success": true,
+    "data": {
+      "id": "sub_61",
+      "challengeId": "chl_01",
+      "isMine": true,
+      "author": {
+        "id": "usr_01",
+        "nickname": "한준",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js App Router 번역본",
+      "content": "# Next.js App Router\n\nApp Router는 Next.js 13에서 도입된 새로운 라우팅 시스템입니다.\n\n## 주요 특징\n\n- **서버 컴포넌트**: 기본적으로 모든 컴포넌트는 서버 컴포넌트입니다.\n- **레이아웃**: 중첩 레이아웃을 통해 UI를 효율적으로 구성할 수 있습니다.\n- **데이터 페칭**: `fetch` API를 활용한 서버 사이드 데이터 페칭을 지원합니다.\n\n## 파일 시스템 라우팅\n\n`app` 디렉토리 내의 폴더 구조가 URL 경로를 결정합니다.\n\n```\napp/\n├── page.tsx        → /\n├── about/\n│   └── page.tsx    → /about\n└── blog/\n    └── [slug]/\n        └── page.tsx → /blog/:slug\n```",
+      "isDeleted": false,
+      "likeCount": 42,
+      "feedbackCount": 10,
+      "createdAt": "2026-03-11T13:00:00.000Z",
+      "updatedAt": "2026-03-11T13:00:00.000Z"
+    }
+  },
+  "sub_62": {
+    "success": true,
+    "data": {
+      "id": "sub_62",
+      "challengeId": "chl_02",
+      "isMine": false,
+      "author": {
+        "id": "usr_02",
+        "nickname": "영서",
+        "grade": "NORMAL"
+      },
+      "title": "React Query 가이드 번역본",
+      "content": "# React Query 가이드\n\nReact Query는 서버 상태 관리를 위한 강력한 라이브러리입니다.\n\n## 핵심 개념\n\n- **쿼리**: 비동기 데이터를 가져오는 선언적 방법입니다.\n- **뮤테이션**: 서버 데이터를 변경하는 작업입니다.\n- **캐싱**: 자동 캐싱으로 불필요한 네트워크 요청을 방지합니다.\n\n## 기본 사용법\n\n```tsx\nconst { data, isLoading } = useQuery({\n  queryKey: ['todos'],\n  queryFn: fetchTodos,\n})\n```",
+      "isDeleted": false,
+      "likeCount": 77,
+      "feedbackCount": 19,
+      "createdAt": "2026-03-12T13:00:00.000Z",
+      "updatedAt": "2026-03-12T13:00:00.000Z"
+    }
+  },
+  "sub_63": {
+    "success": true,
+    "data": {
+      "id": "sub_63",
+      "challengeId": "chl_03",
+      "isMine": false,
+      "author": {
+        "id": "usr_03",
+        "nickname": "하림",
+        "grade": "PRO"
+      },
+      "title": "TypeScript 핸드북 번역본",
+      "content": "# TypeScript 핸드북\n\nTypeScript는 JavaScript에 정적 타입을 추가한 언어입니다.\n\n## 기본 타입\n\n- `string`: 문자열\n- `number`: 숫자\n- `boolean`: 불리언\n- `any`: 모든 타입\n\n## 인터페이스\n\n```ts\ninterface User {\n  id: number;\n  name: string;\n  email?: string;\n}\n```\n\n## 제네릭\n\n제네릭을 사용하면 타입을 파라미터처럼 다룰 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 13,
+      "feedbackCount": 3,
+      "createdAt": "2026-03-13T13:00:00.000Z",
+      "updatedAt": "2026-03-13T13:00:00.000Z"
+    }
+  },
+  "sub_64": {
+    "success": true,
+    "data": {
+      "id": "sub_64",
+      "challengeId": "chl_04",
+      "isMine": false,
+      "author": {
+        "id": "usr_04",
+        "nickname": "코딩왕",
+        "grade": "NORMAL"
+      },
+      "title": "Node.js 공식 문서 번역본",
+      "content": "# Node.js 공식 문서\n\nNode.js는 Chrome V8 엔진으로 구동되는 JavaScript 런타임입니다.\n\n## 이벤트 루프\n\nNode.js의 핵심은 비동기 I/O를 처리하는 이벤트 루프입니다.\n\n## 모듈 시스템\n\n```js\n// CommonJS\nconst fs = require('fs');\n\n// ES Modules\nimport fs from 'fs';\n```\n\n## 스트림\n\n스트림은 대용량 데이터를 효율적으로 처리하는 방법입니다.",
+      "isDeleted": false,
+      "likeCount": 98,
+      "feedbackCount": 24,
+      "createdAt": "2026-03-14T13:00:00.000Z",
+      "updatedAt": "2026-03-14T13:00:00.000Z"
+    }
+  },
+  "sub_65": {
+    "success": true,
+    "data": {
+      "id": "sub_65",
+      "challengeId": "chl_05",
+      "isMine": false,
+      "author": {
+        "id": "usr_05",
+        "nickname": "개발하는곰",
+        "grade": "EXPERT"
+      },
+      "title": "Vue.js 컴포지션 API 번역본",
+      "content": "# Vue.js 컴포지션 API\n\n컴포지션 API는 Vue 3에서 도입된 새로운 컴포넌트 로직 구성 방식입니다.\n\n## setup() 함수\n\n```js\nimport { ref, computed } from 'vue'\n\nexport default {\n  setup() {\n    const count = ref(0)\n    const doubled = computed(() => count.value * 2)\n    return { count, doubled }\n  }\n}\n```\n\n## 반응성 시스템\n\n`ref()`와 `reactive()`를 통해 반응형 데이터를 선언합니다.",
+      "isDeleted": false,
+      "likeCount": 34,
+      "feedbackCount": 8,
+      "createdAt": "2026-03-15T13:00:00.000Z",
+      "updatedAt": "2026-03-15T13:00:00.000Z"
+    }
+  },
+  "sub_66": {
+    "success": true,
+    "data": {
+      "id": "sub_66",
+      "challengeId": "chl_06",
+      "isMine": false,
+      "author": {
+        "id": "usr_06",
+        "nickname": "아키텍트킴",
+        "grade": "PRO"
+      },
+      "title": "React 공식 문서 번역본",
+      "content": "# React 공식 문서\n\nReact는 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리입니다.\n\n## 컴포넌트\n\n컴포넌트는 UI를 독립적이고 재사용 가능한 조각으로 나눕니다.\n\n```jsx\nfunction Welcome({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n```\n\n## Hooks\n\n- `useState`: 상태 관리\n- `useEffect`: 사이드 이펙트 처리\n- `useContext`: 컨텍스트 사용",
+      "isDeleted": false,
+      "likeCount": 145,
+      "feedbackCount": 36,
+      "createdAt": "2026-03-16T13:00:00.000Z",
+      "updatedAt": "2026-03-16T13:00:00.000Z"
+    }
+  },
+  "sub_67": {
+    "success": true,
+    "data": {
+      "id": "sub_67",
+      "challengeId": "chl_07",
+      "isMine": false,
+      "author": {
+        "id": "usr_07",
+        "nickname": "번역달인",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js 최적화 가이드 번역본",
+      "content": "# Next.js 최적화 가이드\n\nNext.js 애플리케이션의 성능을 극대화하는 방법을 알아봅니다.\n\n## 이미지 최적화\n\n`next/image` 컴포넌트를 사용하면 이미지를 자동으로 최적화합니다.\n\n## 코드 분할\n\nNext.js는 페이지별로 자동 코드 분할을 수행합니다.\n\n## 캐싱 전략\n\n```js\nfetch(url, { next: { revalidate: 3600 } })\n```",
+      "isDeleted": false,
+      "likeCount": 26,
+      "feedbackCount": 6,
+      "createdAt": "2026-03-17T13:00:00.000Z",
+      "updatedAt": "2026-03-17T13:00:00.000Z"
+    }
+  },
+  "sub_68": {
+    "success": true,
+    "data": {
+      "id": "sub_68",
+      "challengeId": "chl_08",
+      "isMine": false,
+      "author": {
+        "id": "usr_08",
+        "nickname": "문서왕",
+        "grade": "PRO"
+      },
+      "title": "TanStack Query 번역본",
+      "content": "# TanStack Query\n\nTanStack Query(구 React Query)는 서버 상태 관리를 단순화합니다.\n\n## QueryClient 설정\n\n```tsx\nconst queryClient = new QueryClient({\n  defaultOptions: {\n    queries: {\n      staleTime: 1000 * 60 * 5,\n    },\n  },\n})\n```\n\n## Infinite Query\n\n무한 스크롤 구현에 `useInfiniteQuery`를 활용할 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 88,
+      "feedbackCount": 22,
+      "createdAt": "2026-03-18T13:00:00.000Z",
+      "updatedAt": "2026-03-18T13:00:00.000Z"
+    }
+  },
+  "sub_69": {
+    "success": true,
+    "data": {
+      "id": "sub_69",
+      "challengeId": "chl_09",
+      "isMine": false,
+      "author": {
+        "id": "usr_09",
+        "nickname": "리액트고수",
+        "grade": "NORMAL"
+      },
+      "title": "Prisma 공식 문서 번역본",
+      "content": "# Prisma 공식 문서\n\nPrisma는 Node.js와 TypeScript를 위한 차세대 ORM입니다.\n\n## 스키마 정의\n\n```prisma\nmodel User {\n  id    Int    @id @default(autoincrement())\n  email String @unique\n  name  String?\n  posts Post[]\n}\n```\n\n## 쿼리 실행\n\n```ts\nconst users = await prisma.user.findMany({\n  where: { email: { contains: '@gmail.com' } }\n})\n```",
+      "isDeleted": false,
+      "likeCount": 52,
+      "feedbackCount": 13,
+      "createdAt": "2026-03-19T13:00:00.000Z",
+      "updatedAt": "2026-03-19T13:00:00.000Z"
+    }
+  },
+  "sub_70": {
+    "success": true,
+    "data": {
+      "id": "sub_70",
+      "challengeId": "chl_10",
+      "isMine": false,
+      "author": {
+        "id": "usr_10",
+        "nickname": "타입마스터",
+        "grade": "EXPERT"
+      },
+      "title": "Zod 라이브러리 가이드 번역본",
+      "content": "# Zod 라이브러리 가이드\n\nZod는 TypeScript-first 스키마 선언 및 유효성 검사 라이브러리입니다.\n\n## 기본 사용법\n\n```ts\nconst UserSchema = z.object({\n  id: z.number(),\n  name: z.string().min(1),\n  email: z.string().email(),\n})\n\ntype User = z.infer<typeof UserSchema>\n```\n\n## 유효성 검사\n\n```ts\nconst result = UserSchema.safeParse(data)\nif (result.success) {\n  console.log(result.data)\n}\n```",
+      "isDeleted": false,
+      "likeCount": 174,
+      "feedbackCount": 43,
+      "createdAt": "2026-03-20T13:00:00.000Z",
+      "updatedAt": "2026-03-20T13:00:00.000Z"
+    }
+  },
+  "sub_71": {
+    "success": true,
+    "data": {
+      "id": "sub_71",
+      "challengeId": "chl_11",
+      "isMine": false,
+      "author": {
+        "id": "usr_11",
+        "nickname": "넥스트초보",
+        "grade": "NORMAL"
+      },
+      "title": "Tailwind CSS 공식 문서 번역본",
+      "content": "# Tailwind CSS 공식 문서\n\nTailwind CSS는 유틸리티 우선 CSS 프레임워크입니다.\n\n## 핵심 개념\n\n유틸리티 클래스를 조합하여 스타일을 구성합니다.\n\n```html\n<div class=\"flex items-center justify-between p-4 bg-white shadow-md rounded-lg\">\n  <h2 class=\"text-xl font-bold text-gray-900\">제목</h2>\n</div>\n```\n\n## 반응형 디자인\n\n`sm:`, `md:`, `lg:` 접두사로 반응형 스타일을 적용합니다.",
+      "isDeleted": false,
+      "likeCount": 17,
+      "feedbackCount": 4,
+      "createdAt": "2026-03-21T13:00:00.000Z",
+      "updatedAt": "2026-03-21T13:00:00.000Z"
+    }
+  },
+  "sub_72": {
+    "success": true,
+    "data": {
+      "id": "sub_72",
+      "challengeId": "chl_12",
+      "isMine": false,
+      "author": {
+        "id": "usr_12",
+        "nickname": "쿼리전문가",
+        "grade": "PRO"
+      },
+      "title": "Vercel 배포 가이드 번역본",
+      "content": "# Vercel 배포 가이드\n\nVercel은 프론트엔드 애플리케이션을 위한 클라우드 플랫폼입니다.\n\n## 배포 방법\n\n1. GitHub 저장소 연결\n2. 프레임워크 자동 감지\n3. 자동 배포 실행\n\n## 환경 변수 설정\n\nVercel 대시보드에서 프로젝트별 환경 변수를 관리합니다.\n\n## Edge Functions\n\nEdge Runtime에서 실행되는 서버리스 함수를 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 69,
+      "feedbackCount": 17,
+      "createdAt": "2026-03-22T13:00:00.000Z",
+      "updatedAt": "2026-03-22T13:00:00.000Z"
+    }
+  },
+  "sub_73": {
+    "success": true,
+    "data": {
+      "id": "sub_73",
+      "challengeId": "chl_13",
+      "isMine": false,
+      "author": {
+        "id": "usr_13",
+        "nickname": "풀스택개발자",
+        "grade": "NORMAL"
+      },
+      "title": "GraphQL 공식 문서 번역본",
+      "content": "# GraphQL 공식 문서\n\nGraphQL은 API를 위한 쿼리 언어이자 런타임입니다.\n\n## 쿼리\n\n```graphql\nquery GetUser($id: ID!) {\n  user(id: $id) {\n    name\n    email\n    posts {\n      title\n    }\n  }\n}\n```\n\n## 뮤테이션\n\n```graphql\nmutation CreatePost($input: PostInput!) {\n  createPost(input: $input) {\n    id\n    title\n  }\n}\n```",
+      "isDeleted": false,
+      "likeCount": 105,
+      "feedbackCount": 26,
+      "createdAt": "2026-03-23T13:00:00.000Z",
+      "updatedAt": "2026-03-23T13:00:00.000Z"
+    }
+  },
+  "sub_74": {
+    "success": true,
+    "data": {
+      "id": "sub_74",
+      "challengeId": "chl_14",
+      "isMine": false,
+      "author": {
+        "id": "usr_14",
+        "nickname": "프론트장인",
+        "grade": "PRO"
+      },
+      "title": "tRPC 가이드 번역본",
+      "content": "# tRPC 가이드\n\ntRPC는 TypeScript를 활용한 End-to-End 타입 안전 API 구축 도구입니다.\n\n## 라우터 정의\n\n```ts\nconst appRouter = router({\n  hello: publicProcedure\n    .input(z.object({ name: z.string() }))\n    .query(({ input }) => {\n      return { greeting: `Hello ${input.name}` }\n    }),\n})\n```\n\n## 클라이언트 사용\n\n```ts\nconst { data } = trpc.hello.useQuery({ name: '세계' })\n```",
+      "isDeleted": false,
+      "likeCount": 21,
+      "feedbackCount": 5,
+      "createdAt": "2026-03-24T13:00:00.000Z",
+      "updatedAt": "2026-03-24T13:00:00.000Z"
+    }
+  },
+  "sub_75": {
+    "success": true,
+    "data": {
+      "id": "sub_75",
+      "challengeId": "chl_15",
+      "isMine": false,
+      "author": {
+        "id": "usr_15",
+        "nickname": "주니어개발자",
+        "grade": "NORMAL"
+      },
+      "title": "Zustand 상태관리 번역본",
+      "content": "# Zustand 상태관리\n\nZustand는 간단하고 빠른 React 상태관리 라이브러리입니다.\n\n## 스토어 생성\n\n```ts\nconst useStore = create<State>((set) => ({\n  count: 0,\n  increment: () => set((state) => ({ count: state.count + 1 })),\n  decrement: () => set((state) => ({ count: state.count - 1 })),\n}))\n```\n\n## 컴포넌트에서 사용\n\n```tsx\nconst { count, increment } = useStore()\n```",
+      "isDeleted": false,
+      "likeCount": 83,
+      "feedbackCount": 20,
+      "createdAt": "2026-03-25T13:00:00.000Z",
+      "updatedAt": "2026-03-25T13:00:00.000Z"
+    }
+  },
+  "sub_76": {
+    "success": true,
+    "data": {
+      "id": "sub_76",
+      "challengeId": "chl_16",
+      "isMine": false,
+      "author": {
+        "id": "usr_16",
+        "nickname": "시니어개발자",
+        "grade": "EXPERT"
+      },
+      "title": "React Hook Form 번역본",
+      "content": "# React Hook Form\n\nReact Hook Form은 성능 최적화된 폼 관리 라이브러리입니다.\n\n## 기본 사용법\n\n```tsx\nconst { register, handleSubmit, formState: { errors } } = useForm<FormData>()\n\nconst onSubmit = (data: FormData) => console.log(data)\n\nreturn (\n  <form onSubmit={handleSubmit(onSubmit)}>\n    <input {...register('email', { required: true })} />\n    <button type=\"submit\">제출</button>\n  </form>\n)\n```",
+      "isDeleted": false,
+      "likeCount": 39,
+      "feedbackCount": 9,
+      "createdAt": "2026-04-01T13:00:00.000Z",
+      "updatedAt": "2026-04-01T13:00:00.000Z"
+    }
+  },
+  "sub_77": {
+    "success": true,
+    "data": {
+      "id": "sub_77",
+      "challengeId": "chl_17",
+      "isMine": false,
+      "author": {
+        "id": "usr_17",
+        "nickname": "테크리더",
+        "grade": "PRO"
+      },
+      "title": "NextAuth.js 공식 문서 번역본",
+      "content": "# NextAuth.js 공식 문서\n\nNextAuth.js는 Next.js를 위한 완전한 인증 솔루션입니다.\n\n## 프로바이더 설정\n\n```ts\nexport const authOptions: NextAuthOptions = {\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_ID,\n      clientSecret: process.env.GOOGLE_SECRET,\n    }),\n  ],\n}\n```\n\n## 세션 사용\n\n```tsx\nconst { data: session } = useSession()\n```",
+      "isDeleted": false,
+      "likeCount": 128,
+      "feedbackCount": 32,
+      "createdAt": "2026-04-02T13:00:00.000Z",
+      "updatedAt": "2026-04-02T13:00:00.000Z"
+    }
+  },
+  "sub_78": {
+    "success": true,
+    "data": {
+      "id": "sub_78",
+      "challengeId": "chl_18",
+      "isMine": false,
+      "author": {
+        "id": "usr_18",
+        "nickname": "오픈소스기여자",
+        "grade": "NORMAL"
+      },
+      "title": "Drizzle ORM 번역본",
+      "content": "# Drizzle ORM\n\nDrizzle ORM은 TypeScript-first SQL ORM입니다.\n\n## 스키마 정의\n\n```ts\nexport const users = pgTable('users', {\n  id: serial('id').primaryKey(),\n  name: text('name').notNull(),\n  email: text('email').unique(),\n})\n```\n\n## 쿼리 실행\n\n```ts\nconst result = await db.select()\n  .from(users)\n  .where(eq(users.id, 1))\n```",
+      "isDeleted": false,
+      "likeCount": 57,
+      "feedbackCount": 14,
+      "createdAt": "2026-04-03T13:00:00.000Z",
+      "updatedAt": "2026-04-03T13:00:00.000Z"
+    }
+  },
+  "sub_79": {
+    "success": true,
+    "data": {
+      "id": "sub_79",
+      "challengeId": "chl_19",
+      "isMine": false,
+      "author": {
+        "id": "usr_19",
+        "nickname": "문서번역가",
+        "grade": "NORMAL"
+      },
+      "title": "Vitest 테스팅 가이드 번역본",
+      "content": "# Vitest 테스팅 가이드\n\nVitest는 Vite 기반의 빠른 테스팅 프레임워크입니다.\n\n## 기본 테스트\n\n```ts\nimport { describe, it, expect } from 'vitest'\n\ndescribe('Calculator', () => {\n  it('adds two numbers', () => {\n    expect(1 + 2).toBe(3)\n  })\n})\n```\n\n## 모킹\n\n```ts\nvi.mock('./module', () => ({\n  fetchData: vi.fn().mockResolvedValue({ data: 'mocked' })\n}))\n```",
+      "isDeleted": false,
+      "likeCount": 35,
+      "feedbackCount": 8,
+      "createdAt": "2026-04-04T13:00:00.000Z",
+      "updatedAt": "2026-04-04T13:00:00.000Z"
+    }
+  },
+  "sub_80": {
+    "success": true,
+    "data": {
+      "id": "sub_80",
+      "challengeId": "chl_20",
+      "isMine": false,
+      "author": {
+        "id": "usr_20",
+        "nickname": "깃헙스타",
+        "grade": "PRO"
+      },
+      "title": "Storybook 공식 문서 번역본",
+      "content": "# Storybook 공식 문서\n\nStorybook은 UI 컴포넌트를 독립적으로 개발하고 테스트하는 도구입니다.\n\n## Story 작성\n\n```tsx\nexport default {\n  title: 'Components/Button',\n  component: Button,\n} satisfies Meta<typeof Button>\n\nexport const Primary: Story = {\n  args: {\n    variant: 'primary',\n    children: '버튼',\n  },\n}\n```\n\n## 애드온\n\n접근성, 반응형, 인터랙션 테스트 등 다양한 애드온을 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 94,
+      "feedbackCount": 23,
+      "createdAt": "2026-04-05T13:00:00.000Z",
+      "updatedAt": "2026-04-05T13:00:00.000Z"
+    }
+  },
+  "sub_81": {
+    "success": true,
+    "data": {
+      "id": "sub_81",
+      "challengeId": "chl_01",
+      "isMine": true,
+      "author": {
+        "id": "usr_01",
+        "nickname": "한준",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js App Router 번역본",
+      "content": "# Next.js App Router\n\nApp Router는 Next.js 13에서 도입된 새로운 라우팅 시스템입니다.\n\n## 주요 특징\n\n- **서버 컴포넌트**: 기본적으로 모든 컴포넌트는 서버 컴포넌트입니다.\n- **레이아웃**: 중첩 레이아웃을 통해 UI를 효율적으로 구성할 수 있습니다.\n- **데이터 페칭**: `fetch` API를 활용한 서버 사이드 데이터 페칭을 지원합니다.\n\n## 파일 시스템 라우팅\n\n`app` 디렉토리 내의 폴더 구조가 URL 경로를 결정합니다.\n\n```\napp/\n├── page.tsx        → /\n├── about/\n│   └── page.tsx    → /about\n└── blog/\n    └── [slug]/\n        └── page.tsx → /blog/:slug\n```",
+      "isDeleted": false,
+      "likeCount": 64,
+      "feedbackCount": 16,
+      "createdAt": "2026-04-06T13:00:00.000Z",
+      "updatedAt": "2026-04-06T13:00:00.000Z"
+    }
+  },
+  "sub_82": {
+    "success": true,
+    "data": {
+      "id": "sub_82",
+      "challengeId": "chl_02",
+      "isMine": false,
+      "author": {
+        "id": "usr_02",
+        "nickname": "영서",
+        "grade": "NORMAL"
+      },
+      "title": "React Query 가이드 번역본",
+      "content": "# React Query 가이드\n\nReact Query는 서버 상태 관리를 위한 강력한 라이브러리입니다.\n\n## 핵심 개념\n\n- **쿼리**: 비동기 데이터를 가져오는 선언적 방법입니다.\n- **뮤테이션**: 서버 데이터를 변경하는 작업입니다.\n- **캐싱**: 자동 캐싱으로 불필요한 네트워크 요청을 방지합니다.\n\n## 기본 사용법\n\n```tsx\nconst { data, isLoading } = useQuery({\n  queryKey: ['todos'],\n  queryFn: fetchTodos,\n})\n```",
+      "isDeleted": false,
+      "likeCount": 18,
+      "feedbackCount": 4,
+      "createdAt": "2026-04-07T13:00:00.000Z",
+      "updatedAt": "2026-04-07T13:00:00.000Z"
+    }
+  },
+  "sub_83": {
+    "success": true,
+    "data": {
+      "id": "sub_83",
+      "challengeId": "chl_03",
+      "isMine": false,
+      "author": {
+        "id": "usr_03",
+        "nickname": "하림",
+        "grade": "PRO"
+      },
+      "title": "TypeScript 핸드북 번역본",
+      "content": "# TypeScript 핸드북\n\nTypeScript는 JavaScript에 정적 타입을 추가한 언어입니다.\n\n## 기본 타입\n\n- `string`: 문자열\n- `number`: 숫자\n- `boolean`: 불리언\n- `any`: 모든 타입\n\n## 인터페이스\n\n```ts\ninterface User {\n  id: number;\n  name: string;\n  email?: string;\n}\n```\n\n## 제네릭\n\n제네릭을 사용하면 타입을 파라미터처럼 다룰 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 111,
+      "feedbackCount": 27,
+      "createdAt": "2026-04-08T13:00:00.000Z",
+      "updatedAt": "2026-04-08T13:00:00.000Z"
+    }
+  },
+  "sub_84": {
+    "success": true,
+    "data": {
+      "id": "sub_84",
+      "challengeId": "chl_04",
+      "isMine": false,
+      "author": {
+        "id": "usr_04",
+        "nickname": "코딩왕",
+        "grade": "NORMAL"
+      },
+      "title": "Node.js 공식 문서 번역본",
+      "content": "# Node.js 공식 문서\n\nNode.js는 Chrome V8 엔진으로 구동되는 JavaScript 런타임입니다.\n\n## 이벤트 루프\n\nNode.js의 핵심은 비동기 I/O를 처리하는 이벤트 루프입니다.\n\n## 모듈 시스템\n\n```js\n// CommonJS\nconst fs = require('fs');\n\n// ES Modules\nimport fs from 'fs';\n```\n\n## 스트림\n\n스트림은 대용량 데이터를 효율적으로 처리하는 방법입니다.",
+      "isDeleted": false,
+      "likeCount": 43,
+      "feedbackCount": 10,
+      "createdAt": "2026-04-09T13:00:00.000Z",
+      "updatedAt": "2026-04-09T13:00:00.000Z"
+    }
+  },
+  "sub_85": {
+    "success": true,
+    "data": {
+      "id": "sub_85",
+      "challengeId": "chl_05",
+      "isMine": false,
+      "author": {
+        "id": "usr_05",
+        "nickname": "개발하는곰",
+        "grade": "EXPERT"
+      },
+      "title": "Vue.js 컴포지션 API 번역본",
+      "content": "# Vue.js 컴포지션 API\n\n컴포지션 API는 Vue 3에서 도입된 새로운 컴포넌트 로직 구성 방식입니다.\n\n## setup() 함수\n\n```js\nimport { ref, computed } from 'vue'\n\nexport default {\n  setup() {\n    const count = ref(0)\n    const doubled = computed(() => count.value * 2)\n    return { count, doubled }\n  }\n}\n```\n\n## 반응성 시스템\n\n`ref()`와 `reactive()`를 통해 반응형 데이터를 선언합니다.",
+      "isDeleted": false,
+      "likeCount": 158,
+      "feedbackCount": 39,
+      "createdAt": "2026-04-10T13:00:00.000Z",
+      "updatedAt": "2026-04-10T13:00:00.000Z"
+    }
+  },
+  "sub_86": {
+    "success": true,
+    "data": {
+      "id": "sub_86",
+      "challengeId": "chl_06",
+      "isMine": false,
+      "author": {
+        "id": "usr_06",
+        "nickname": "아키텍트킴",
+        "grade": "PRO"
+      },
+      "title": "React 공식 문서 번역본",
+      "content": "# React 공식 문서\n\nReact는 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리입니다.\n\n## 컴포넌트\n\n컴포넌트는 UI를 독립적이고 재사용 가능한 조각으로 나눕니다.\n\n```jsx\nfunction Welcome({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n```\n\n## Hooks\n\n- `useState`: 상태 관리\n- `useEffect`: 사이드 이펙트 처리\n- `useContext`: 컨텍스트 사용",
+      "isDeleted": false,
+      "likeCount": 75,
+      "feedbackCount": 18,
+      "createdAt": "2026-04-11T13:00:00.000Z",
+      "updatedAt": "2026-04-11T13:00:00.000Z"
+    }
+  },
+  "sub_87": {
+    "success": true,
+    "data": {
+      "id": "sub_87",
+      "challengeId": "chl_07",
+      "isMine": false,
+      "author": {
+        "id": "usr_07",
+        "nickname": "번역달인",
+        "grade": "NORMAL"
+      },
+      "title": "Next.js 최적화 가이드 번역본",
+      "content": "# Next.js 최적화 가이드\n\nNext.js 애플리케이션의 성능을 극대화하는 방법을 알아봅니다.\n\n## 이미지 최적화\n\n`next/image` 컴포넌트를 사용하면 이미지를 자동으로 최적화합니다.\n\n## 코드 분할\n\nNext.js는 페이지별로 자동 코드 분할을 수행합니다.\n\n## 캐싱 전략\n\n```js\nfetch(url, { next: { revalidate: 3600 } })\n```",
+      "isDeleted": false,
+      "likeCount": 30,
+      "feedbackCount": 7,
+      "createdAt": "2026-04-12T13:00:00.000Z",
+      "updatedAt": "2026-04-12T13:00:00.000Z"
+    }
+  },
+  "sub_88": {
+    "success": true,
+    "data": {
+      "id": "sub_88",
+      "challengeId": "chl_08",
+      "isMine": false,
+      "author": {
+        "id": "usr_08",
+        "nickname": "문서왕",
+        "grade": "PRO"
+      },
+      "title": "TanStack Query 번역본",
+      "content": "# TanStack Query\n\nTanStack Query(구 React Query)는 서버 상태 관리를 단순화합니다.\n\n## QueryClient 설정\n\n```tsx\nconst queryClient = new QueryClient({\n  defaultOptions: {\n    queries: {\n      staleTime: 1000 * 60 * 5,\n    },\n  },\n})\n```\n\n## Infinite Query\n\n무한 스크롤 구현에 `useInfiniteQuery`를 활용할 수 있습니다.",
+      "isDeleted": false,
+      "likeCount": 96,
+      "feedbackCount": 24,
+      "createdAt": "2026-04-13T13:00:00.000Z",
+      "updatedAt": "2026-04-13T13:00:00.000Z"
+    }
+  },
+  "sub_89": {
+    "success": true,
+    "data": {
+      "id": "sub_89",
+      "challengeId": "chl_09",
+      "isMine": false,
+      "author": {
+        "id": "usr_09",
+        "nickname": "리액트고수",
+        "grade": "NORMAL"
+      },
+      "title": "Prisma 공식 문서 번역본",
+      "content": "# Prisma 공식 문서\n\nPrisma는 Node.js와 TypeScript를 위한 차세대 ORM입니다.\n\n## 스키마 정의\n\n```prisma\nmodel User {\n  id    Int    @id @default(autoincrement())\n  email String @unique\n  name  String?\n  posts Post[]\n}\n```\n\n## 쿼리 실행\n\n```ts\nconst users = await prisma.user.findMany({\n  where: { email: { contains: '@gmail.com' } }\n})\n```",
+      "isDeleted": false,
+      "likeCount": 10,
+      "feedbackCount": 2,
+      "createdAt": "2026-04-14T13:00:00.000Z",
+      "updatedAt": "2026-04-14T13:00:00.000Z"
+    }
+  },
+  "sub_90": {
+    "success": true,
+    "data": {
+      "id": "sub_90",
+      "challengeId": "chl_10",
+      "isMine": false,
+      "author": {
+        "id": "usr_10",
+        "nickname": "타입마스터",
+        "grade": "EXPERT"
+      },
+      "title": "Zod 라이브러리 가이드 번역본",
+      "content": "# Zod 라이브러리 가이드\n\nZod는 TypeScript-first 스키마 선언 및 유효성 검사 라이브러리입니다.\n\n## 기본 사용법\n\n```ts\nconst UserSchema = z.object({\n  id: z.number(),\n  name: z.string().min(1),\n  email: z.string().email(),\n})\n\ntype User = z.infer<typeof UserSchema>\n```\n\n## 유효성 검사\n\n```ts\nconst result = UserSchema.safeParse(data)\nif (result.success) {\n  console.log(result.data)\n}\n```",
+      "isDeleted": false,
+      "likeCount": 132,
+      "feedbackCount": 33,
+      "createdAt": "2026-04-15T13:00:00.000Z",
+      "updatedAt": "2026-04-15T13:00:00.000Z"
+    }
+  },
+  "sub_91": {
+    "success": true,
+    "data": {
+      "id": "sub_91",
+      "challengeId": "chl_11",
+      "isMine": false,
+      "author": {
+        "id": "usr_11",
+        "nickname": "넥스트초보",
+        "grade": "NORMAL"
+      },
+      "title": "Tailwind CSS 공식 문서 번역본",
+      "content": "# Tailwind CSS 공식 문서\n\nTailwind CSS는 유틸리티 우선 CSS 프레임워크입니다.\n\n## 핵심 개념\n\n유틸리티 클래스를 조합하여 스타일을 구성합니다.\n\n```html\n<div class=\"flex items-center justify-between p-4 bg-white shadow-md rounded-lg\">\n  <h2 class=\"text-xl font-bold text-gray-900\">제목</h2>\n</div>\n```\n\n## 반응형 디자인\n\n`sm:`, `md:`, `lg:` 접두사로 반응형 스타일을 적용합니다.",
+      "isDeleted": false,
+      "likeCount": 47,
+      "feedbackCount": 11,
+      "createdAt": "2026-04-16T13:00:00.000Z",
+      "updatedAt": "2026-04-16T13:00:00.000Z"
+    }
+  },
+  "sub_92": {
+    "success": true,
+    "data": {
+      "id": "sub_92",
+      "challengeId": "chl_12",
+      "isMine": false,
+      "author": {
+        "id": "usr_12",
+        "nickname": "쿼리전문가",
+        "grade": "PRO"
+      },
+      "title": "Vercel 배포 가이드 번역본",
+      "content": "# Vercel 배포 가이드\n\nVercel은 프론트엔드 애플리케이션을 위한 클라우드 플랫폼입니다.\n\n## 배포 방법\n\n1. GitHub 저장소 연결\n2. 프레임워크 자동 감지\n3. 자동 배포 실행\n\n## 환경 변수 설정\n\nVercel 대시보드에서 프로젝트별 환경 변수를 관리합니다.\n\n## Edge Functions\n\nEdge Runtime에서 실행되는 서버리스 함수를 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 81,
+      "feedbackCount": 20,
+      "createdAt": "2026-04-17T13:00:00.000Z",
+      "updatedAt": "2026-04-17T13:00:00.000Z"
+    }
+  },
+  "sub_93": {
+    "success": true,
+    "data": {
+      "id": "sub_93",
+      "challengeId": "chl_13",
+      "isMine": false,
+      "author": {
+        "id": "usr_13",
+        "nickname": "풀스택개발자",
+        "grade": "NORMAL"
+      },
+      "title": "GraphQL 공식 문서 번역본",
+      "content": "# GraphQL 공식 문서\n\nGraphQL은 API를 위한 쿼리 언어이자 런타임입니다.\n\n## 쿼리\n\n```graphql\nquery GetUser($id: ID!) {\n  user(id: $id) {\n    name\n    email\n    posts {\n      title\n    }\n  }\n}\n```\n\n## 뮤테이션\n\n```graphql\nmutation CreatePost($input: PostInput!) {\n  createPost(input: $input) {\n    id\n    title\n  }\n}\n```",
+      "isDeleted": false,
+      "likeCount": 24,
+      "feedbackCount": 6,
+      "createdAt": "2026-04-18T13:00:00.000Z",
+      "updatedAt": "2026-04-18T13:00:00.000Z"
+    }
+  },
+  "sub_94": {
+    "success": true,
+    "data": {
+      "id": "sub_94",
+      "challengeId": "chl_14",
+      "isMine": false,
+      "author": {
+        "id": "usr_14",
+        "nickname": "프론트장인",
+        "grade": "PRO"
+      },
+      "title": "tRPC 가이드 번역본",
+      "content": "# tRPC 가이드\n\ntRPC는 TypeScript를 활용한 End-to-End 타입 안전 API 구축 도구입니다.\n\n## 라우터 정의\n\n```ts\nconst appRouter = router({\n  hello: publicProcedure\n    .input(z.object({ name: z.string() }))\n    .query(({ input }) => {\n      return { greeting: `Hello ${input.name}` }\n    }),\n})\n```\n\n## 클라이언트 사용\n\n```ts\nconst { data } = trpc.hello.useQuery({ name: '세계' })\n```",
+      "isDeleted": false,
+      "likeCount": 113,
+      "feedbackCount": 28,
+      "createdAt": "2026-04-19T13:00:00.000Z",
+      "updatedAt": "2026-04-19T13:00:00.000Z"
+    }
+  },
+  "sub_95": {
+    "success": true,
+    "data": {
+      "id": "sub_95",
+      "challengeId": "chl_15",
+      "isMine": false,
+      "author": {
+        "id": "usr_15",
+        "nickname": "주니어개발자",
+        "grade": "NORMAL"
+      },
+      "title": "Zustand 상태관리 번역본",
+      "content": "# Zustand 상태관리\n\nZustand는 간단하고 빠른 React 상태관리 라이브러리입니다.\n\n## 스토어 생성\n\n```ts\nconst useStore = create<State>((set) => ({\n  count: 0,\n  increment: () => set((state) => ({ count: state.count + 1 })),\n  decrement: () => set((state) => ({ count: state.count - 1 })),\n}))\n```\n\n## 컴포넌트에서 사용\n\n```tsx\nconst { count, increment } = useStore()\n```",
+      "isDeleted": false,
+      "likeCount": 38,
+      "feedbackCount": 9,
+      "createdAt": "2026-04-20T13:00:00.000Z",
+      "updatedAt": "2026-04-20T13:00:00.000Z"
+    }
+  },
+  "sub_96": {
+    "success": true,
+    "data": {
+      "id": "sub_96",
+      "challengeId": "chl_16",
+      "isMine": false,
+      "author": {
+        "id": "usr_16",
+        "nickname": "시니어개발자",
+        "grade": "EXPERT"
+      },
+      "title": "React Hook Form 번역본",
+      "content": "# React Hook Form\n\nReact Hook Form은 성능 최적화된 폼 관리 라이브러리입니다.\n\n## 기본 사용법\n\n```tsx\nconst { register, handleSubmit, formState: { errors } } = useForm<FormData>()\n\nconst onSubmit = (data: FormData) => console.log(data)\n\nreturn (\n  <form onSubmit={handleSubmit(onSubmit)}>\n    <input {...register('email', { required: true })} />\n    <button type=\"submit\">제출</button>\n  </form>\n)\n```",
+      "isDeleted": false,
+      "likeCount": 162,
+      "feedbackCount": 40,
+      "createdAt": "2026-04-21T13:00:00.000Z",
+      "updatedAt": "2026-04-21T13:00:00.000Z"
+    }
+  },
+  "sub_97": {
+    "success": true,
+    "data": {
+      "id": "sub_97",
+      "challengeId": "chl_17",
+      "isMine": false,
+      "author": {
+        "id": "usr_17",
+        "nickname": "테크리더",
+        "grade": "PRO"
+      },
+      "title": "NextAuth.js 공식 문서 번역본",
+      "content": "# NextAuth.js 공식 문서\n\nNextAuth.js는 Next.js를 위한 완전한 인증 솔루션입니다.\n\n## 프로바이더 설정\n\n```ts\nexport const authOptions: NextAuthOptions = {\n  providers: [\n    GoogleProvider({\n      clientId: process.env.GOOGLE_ID,\n      clientSecret: process.env.GOOGLE_SECRET,\n    }),\n  ],\n}\n```\n\n## 세션 사용\n\n```tsx\nconst { data: session } = useSession()\n```",
+      "isDeleted": false,
+      "likeCount": 51,
+      "feedbackCount": 12,
+      "createdAt": "2026-04-22T13:00:00.000Z",
+      "updatedAt": "2026-04-22T13:00:00.000Z"
+    }
+  },
+  "sub_98": {
+    "success": true,
+    "data": {
+      "id": "sub_98",
+      "challengeId": "chl_18",
+      "isMine": false,
+      "author": {
+        "id": "usr_18",
+        "nickname": "오픈소스기여자",
+        "grade": "NORMAL"
+      },
+      "title": "Drizzle ORM 번역본",
+      "content": "# Drizzle ORM\n\nDrizzle ORM은 TypeScript-first SQL ORM입니다.\n\n## 스키마 정의\n\n```ts\nexport const users = pgTable('users', {\n  id: serial('id').primaryKey(),\n  name: text('name').notNull(),\n  email: text('email').unique(),\n})\n```\n\n## 쿼리 실행\n\n```ts\nconst result = await db.select()\n  .from(users)\n  .where(eq(users.id, 1))\n```",
+      "isDeleted": false,
+      "likeCount": 70,
+      "feedbackCount": 17,
+      "createdAt": "2026-04-23T13:00:00.000Z",
+      "updatedAt": "2026-04-23T13:00:00.000Z"
+    }
+  },
+  "sub_99": {
+    "success": true,
+    "data": {
+      "id": "sub_99",
+      "challengeId": "chl_19",
+      "isMine": false,
+      "author": {
+        "id": "usr_19",
+        "nickname": "문서번역가",
+        "grade": "NORMAL"
+      },
+      "title": "Vitest 테스팅 가이드 번역본",
+      "content": "# Vitest 테스팅 가이드\n\nVitest는 Vite 기반의 빠른 테스팅 프레임워크입니다.\n\n## 기본 테스트\n\n```ts\nimport { describe, it, expect } from 'vitest'\n\ndescribe('Calculator', () => {\n  it('adds two numbers', () => {\n    expect(1 + 2).toBe(3)\n  })\n})\n```\n\n## 모킹\n\n```ts\nvi.mock('./module', () => ({\n  fetchData: vi.fn().mockResolvedValue({ data: 'mocked' })\n}))\n```",
+      "isDeleted": false,
+      "likeCount": 16,
+      "feedbackCount": 4,
+      "createdAt": "2026-04-24T13:00:00.000Z",
+      "updatedAt": "2026-04-24T13:00:00.000Z"
+    }
+  },
+  "sub_100": {
+    "success": true,
+    "data": {
+      "id": "sub_100",
+      "challengeId": "chl_20",
+      "isMine": false,
+      "author": {
+        "id": "usr_20",
+        "nickname": "깃헙스타",
+        "grade": "PRO"
+      },
+      "title": "Storybook 공식 문서 번역본",
+      "content": "# Storybook 공식 문서\n\nStorybook은 UI 컴포넌트를 독립적으로 개발하고 테스트하는 도구입니다.\n\n## Story 작성\n\n```tsx\nexport default {\n  title: 'Components/Button',\n  component: Button,\n} satisfies Meta<typeof Button>\n\nexport const Primary: Story = {\n  args: {\n    variant: 'primary',\n    children: '버튼',\n  },\n}\n```\n\n## 애드온\n\n접근성, 반응형, 인터랙션 테스트 등 다양한 애드온을 지원합니다.",
+      "isDeleted": false,
+      "likeCount": 102,
+      "feedbackCount": 25,
+      "createdAt": "2026-04-25T13:00:00.000Z",
+      "updatedAt": "2026-04-25T13:00:00.000Z"
+    }
+  }
+}

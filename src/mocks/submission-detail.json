@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "data": {
+    "id": "sub_01",
+    "challengeId": "chl_01",
+    "isMine": true,
+    "author": {
+      "id": "usr_01",
+      "nickname": "한준",
+      "grade": "NORMAL"
+    },
+    "title": "Next.js App Router 번역본",
+    "content": "# Next.js App Router\n\nApp Router는 Next.js 13에서 도입된 새로운 라우팅 시스템입니다.\n\n## 주요 특징\n\n- **서버 컴포넌트**: 기본적으로 모든 컴포넌트는 서버 컴포넌트입니다.\n- **레이아웃**: 중첩 레이아웃을 통해 UI를 효율적으로 구성할 수 있습니다.\n- **데이터 페칭**: `fetch` API를 활용한 서버 사이드 데이터 페칭을 지원합니다.\n\n## 파일 시스템 라우팅\n\n`app` 디렉토리 내의 폴더 구조가 URL 경로를 결정합니다.\n\n```\napp/\n├── page.tsx        → /\n├── about/\n│   └── page.tsx    → /about\n└── blog/\n    └── [slug]/\n        └── page.tsx → /blog/:slug\n```",
+    "isDeleted": false,
+    "likeCount": 103,
+    "feedbackCount": 24,
+    "createdAt": "2026-01-01T13:00:00.000Z",
+    "updatedAt": "2026-01-01T13:00:00.000Z"
+  }
+}

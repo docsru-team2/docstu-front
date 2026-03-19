@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "submissionId": "sub_05",
+      "userId": "usr_05",
+      "nickname": "개발하는곰",
+      "content": "Vue.js 컴포지션 API를 완벽하게 번역한 작업물입니다. 원문의 뉘앙스를 살리면서도 한국어로 자연스럽게 번역하였습니다.",
+      "imageUrl": "https://avatars.githubusercontent.com/u/5",
+      "likeCount": 200,
+      "createdAt": "2026-01-05T13:00:00.000Z"
+    },
+    {
+      "submissionId": "sub_10",
+      "userId": "usr_10",
+      "nickname": "타입마스터",
+      "content": "Zod 라이브러리 가이드를 깔끔하게 번역했습니다. 타입 관련 용어들을 일관성 있게 처리한 점이 돋보입니다.",
+      "imageUrl": "https://avatars.githubusercontent.com/u/10",
+      "likeCount": 150,
+      "createdAt": "2026-01-10T13:00:00.000Z"
+    },
+    {
+      "submissionId": "sub_16",
+      "userId": "usr_16",
+      "nickname": "시니어개발자",
+      "content": "React Hook Form 공식 문서를 실무 경험을 바탕으로 번역하였습니다. 개발자 친화적인 표현을 사용했습니다.",
+      "imageUrl": "https://avatars.githubusercontent.com/u/16",
+      "likeCount": 180,
+      "createdAt": "2026-01-16T13:00:00.000Z"
+    }
+  ]
+}
