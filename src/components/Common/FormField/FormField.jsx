@@ -1,8 +1,8 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 import * as styles from './FormField.css';
 
-
-export default function FormField(id,
+export default function FormField({
+  id,
   label,
   value,
   onChange,
@@ -11,8 +11,9 @@ export default function FormField(id,
   errorMessage,
   onBlur,
   onKeyDown,
-  type = 'text',) {
-  return(
+  type = 'text',
+}) {
+  return (
     <div>
       {label ? (
         <label className={styles.label} htmlFor={id}>
@@ -44,5 +45,5 @@ export default function FormField(id,
         <span className={styles.error}>{errorMessage}</span>
       ) : null}
     </div>
-  )
+  );
 }

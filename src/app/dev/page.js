@@ -1,11 +1,11 @@
-'use client'
-import { Button } from '@/components/Common/Button ';
+'use client';
+
+import { Badge } from '@/components/Common/Badge';
+import { Button } from '@/components/Common/Button';
 import { Container } from '@/components/Common/Container';
 import { FormField } from '@/components/Common/FormField';
 
-
-
-export default function DevPage(title, setTitle, content, setContent) {
+export default function DevPage({ title, setTitle, content, setContent }) {
   return (
     <Container>
       <div>
@@ -33,6 +33,13 @@ export default function DevPage(title, setTitle, content, setContent) {
           placeholder="제목을 입력해 주세요"
           isTextArea={true}
         />
+      </div>
+      <div>
+        <h3>Badge</h3>
+        <Badge badgeStyle='field' color='nextjs'>Next.js</Badge>
+        <Badge badgeStyle='documentType' color='primary'>공식문서</Badge>
+        <Badge badgeStyle='reviewStatus' color='pending'>승인대기</Badge>
+        <Badge badgeStyle='closeStatus' color='closedFull'>모집이 완료된 상태에요</Badge>
       </div>
     </Container>
   );
