@@ -5,7 +5,9 @@ export default function UserLayout({ children }) {
   return (
     <>
       <UserHeader />
-      <Container bg="dark">{children}</Container>
+      <main>
+        <Container bg="dark">{children}</Container>
+      </main>
     </>
   );
 }
