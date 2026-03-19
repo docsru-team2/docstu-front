@@ -1,4 +1,4 @@
-name: Discord Push Notify
+name: Discord Notify
 
 on:
   push:
@@ -15,6 +15,10 @@ on:
       - reopened
       - synchronize
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -23,14 +27,9 @@ jobs:
       - name: Send notification to Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ github.event_name }}" = "push" ]; then
-            CONTENT="📌 ${{ github.repository }}
-🌿 브랜치: ${{ github.ref_name }}
-👤 작성자: ${{ github.actor }}
-📝 커밋: ${{ github.event.head_commit.message }}
-🔗 ${{ github.event.head_commit.url }}"
-          else
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
             CONTENT="📌 ${{ github.repository }}
 🔀 PR 알림
 🌿 대상 브랜치: ${{ github.event.pull_request.base.ref }}
@@ -38,9 +37,34 @@ jobs:
 👤 작성자: ${{ github.actor }}
 📝 제목: ${{ github.event.pull_request.title }}
 🔗 ${{ github.event.pull_request.html_url }}"
+          else
+            PR_DATA=$(curl -s \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/pulls")
+
+            PR_TITLE=$(echo "$PR_DATA" | jq -r '.[0].title // empty')
+            PR_URL=$(echo "$PR_DATA" | jq -r '.[0].html_url // empty')
+            PR_NUMBER=$(echo "$PR_DATA" | jq -r '.[0].number // empty')
+
+            if [ -n "$PR_TITLE" ]; then
+              CONTENT="📌 ${{ github.repository }}
+🚀 Push 알림
+🌿 브랜치: ${{ github.ref_name }}
+👤 작성자: ${{ github.actor }}
+📝 PR 제목: $PR_TITLE (#$PR_NUMBER)
+🔗 $PR_URL"
+            else
+              CONTENT="📌 ${{ github.repository }}
+🚀 Push 알림
+🌿 브랜치: ${{ github.ref_name }}
+👤 작성자: ${{ github.actor }}
+📝 커밋: ${{ github.event.head_commit.message }}
+🔗 ${{ github.event.head_commit.url }}"
+            fi
           fi
 
           curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "$(jq -n --arg content "$CONTENT" '{content: $content}')" \
-          "$DISCORD_WEBHOOK_URL"
+            -X POST \
+            -d "$(jq -n --arg content "$CONTENT" '{content: $content}')" \
+            "$DISCORD_WEBHOOK_URL"
