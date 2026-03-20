@@ -1,6 +1,8 @@
 // src/lib/api/adminChallengeApi.js
-// todo: 한준님 자동 토큰 작업 후 다시 작업 필요
-
+import { api } from '@/lib/fetchClient';
+ 
+const PAGE_SIZE = 10;
+ 
 // const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // export const fetchAdminChallenges = async ({

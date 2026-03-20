@@ -20,6 +20,9 @@ importers:
       '@vanilla-extract/next-plugin':
         specifier: ^2.5.1
         version: 2.5.1(@types/node@25.5.0)(esbuild@0.27.4)(next@16.1.7(@babel/core@7.29.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.46.1)(webpack@5.105.4(esbuild@0.27.4))
+      '@vanilla-extract/recipes':
+        specifier: ^0.5.7
+        version: 0.5.7(@vanilla-extract/css@1.19.1)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1015,6 +1018,11 @@ packages:
 
   '@vanilla-extract/private@1.0.9':
     resolution: {integrity: sha512-gT2jbfZuaaCLrAxwXbRgIhGhcXbRZCG3v4TTUnjw0EJ7ArdBRxkq4msNJkbuRkCgfIK5ATmprB5t9ljvLeFDEA==}
+
+  '@vanilla-extract/recipes@0.5.7':
+    resolution: {integrity: sha512-Fvr+htdyb6LVUu+PhH61UFPhwkjgDEk8L4Zq9oIdte42sntpKrgFy90MyTRtGwjVALmrJ0pwRUVr8UoByYeW8A==}
+    peerDependencies:
+      '@vanilla-extract/css': ^1.0.0
 
   '@vanilla-extract/turbopack-plugin@0.1.1':
     resolution: {integrity: sha512-zcm2CL8YecLINRaH4u/0LG97hRYayvILS6tvyqJl3fn6r1s8VsJB12D8OIaz3eu03N6eFXGp4x3rlcCrDaIHuA==}
@@ -3452,6 +3460,10 @@ snapshots:
       - yaml
 
   '@vanilla-extract/private@1.0.9': {}
+
+  '@vanilla-extract/recipes@0.5.7(@vanilla-extract/css@1.19.1)':
+    dependencies:
+      '@vanilla-extract/css': 1.19.1
 
   '@vanilla-extract/turbopack-plugin@0.1.1(@types/node@25.5.0)(esbuild@0.27.4)(next@16.1.7(@babel/core@7.29.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.46.1)':
     dependencies:
