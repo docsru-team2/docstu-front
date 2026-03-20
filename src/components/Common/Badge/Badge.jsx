@@ -13,10 +13,13 @@ export default function Badge({
   badgeStyle = 'documentType',
   ...props
 }) {
-  const classNames = [clsx(badge({ color, badgeStyle }),quantico.className)];
-  if (badgeStyle === 'field') {
-    classNames.push(quantico.className);
-  }
+  const classNames = [
+    clsx(
+      badge({ color, badgeStyle }),
+      badgeStyle === 'field' && quantico.className,
+    ),
+  ];
+
   return (
     <span className={classNames.join(' ')} {...props}>
       {children}
