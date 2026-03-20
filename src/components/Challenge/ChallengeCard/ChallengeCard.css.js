@@ -18,12 +18,7 @@ export const cardContainer = style({
   },
 });
 
-// export const header = style({
-//   display: 'flex',
-//   justifyContent: 'space-between',
-//   alignItems: 'center',
-//   width: '100%',
-// });
+
 
 export const badgeInner = style({
   display: 'inline-flex',
