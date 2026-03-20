@@ -1,7 +1,7 @@
 // src/lib/api/adminChallengeApi.js
 import { api } from '@/lib/fetchClient';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
 // 어드민 챌린지 목록 조회
 // GET /admin/challenges
