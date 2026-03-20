@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link.js';
 import mockData from '@/mocks/admin-challenges.json';
+import { deleteChallenge } from '@/lib/api/adminChallengeApi.js';
 
-// TODO: 하림님 컴포넌트 경로/이름 확인 후 수정
+// todo: 하림님 컴포넌트 경로/이름 확인 후 아래 import 수정
 // import Modal from '@/components/Common/Modal';
 // import Button from '@/components/Common/Button';
 // import ListCard from '@/components/Common/ListCard';
@@ -22,9 +23,8 @@ const MODAL_MODE = {
   DELETE: 'delete',
 };
 
-
 export default function AdminChallengesList() {
-  // todo: 한준님 fetchClient 완성 후 useSuspenseQuery로 교체
+  // todo: BE API 완성 후 fetchAdminChallenges + useSuspenseQuery로 교체
   const challenges = mockData.data.list;
 
   const [openMenuId, setOpenMenuId] = useState(MENU_MODE.CLOSED);
@@ -46,14 +46,17 @@ export default function AdminChallengesList() {
     setModalMode(MODAL_MODE.DELETE);
   };
 
-  
   // 삭제 모달 확인 버튼 클릭 시, 삭제이유가 비어있으면 실행 X
   // todo: 한준님 fetchClient 완성 후 api.delete 호출로 교체
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (!deleteReason.trim()) {
       return;
     }
-    console.log('삭제 요청:', selectedChallenge?.id, deleteReason);
+    try {
+      await deleteChallenge(selectedChallenge?.id, deleteReason);
+    } catch (error) {
+      console.error('삭제 실패:', error);
+    }
     handleModalClose();
   };
 
@@ -68,8 +71,12 @@ export default function AdminChallengesList() {
     <>
       <h1 className={styles.heading}>챌린지 목록</h1>
 
-      {/* todo: 하림님 필터/검색 컴포넌트 완성 시 추가 */}
+      {/* todo: 하림님 필터/검색 컴포넌트 + BE API 완성 후 API 연결필요 */}
+      <div className={styles.filterBar}>
+        {/* 필터 드롭다운, 검색 인풋 들어갈 자리 */}
+      </div>
 
+      {/* 카드 리스트 */}
       <div className={styles.cardList}>
         {challenges.map((challenge) => (
           <div key={challenge.id} className={styles.cardWrapper}>
