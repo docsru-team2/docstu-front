@@ -2,8 +2,10 @@
 
 import { Badge } from '@/components/Common/Badge';
 import { Button } from '@/components/Common/Button';
+import { ChallengeCard } from '@/components/Challenge/ChallengeCard';
 import { Container } from '@/components/Common/Container';
 import { FormField } from '@/components/Common/FormField';
+import mockData from '@/mocks/challenge-detail.json'
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   return (
@@ -36,11 +38,20 @@ export default function DevPage({ title, setTitle, content, setContent }) {
       </div>
       <div>
         <h3>Badge</h3>
-        <Badge badgeStyle='field' color='nextjs'>Next.js</Badge>
-        <Badge badgeStyle='documentType' color='primary'>공식문서</Badge>
-        <Badge badgeStyle='reviewStatus' color='pending'>승인대기</Badge>
-        <Badge badgeStyle='closeStatus' color='closedFull'>모집이 완료된 상태에요</Badge>
+        <Badge badgeStyle="field" color="nextjs">
+          Next.js
+        </Badge>
+        <Badge badgeStyle="documentType" color="primary">
+          공식문서
+        </Badge>
+        <Badge badgeStyle="reviewStatus" color="pending">
+          승인대기
+        </Badge>
+        <Badge badgeStyle="closeStatus" color="closedFull">
+          모집이 완료된 상태에요
+        </Badge>
       </div>
+      <ChallengeCard data={mockData.data}/>
     </Container>
   );
 }

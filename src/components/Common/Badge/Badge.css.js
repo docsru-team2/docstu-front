@@ -7,7 +7,7 @@ export const badge = recipe({
     alignItems: 'center',
     justifyContent: 'center',
     gap: '8px',
-    fontWeight: 600,
+    fontWeight: vars.font.weight.semibold,
     borderRadius: '8px',
   },
   variants: {
@@ -16,7 +16,7 @@ export const badge = recipe({
         padding: '3px 12px',
         fontSize: vars.font.size.md,
         fontVariantLigatures: 'none',
-        borderRadius: vars.font.size.md,
+        borderRadius: '8px',
       },
       documentType: {
         padding: '5px 7px',
@@ -32,6 +32,7 @@ export const badge = recipe({
         padding: '8px 12px',
         fontSize: vars.font.size.sm,
         borderRadius: '999px',
+        fontWeight: vars.font.weight.medium,
       },
     },
     color: {
@@ -77,7 +78,7 @@ export const badge = recipe({
         color: vars.color.gray500,
       },
       closedExpired: {
-        backgroundColor: vars.color.gray800,
+        backgroundColor: vars.color.brandDark,
         color: vars.color.white,
       },
       closedFull: {
