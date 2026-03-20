@@ -7,7 +7,7 @@ export const badge = recipe({
     alignItems: 'center',
     justifyContent: 'center',
     gap: '8px',
-    fontWeight: vars.font.weight.semibold,
+    fontWeight: vars.font.weight.medium,
     borderRadius: '8px',
   },
   variants: {
