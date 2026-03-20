@@ -22,6 +22,7 @@ const MODAL_MODE = {
   DELETE: 'delete',
 };
 
+
 export default function AdminChallengesList() {
   // todo: 한준님 fetchClient 완성 후 useSuspenseQuery로 교체
   const challenges = mockData.data.list;
@@ -45,6 +46,7 @@ export default function AdminChallengesList() {
     setModalMode(MODAL_MODE.DELETE);
   };
 
+  
   // 삭제 모달 확인 버튼 클릭 시, 삭제이유가 비어있으면 실행 X
   // todo: 한준님 fetchClient 완성 후 api.delete 호출로 교체
   const handleDeleteConfirm = () => {
