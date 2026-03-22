@@ -20,7 +20,8 @@ async function baseFetch(url, options = {}) {
     };
   }
 
-  return response.json();
+  const text = await response.text();
+  return text ? JSON.parse(text) : {};
 }
 
 // 인증 필요한 fetch (401 시 자동 토큰 갱신)
@@ -67,7 +68,8 @@ export const api = {
     authFetch(url, { method: 'POST', body: JSON.stringify(data) }),
   patch: (url, data) =>
     authFetch(url, { method: 'PATCH', body: JSON.stringify(data) }),
-  delete: (url) => authFetch(url, { method: 'DELETE' }),
+  delete: (url, data) =>
+    authFetch(url, { method: 'DELETE', body: data ? JSON.stringify(data) : undefined }),
 };
 
 // 인증 불필요한 API
@@ -77,7 +79,8 @@ export const publicApi = {
     publicFetch(url, { method: 'POST', body: JSON.stringify(data) }),
   patch: (url, data) =>
     publicFetch(url, { method: 'PATCH', body: JSON.stringify(data) }),
-  delete: (url) => publicFetch(url, { method: 'DELETE' }),
+  delete: (url, data) =>
+    publicFetch(url, { method: 'DELETE', body: data ? JSON.stringify(data) : undefined }),
 };
 // 로그인 성공시
 export function setAccessToken(token) {
