@@ -5,9 +5,16 @@ import { Button } from '@/components/Common/Button';
 import { ChallengeCard } from '@/components/Challenge/ChallengeCard';
 import { Container } from '@/components/Common/Container';
 import { FormField } from '@/components/Common/FormField';
-import mockData from '@/mocks/challenge-detail.json'
+import mockData from '@/mocks/challenge-detail.json';
+import { PaginationBar } from '@/components/Common/PaginationBar';
+import { useState } from 'react';
+import Pager from '@/components/Common/Pager/Pager';
+import SearchBar from '@/components/Common/SearchBar/SearchBar';
+import { FilterDropdown } from '@/components/Common/FilterDropdown';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
+  // const [query, setQuery] = useState(initialQuery);
+  const [page, setPage] = useState(1);
   return (
     <Container>
       <div>
@@ -51,7 +58,11 @@ export default function DevPage({ title, setTitle, content, setContent }) {
           모집이 완료된 상태에요
         </Badge>
       </div>
-      <ChallengeCard data={mockData.data}/>
+      <ChallengeCard data={mockData.data} />
+      <PaginationBar totalPages={10} page={page} setPage={setPage} />
+      <Pager totalPages={10} page={page} setPage={setPage} />
+      <SearchBar />
+      <FilterDropdown />
     </Container>
   );
 }
