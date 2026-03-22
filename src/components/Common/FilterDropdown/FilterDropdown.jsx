@@ -1,29 +1,55 @@
 'use client';
 
+import checkboxUnchecked from '@public/img/btn/checkboxUnchecked.svg';
+import checkboxChecked from '@public/img/btn/checkboxChecked.svg';
+import radioUnchecked from '@public/img/btn/radioUnchecked.svg';
+import radioChecked from '@public/img/btn/radioChecked.svg';
+import closeIcon from '@public/img/btn/closeIcon.svg';
+import filterUnapplied from '@public/img/btn/filterUnapplied.svg';
+import filterApplied from '@public/img/btn/filterApplied.svg';
 import { DOCUMENT_TYPE_MAP, FIELD_MAP } from '@/constants/challengeConstants';
 import { useEffect, useState } from 'react';
 import * as styles from './FilterDropdown.css';
+import Image from 'next/image';
+import clsx from 'clsx';
 
 function FilterGroup({ label, type, value, options, onChange }) {
   return (
-    <div>
+    <div className={styles.optionContainer}>
       <div>{label}</div>
-      <ul>
+      <ul className={styles.options}>
         {options.map((opt) => {
           const checked =
             type === 'checkbox'
               ? value.includes(opt.value)
               : value === opt.value;
-
+          const OptionIcons = {
+            checkbox: {
+              checked: checkboxChecked,
+              unchecked: checkboxUnchecked,
+            },
+            radio: {
+              checked: radioChecked,
+              unchecked: radioUnchecked,
+            },
+          };
           return (
             <li key={opt.value}>
-              <label className={styles.checkbox}>
+              <label className={styles.option}>
                 <input
                   type={type}
+                  className={styles.hiddenInput}
                   checked={checked}
                   onChange={() => onChange(opt.value)}
                 />
-                <span className={styles.box} />
+                <Image
+                  src={
+                    checked
+                      ? OptionIcons[type].checked
+                      : OptionIcons[type].unchecked
+                  }
+                  alt={type}
+                />
                 {opt.label}
               </label>
             </li>
@@ -84,7 +110,6 @@ export default function FilterDropdown({
             : [...prev[key], value],
         };
       }
-
       // radio
       return {
         ...prev,
@@ -123,16 +148,31 @@ export default function FilterDropdown({
   );
 
   return (
-    <div className={styles.container}>
-      <button onClick={() => setIsOpen((prev) => !prev)}>
-        {selectedCount > 0 ? `${selectedCount}개 선택됨` : '필터'}
+    <div className={styles.filterContainer}>
+      <button
+        onClick={() => setIsOpen((prev) => !prev)}
+        type="button"
+        className={clsx(
+          styles.dropdownTrigger,
+          selectedCount > 0 && styles.active,
+        )}
+      >
+        <div className={styles.filterInner}>
+          <span>{selectedCount > 0 ? `필터(${selectedCount})` : '필터'}</span>
+          <Image
+            src={selectedCount > 0 ? filterApplied : filterUnapplied}
+            alt="필터"
+          />
+        </div>
       </button>
       {isOpen && (
         <div className={styles.dropdownContent}>
-          <div>필터</div>
-          <button className={styles.closeButton} onClick={handleClose}>
-            닫기
-          </button>
+          <div className={styles.header}>
+            <div>필터</div>
+            <button className={styles.closeButton} onClick={handleClose}>
+              <Image src={closeIcon} alt="닫기" />
+            </button>
+          </div>
           <FilterGroup
             label="분야"
             type="checkbox"
@@ -158,6 +198,7 @@ export default function FilterDropdown({
             onChange={(v) => handleSelect('progressStatus', v, 'radio')}
           />
           <div className={styles.buttons}>
+            {/* 버튼 컴포넌트 추가하기 */}
             <button className={styles.resetButton} onClick={handleReset}>
               초기화
             </button>

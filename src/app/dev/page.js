@@ -15,6 +15,9 @@ import { FilterDropdown } from '@/components/Common/FilterDropdown';
 export default function DevPage({ title, setTitle, content, setContent }) {
   // const [query, setQuery] = useState(initialQuery);
   const [page, setPage] = useState(1);
+  const [field, setField] = useState('');
+  const [documentType, setDocumentType] = useState('');
+  const [progressStatus, setProgressStatus] = useState('');
   return (
     <Container>
       <div>
@@ -58,11 +61,22 @@ export default function DevPage({ title, setTitle, content, setContent }) {
           모집이 완료된 상태에요
         </Badge>
       </div>
+       <FilterDropdown
+        field={field}
+        documentType={documentType}
+        progressStatus={progressStatus}
+        onApply={({ field, documentType, progressStatus }) => {
+          setField(field);
+          setDocumentType(documentType);
+          setProgressStatus(progressStatus);
+          setPage(1);
+        }}
+      />
       <ChallengeCard data={mockData.data} />
       <PaginationBar totalPages={10} page={page} setPage={setPage} />
       <Pager totalPages={10} page={page} setPage={setPage} />
       <SearchBar />
-      <FilterDropdown />
+     
     </Container>
   );
 }
