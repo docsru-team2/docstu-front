@@ -31,3 +31,7 @@ export const loginProfieGroup = style({
   cursor: 'pointer',
   gap: '16px',
 });
+
+export const btnWrapper = style({
+  width: '90px',
+});
