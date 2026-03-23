@@ -3,9 +3,11 @@ import { vars } from '@/styles/tokens.css';
 
 export const container = style({
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: '100dvh',
+  gap: '16px'
 });
 
 export const text = style({
