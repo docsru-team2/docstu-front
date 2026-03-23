@@ -46,8 +46,6 @@ export default function AdminChallengesList() {
     setModalMode(MODAL_MODE.DELETE);
   };
 
-  // 삭제 모달 확인 버튼 클릭 시, 삭제이유가 비어있으면 실행 X
-  // todo: 한준님 fetchClient 완성 후 api.delete 호출로 교체
   const handleDeleteConfirm = async () => {
     if (!deleteReason.trim()) {
       return;

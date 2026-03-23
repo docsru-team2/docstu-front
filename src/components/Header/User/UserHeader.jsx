@@ -4,6 +4,7 @@ import headerLogo from '@public/img/logo/headerLogo.svg';
 import bell from '@public/img/header/bell.svg';
 import userProfile from '@public/img/header/user.svg';
 import Link from 'next/link.js';
+import Button from '@/components/Common/Button/Button.jsx';
 
 export default function UserHeader() {
   const isLoggedIn = false;
@@ -14,7 +15,11 @@ export default function UserHeader() {
           <Image src={headerLogo} alt="headerLogo" />
         </Link>
         {!isLoggedIn ? (
-          <div>로그인</div>
+          <div className={styles.btnWrapper}>
+            <Button href="/login" size="md" color="secondary">
+              로그인
+            </Button>
+          </div>
         ) : (
           <div className={styles.loginProfieGroup}>
             <Image src={bell} alt="bell" />

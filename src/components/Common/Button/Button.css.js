@@ -2,19 +2,16 @@ import { media, vars } from '@/styles/tokens.css';
 import { recipe } from '@vanilla-extract/recipes';
 export const button = recipe({
   base: {
-    display: 'inline-flex',
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '8px',
+    borderRadius: '12px',
+    fontWeight: vars.font.weight.semibold,
+    fontSize: vars.font.size.lg,
     border: '1px solid transparent',
     cursor: 'pointer',
-    fontWeight: vars.font.weight.semibold,
-    fontSize: vars.font.size.md,
-    '@media': {
-      [media.tablet]: {
-        fontSize: vars.font.size.lg,
-      },
-    },
 
     ':disabled': {
       cursor: 'not-allowed',
@@ -23,6 +20,18 @@ export const button = recipe({
     },
   },
   variants: {
+    hasIcon: {
+      true: { gap: '8px' },
+      false: {},
+    },
+    roundBtn: {
+      true: { borderRadius: '999px' },
+      false: {},
+    },
+    fontSize: {
+      true: { fontSize: vars.font.size.md },
+      false: {}, // 14px
+    },
     color: {
       primary: {
         backgroundColor: vars.color.brandDark,
@@ -38,54 +47,30 @@ export const button = recipe({
         color: vars.color.brandDark,
         border: `2px solid ${vars.color.brandDark}`,
       },
-      warning: {
+      abandon: {
         backgroundColor: '#FFE7E7',
         color: '#F24744',
       },
-      openLink: {
-        backgroundColor: 'rgba(246, 248, 250, 0.5)',
+      opacity: {
+        backgroundColor: 'rgba(246, 248, 250, 0.80)',
         color: vars.color.gray700,
       },
     },
+
     size: {
       sm: {
-        width: '80px',
         height: '32px',
-        '@media': {
-          [media.tablet]: {
-            width: '90px',
-            height: '40px',
-          },
-        },
       },
       md: {
-        width: '120px',
         height: '40px',
       },
       lg: {
-        width: '153px',
         height: '48px',
-      },
-      fullWidth: {
-        width: '100%',
-        height: '40px',
-      },
-    },
-    rounded: {
-      md: {
-        borderRadius: '10px',
-      },
-      lg: {
-        borderRadius: '12px',
-      },
-      pill: {
-        borderRadius: '999px',
       },
     },
   },
   defaultVariants: {
     color: 'primary',
-    size: 'sm',
-    rounded: 'md',
+    hasIcon: false,
   },
 });
