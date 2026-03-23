@@ -1,3 +1,4 @@
+'use client'
 import clsx from 'clsx';
 import { badge } from './Badge.css';
 import { Quantico } from 'next/font/google';
