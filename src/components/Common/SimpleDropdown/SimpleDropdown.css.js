@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/tokens.css';
 export const menuWrapper = style({
   position: 'relative',
+  zIndex: 5
 });
 
 export const menuButton = style({
@@ -29,7 +30,6 @@ export const dropdown = style({
   backgroundColor: vars.color.white,
   border: `1px solid ${vars.color.gray200}`,
   borderRadius: '8px',
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
   zIndex: 10,
   overflow: 'hidden',
 });
@@ -37,12 +37,11 @@ export const dropdown = style({
 export const dropdownItem = style({
   display: 'block',
   width: '100%',
-  padding: '10px 16px',
+  padding: '12px 17px',
   fontSize: vars.font.size.md,
-  color: vars.color.gray700,
+  color: vars.color.gray500,
   textDecoration: 'none',
-  textAlign: 'left',
-  background: 'none',
-  border: 'none',
+  textAlign: 'center',
+  borderBottom: `1px solid ${vars.color.gray200}`,
   cursor: 'pointer',
 });

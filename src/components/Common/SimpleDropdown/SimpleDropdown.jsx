@@ -63,7 +63,7 @@ export default function SimpleDropdown({
               <Link
                 key={item.key}
                 href={item.href}
-                className={styles.item}
+                className={styles.dropdownItem}
                 onClick={closeDropdown}
               >
                 {item.label}
