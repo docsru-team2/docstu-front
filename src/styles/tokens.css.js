@@ -46,6 +46,6 @@ export const [themeClass, vars] = createTheme({
 });
 
 export const media = {
-  tablet: 'screen and (min-width: 768px)',
-  desktop: 'screen and (min-width: 1280px)',
+  iPadMini: 'screen and (min-width: 518px)',
+  mobile: 'screen and (min-width: 375px)',
 };
