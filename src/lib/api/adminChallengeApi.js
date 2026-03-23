@@ -8,6 +8,7 @@ const PAGE_SIZE = 5;
 export const fetchAdminChallenges = async ({
   page = 1,
   pageSize = PAGE_SIZE,
+  viewType = 'MANAGE', //전체 조회
   keyword,
   reviewStatus,
   field,
