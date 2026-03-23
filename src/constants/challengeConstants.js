@@ -1,9 +1,9 @@
 export const FIELD_MAP = {
   NEXT_JS: { label: 'Next.js', color: 'nextjs' },
-  API: { label: 'API', color: 'api' },
-  CAREER: { label: 'Career', color: 'career' },
   MODERN_JS: { label: 'Modern JS', color: 'modernjs' },
+  API: { label: 'API', color: 'api' },
   WEB: { label: 'Web', color: 'web' },
+  CAREER: { label: 'Career', color: 'career' },
 };
 
 export const DOCUMENT_TYPE_MAP = {
