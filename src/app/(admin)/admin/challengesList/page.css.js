@@ -94,7 +94,7 @@ export const dropdownItem = style({
   fontSize: vars.font.size.md,
   color: vars.color.gray700,
   textDecoration: 'none',
-  textAlign: 'left',
+  textAlign: 'center',
   background: 'none',
   border: 'none',
   cursor: 'pointer',
