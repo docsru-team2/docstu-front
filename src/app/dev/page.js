@@ -14,9 +14,10 @@ import { FilterDropdown } from '@/components/Common/FilterDropdown';
 import { EmptyState } from '@/components/Common/EmptyState/EmptyState';
 import { SearchBar } from '@/components/Common/SearchBar';
 import { Pager } from '@/components/Common/Pager';
+import { set } from 'date-fns';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
-  // const [query, setQuery] = useState(initialQuery);
+  const [keyword, setKeyword] = useState('');
   const [page, setPage] = useState(1);
   const [field, setField] = useState('');
   const [documentType, setDocumentType] = useState('');
@@ -82,7 +83,7 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         <ChallengeCard data={mockData.data} />
         <PaginationBar totalPages={10} page={page} setPage={setPage} />
         <Pager totalPages={10} page={page} setPage={setPage} />
-        <SearchBar />
+        <SearchBar keyword={keyword} setKeyword={setKeyword} setPage={setPage} />
       </Container>
     </>
   );

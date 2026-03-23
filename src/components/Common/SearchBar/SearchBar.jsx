@@ -5,19 +5,19 @@ import search from '@public/img/btn/search.svg';
 import { useEffect, useState } from 'react';
 import * as styles from './SearchBar.css';
 
-export default function SearchBar({ query, setQuery, setPage }) {
-  const [keyword, setKeyword] = useState(query);
+export default function SearchBar({ keyword, setKeyword, setPage }) {
+  const [input, setInput] = useState(keyword);
 
   useEffect(() => {
-    setKeyword(query);
-  }, [query]);
+    setInput(keyword);
+  }, [keyword]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const trimmed = keyword.trim();
+    const trimmed = input.trim();
 
-    setQuery(trimmed);
+    setKeyword(trimmed);
     setPage(1);
   };
 
@@ -28,8 +28,8 @@ export default function SearchBar({ query, setQuery, setPage }) {
           type="text"
           className={styles.searchInput}
           placeholder="챌린지 이름을 검색해보세요"
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
         <Image src={search} alt="검색아이콘" className={styles.searchIcon} />
       </div>
