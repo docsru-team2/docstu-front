@@ -9,12 +9,12 @@ import mockData from '@/mocks/challenge-detail.json';
 import { PaginationBar } from '@/components/Common/PaginationBar';
 import { useState } from 'react';
 
-
 import { FilterDropdown } from '@/components/Common/FilterDropdown';
 import { EmptyState } from '@/components/Common/EmptyState/EmptyState';
 import { SearchBar } from '@/components/Common/SearchBar';
 import { Pager } from '@/components/Common/Pager';
 import { set } from 'date-fns';
+import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   const [keyword, setKeyword] = useState('');
@@ -83,7 +83,25 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         <ChallengeCard data={mockData.data} />
         <PaginationBar totalPages={10} page={page} setPage={setPage} />
         <Pager totalPages={10} page={page} setPage={setPage} />
-        <SearchBar keyword={keyword} setKeyword={setKeyword} setPage={setPage} />
+        <SearchBar
+          keyword={keyword}
+          setKeyword={setKeyword}
+          setPage={setPage}
+        />
+        <SimpleDropdown
+          items={[
+            {
+              key: 'edit',
+              label: '수정하기',
+              href: `/`,
+            },
+            {
+              key: 'delete',
+              label: '삭제하기',
+              action: () => handleDelete(challenge.id),
+            },
+          ]}
+        />
       </Container>
     </>
   );
