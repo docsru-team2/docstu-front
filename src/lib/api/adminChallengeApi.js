@@ -60,8 +60,6 @@ export const updateChallenge = async (challengeId, data) => {
 // 챌린지 삭제
 // DELETE /admin/challenges/:challengeId
 // 삭제 시 신청자 + 참여자 전체에게 사유 포함 알림 발송 (BE 처리)
-// todo: 한준님 fetchClient api.delete에 body 파라미터 추가 필요(삭제 사유 포함해서 보내야하기에..)
-// 현재 api.delete은 body를 못 보냄 — 수정 전까지 동작 안 함
 export const deleteChallenge = async (challengeId, deleteReason) => {
   return api.delete(`/admin/challenges/${challengeId}`, { deleteReason });
 };
