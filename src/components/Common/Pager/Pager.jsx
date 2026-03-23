@@ -7,10 +7,9 @@ import arrowRightInactive from '@public/img/arrow/arrowRightInactive.svg';
 import * as styles from './Pager.css';
 import Image from 'next/image';
 
-export default function Pager({ page, totalPages, setPage }) {
+export default function pager({ page, totalPages, setPage }) {
   return (
 
-    //page, totalPages, setPage
     <div className={styles.pagerContainer}>
       <div className={styles.pager}>
         <span className={styles.activePageNum}>{page}</span>

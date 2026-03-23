@@ -4,14 +4,16 @@ import { Badge } from '@/components/Common/Badge';
 import { Button } from '@/components/Common/Button';
 import { ChallengeCard } from '@/components/Challenge/ChallengeCard';
 import { Container } from '@/components/Common/Container';
-import { FormField } from '@/components/Common/FormField';
+//import { FormField } from '@/components/Common/FormField';
 import mockData from '@/mocks/challenge-detail.json';
 import { PaginationBar } from '@/components/Common/PaginationBar';
 import { useState } from 'react';
-import Pager from '@/components/Common/Pager/Pager';
-import SearchBar from '@/components/Common/SearchBar/SearchBar';
+
+
 import { FilterDropdown } from '@/components/Common/FilterDropdown';
 import { EmptyState } from '@/components/Common/EmptyState/EmptyState';
+import { SearchBar } from '@/components/Common/SearchBar';
+import { Pager } from '@/components/Common/Pager';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   // const [query, setQuery] = useState(initialQuery);
