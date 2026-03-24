@@ -11,14 +11,12 @@ export const cardContainer = style({
   border: `2px solid ${vars.color.gray800}`,
   borderRadius: '12px',
   backgroundColor: vars.color.white,
-  // '@media': {
-  //   [media.tablet]: {
-  //     gap: '16px',
-  //   },
-  // },
+  '@media': {
+    [media.belowIPadMini]: {
+      gap: '16px',
+    },
+  },
 });
-
-
 
 export const badgeInner = style({
   display: 'inline-flex',
@@ -65,11 +63,11 @@ export const currentStatusContainer = style({
   display: 'grid',
   gridTemplateColumns: '1fr',
   gap: '8px',
-  // '@media': {
-  //   [media.tablet]: {
-  //     gridTemplateColumns: '1fr 1fr',
-  //   },
-  // },
+  '@media': {
+    [media.belowIPadMini]: {
+      gridTemplateColumns: '1fr 1fr',
+    },
+  },
 });
 
 export const currentStatus = style({
