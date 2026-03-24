@@ -1,15 +1,13 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '@/styles/tokens.css.js';
-
+import { media, vars } from '@/styles/tokens.css.js';
 
 export const overlay = style({
   position: 'fixed',
   inset: 0,
-  backgroundColor: 'rgba(15, 23, 42, 0.5)',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  // padding: vars.space.lg,
   zIndex: 20,
 });
 
@@ -17,12 +15,17 @@ export const modal = style({
   width: '100%',
   maxWidth: '343px', //496px
   backgroundColor: vars.color.white,
-  // borderRadius: vars.radius.sm,
+  borderRadius: '12px',
   border: `2px solid ${vars.color.gray800}`,
   padding: '24px',
   display: 'flex',
   flexDirection: 'column',
-  // gap: vars.space.md,
+  '@media': {
+    [media.iPadMini]: {
+      maxWidth: '496px'
+    },
+  },
+
 });
 
 export const modalHeader = style({
@@ -33,8 +36,8 @@ export const modalHeader = style({
 });
 
 export const modalTitle = style({
-  fontSize: '18px',
-  fontWeight: 700,
+  fontSize: vars.font.size.xl,
+  fontWeight: vars.font.weight.bold,
   color: vars.color.gray800,
 });
 
@@ -45,8 +48,9 @@ export const modalForm = style({
 
 export const label = style({
   color: vars.color.gray900,
-  fontWeight: 400,
-  paddingBottom: '8px'
+  fontSize: vars.font.size.lg,
+  fontWeight: vars.font.weight.regular,
+  paddingBottom: '8px',
 });
 
 export const textarea = style({
@@ -56,13 +60,30 @@ export const textarea = style({
   borderRadius: '6px',
   border: `1px solid ${vars.color.gray300}`,
   backgroundColor: vars.color.white,
-  marginBottom: '24px'
+  marginBottom: '24px',
+  resize: 'none',
+  outline: 'none',
+  background: 'none',
+  selectors: {
+    '&::placeholder': {
+      color: vars.color.gray500,
+      fontSize: vars.font.size.lg,
+      fontWeight: vars.font.weight.regular,
+    },
+  },
 });
 
 export const modalMessage = style({
-  paddingTop: '24px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '24px',
   paddingBottom: '32px',
   textAlign: 'center',
+});
+
+export const modalButton = style({
+  width: '90px',
 });
 
 export const modalBody = style({
@@ -74,5 +95,36 @@ export const modalBody = style({
 export const modalActions = style({
   display: 'flex',
   justifyContent: 'center',
-  // gap: vars.space.sm,
+  gap: '8px',
+});
+
+export const draftsList = style({
+  display: 'flex',
+  padding: '12px 0',
+  flexDirection: 'column',
+});
+
+export const draftsCount = style({
+  color: vars.color.brandDark,
+  fontSize: vars.font.size.sm,
+  fontWeight: vars.font.weight.regular,
+  paddingBottom: '4px',
+});
+
+export const draftButton = style({
+  display: 'block',
+  width: '100%',
+  textAlign: 'left',
+  color: vars.color.brandDark,
+  fontSize: vars.font.size.md,
+  fontWeight: vars.font.weight.medium,
+  padding: '12px 0',
+  borderBottom: `1px solid ${vars.color.gray200}`,
+});
+
+export const date = style({
+  color: vars.color.gray400,
+  fontSize: vars.font.size.xs,
+  fontWeight: vars.font.weight.regular,
+  padding: '12px 0',
 });

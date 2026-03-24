@@ -219,11 +219,17 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         </>
 
         <>
-          <Button onClick={() => setLoadDraftsOpen(true)}> 임시저장모달 열기</Button>
+          <Button onClick={() => setLoadDraftsOpen(true)}>
+            {' '}
+            임시저장모달 열기
+          </Button>
           {loadDraftsOpen && (
             <LoadDraftsModal
               data={data}
               onClose={() => setLoadDraftsOpen(false)}
+              onSelectDraft={(draft) => {
+                console.log('선택된 글:', draft);
+              }}
             />
           )}
         </>

@@ -4,6 +4,8 @@ import Image from 'next/image';
 import * as styles from './Modal.css.js';
 import closeIcon from '@public/img/btn/closeIcon.svg';
 import { Button } from '@/components/Common/Button';
+import checkIcon from '@public/img/checkIcon.svg';
+import { formatDate } from '@/utils/dateUtils.js';
 
 export function Modal({ children, onClose }) {
   const preventOverlayClick = (event) => {
@@ -35,19 +37,27 @@ export function ConfirmModal({
 }) {
   return (
     <Modal onClose={onClose}>
-      {/* {checkIcon} */} <p>확인아이콘</p>
-      <p className={styles.modalMessage}>{message}</p>
+      <div className={styles.modalMessage}>
+        <Image src={checkIcon} alt="확인아이콘" />
+        <p>{message}</p>
+      </div>
       <div className={styles.modalActions}>
         {singleButton ? (
-          <Button onClick={onConfirm}>확인</Button>
+          <div className={styles.modalButton}>
+            <Button onClick={onConfirm}>확인</Button>
+          </div>
         ) : (
           <>
-            <Button color="primary" size="md" onClick={onClose}>
-              아니오
-            </Button>
-            <Button color="primary" size="md" onClick={onConfirm}>
-              네
-            </Button>
+            <div className={styles.modalButton}>
+              <Button color="secondary" size="md" onClick={onClose}>
+                아니오
+              </Button>
+            </div>
+            <div className={styles.modalButton}>
+              <Button color="primary" size="md" onClick={onConfirm}>
+                네
+              </Button>
+            </div>
           </>
         )}
       </div>
@@ -78,7 +88,7 @@ export function ReasonModal({ title, placeholder, onSubmit, onClose }) {
             placeholder={placeholder}
             className={styles.textarea}
           />
-          <Button variant="primary" size="fullWidth" type="submit">
+          <Button variant="primary" size="lg" type="submit">
             전송
           </Button>
         </form>
@@ -87,29 +97,36 @@ export function ReasonModal({ title, placeholder, onSubmit, onClose }) {
   );
 }
 
-export function LoadDraftsModal({ data, onClose }) {
+export function LoadDraftsModal({ data, onClose, onSelectDraft }) {
+  const handleSelectDraft = (draft) => {
+    onSelectDraft?.(draft);
+    onClose?.();
+  };
   return (
     <Modal onClose={onClose}>
       <div>
         <div className={styles.modalHeader}>
           <h3 className={styles.modalTitle}>임시저장 글</h3>
-          <button onClick={onClose}>
+          <button type="button" onClick={onClose}>
             <Image src={closeIcon} alt="닫기" />
           </button>
         </div>
-        <span>총 {data.length}개</span>
-        <div>
-          <div>
-            {data.map((draft) => (
-              <div key={draft.id}>
-                <button>
-                  <div>{draft.title}</div>
-                  <div>{draft.updatedAt}</div>
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
+
+        <ul className={styles.draftsList}>
+          <span className={styles.draftsCount}>총 {data.length}개</span>
+          {data.map((draft) => (
+            <li key={draft.id} className={styles.draft}>
+              <button
+                type="button"
+                onClick={() => handleSelectDraft(draft)}
+                className={styles.draftButton}
+              >
+                <div>{draft.title}</div>
+                <div className={styles.date}> {formatDate(draft.updatedAt, 'dot') }</div>
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </Modal>
   );
