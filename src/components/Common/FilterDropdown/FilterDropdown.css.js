@@ -48,10 +48,10 @@ export const dropdownContent = style({
       left: 0,
       width: '343px',
 
-      border: '1px solid #ddd',
-      borderRadius: '8px',
-    },
-  },
+  //     border: '1px solid #ddd',
+  //     borderRadius: '8px',
+  //   },
+  // },
 });
 
 export const header = style({
