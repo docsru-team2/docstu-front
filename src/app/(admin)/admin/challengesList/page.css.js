@@ -19,7 +19,7 @@ export const filterBar = style({
   marginBottom: '16px',
 
   '@media': {
-    [media.tablet]: {
+    [media.iPadMini]: {
       marginBottom: '24px',
     },
   },
@@ -32,7 +32,7 @@ export const cardList = style({
   marginBottom: '24px',
 
   '@media': {
-    [media.tablet]: {
+    [media.iPadMini]: {
       marginBottom: '40px',
     },
   },
