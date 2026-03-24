@@ -15,7 +15,6 @@ import { FilterDropdown } from '@/components/Common/FilterDropdown';
 import { EmptyState } from '@/components/Common/EmptyState/EmptyState';
 import { SearchBar } from '@/components/Common/SearchBar';
 import { Pager } from '@/components/Common/Pager';
-import { set } from 'date-fns';
 import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
@@ -120,57 +119,6 @@ export default function DevPage({ title, setTitle, content, setContent }) {
           placeholder="제목을 입력해 주세요"
           isTextArea={true}
         />
-      </div> */}
-        <div>
-          <h3>Badge</h3>
-          <Badge badgeStyle="field" color="nextjs">
-            Next.js
-          </Badge>
-          <Badge badgeStyle="documentType" color="primary">
-            공식문서
-          </Badge>
-          <Badge badgeStyle="reviewStatus" color="pending">
-            승인대기
-          </Badge>
-          <Badge badgeStyle="closeStatus" color="closedFull">
-            모집이 완료된 상태에요
-          </Badge>
-        </div>
-        <FilterDropdown
-          field={field}
-          documentType={documentType}
-          progressStatus={progressStatus}
-          onApply={({ field, documentType, progressStatus }) => {
-            setField(field);
-            setDocumentType(documentType);
-            setProgressStatus(progressStatus);
-            setPage(1);
-          }}
-        />
-        <ChallengeCard data={mockData.data} />
-        <PaginationBar totalPages={10} page={page} setPage={setPage} />
-        <Pager totalPages={10} page={page} setPage={setPage} />
-        <SearchBar
-          keyword={keyword}
-          setKeyword={setKeyword}
-          setPage={setPage}
-        />
-        <SimpleDropdown
-          items={[
-            {
-              key: 'edit',
-              label: '수정하기',
-              href: `/`,
-            },
-            {
-              key: 'delete',
-              label: '삭제하기',
-              action: () => handleDelete(challenge.id),
-            },
-          ]}
-        />
-      </Container>
-    </>
       </div>
       <div>
         <h3>Badge</h3>
@@ -202,6 +150,20 @@ export default function DevPage({ title, setTitle, content, setContent }) {
       <PaginationBar totalPages={10} page={page} setPage={setPage} />
       <Pager totalPages={10} page={page} setPage={setPage} />
       <SearchBar keyword={keyword} setKeyword={setKeyword} setPage={setPage} />
+      <SimpleDropdown
+        items={[
+          {
+            key: 'edit',
+            label: '수정하기',
+            href: `/`,
+          },
+          {
+            key: 'delete',
+            label: '삭제하기',
+            action: () => handleDelete(challenge.id),
+          },
+        ]}
+      />
     </Container>
   );
 }

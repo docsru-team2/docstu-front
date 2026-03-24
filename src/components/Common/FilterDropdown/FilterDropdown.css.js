@@ -41,7 +41,7 @@ export const dropdownContent = style({
 
   overflowY: 'auto',
   '@media': {
-    [media.tablet]: {
+    [media.belowIPadMini]: {
       position: 'absolute',
       inset: 'auto',
       top: 'calc(100% + 8px)',
