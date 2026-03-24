@@ -47,11 +47,8 @@ export const dropdownContent = style({
       top: 'calc(100% + 8px)',
       left: 0,
       width: '343px',
-
-  //     border: '1px solid #ddd',
-  //     borderRadius: '8px',
-  //   },
-  // },
+    },
+  },
 });
 
 export const header = style({
