@@ -72,12 +72,16 @@ export default function Section() {
       {sectionData.map((item, index) => (
         <section key={item.id}>
           <div className={styles.sectionItem}>
-            <div>
+            <div className={styles.textBox}>
               <Image src={item.icon} alt={item.iconAlt} />
               <div className={styles.sectionTitle}>{item.title}</div>
               <div className={styles.sectionDes}>{item.description}</div>
             </div>
-            <Image src={item.image} alt={item.imageAlt} />
+            <Image
+              src={item.image}
+              alt={item.imageAlt}
+              className={styles.imgSize}
+            />
           </div>
 
           {index !== sectionData.length - 1 && (
