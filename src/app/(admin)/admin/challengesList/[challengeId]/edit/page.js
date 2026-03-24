@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 
 // todo: BE 어드민 챌린지 API 구현시 수정
-import mockData from '@/mocks/admin-challenges-detail.json';
+import mockData from '@/mocks/admin-challenge-detail.json';
 import { updateChallenge } from '@/lib/api/adminChallengeApi';
 import { DOCUMENT_TYPE_MAP, FIELD_MAP } from '@/constants/challengeConstants';
 
-import { FormField } from '@/components/Common/FormField';
+import FormField from '@/components/Common/FormField';
 import Button from '@/components/Common/Button';
 
 import * as styles from './page.css.js';
@@ -60,12 +60,12 @@ export default function AdminChallengeEditPage() {
   };
 
   // 최대인원 유효성 검사 - 현재 참여 인원보다 작게 설정 불가(요구사항)
-  const isMaxParticipantsValid = 
+  const isMaxParticipantsInvalid = 
   form.maxParticipants !== '' && 
   Number(form.maxParticipants) < currentParticipants;
     
 
-  const isFormVaild = 
+  const isFormValid = 
     form.title.trim() &&
     form.sourceUrl.trim() &&
     form.field &&
@@ -116,7 +116,7 @@ export default function AdminChallengeEditPage() {
         {/* 원문 링크 - 피그마에 있음 */}
         <FormField
           id="sourceUrl"
-          label="원분 링크"
+          label="원문 링크"
           value={form.sourceUrl}
           onChange={handleChange('sourceUrl')}
           placeholder="원분 링크를 입력해주세요"
@@ -145,8 +145,8 @@ export default function AdminChallengeEditPage() {
 
         {/* 문서 타입 */}
         <div className={styles.selectWrapper}>
-          <label className={styles.selectLabel}>
-            
+          <label className={styles.selectLabel} htmlFor='documentType'>
+            문서 타입
           </label>
           <select
             id="documentType"
