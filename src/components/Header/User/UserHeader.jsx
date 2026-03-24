@@ -12,8 +12,9 @@ export default function UserHeader() {
     <header className={styles.wrapper}>
       <div className={styles.inner}>
         <Link href={'/'}>
-          <Image src={headerLogo} alt="headerLogo" />
+          <Image src={headerLogo} alt="headerLogo" className={styles.logo} />
         </Link>
+
         {!isLoggedIn ? (
           <div className={styles.btnWrapper}>
             <Button href="/login" size="md" color="secondary">

@@ -48,4 +48,6 @@ export const [themeClass, vars] = createTheme({
 export const media = {
   iPadMini: 'screen and (min-width: 518px)',
   mobile: 'screen and (min-width: 375px)',
+  belowIPadMini: 'screen and (max-width: 744px)',
+  belowMobile: 'screen and (max-width: 375px)',
 };
