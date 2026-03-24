@@ -18,11 +18,11 @@ export const searchInput = style({
       outline: `1px solid ${vars.color.brandDark}`,
     },
   },
-  '@media': {
-    [media.tablet]: {
-      fontSize: vars.font.size.lg,
-    },
-  },
+  // '@media': {
+  //   [media.tablet]: {
+  //     fontSize: vars.font.size.lg,
+  //   },
+  // },
 });
 
 export const searchWrapper = style({

@@ -40,18 +40,18 @@ export const dropdownContent = style({
   overflowY: 'auto',
 
   overflowY: 'auto',
-  '@media': {
-    [media.tablet]: {
-      position: 'absolute',
-      inset: 'auto',
-      top: 'calc(100% + 8px)',
-      left: 0,
-      width: '343px',
+  // '@media': {
+  //   [media.tablet]: {
+  //     position: 'absolute',
+  //     inset: 'auto',
+  //     top: 'calc(100% + 8px)',
+  //     left: 0,
+  //     width: '343px',
 
-      border: '1px solid #ddd',
-      borderRadius: '8px',
-    },
-  },
+  //     border: '1px solid #ddd',
+  //     borderRadius: '8px',
+  //   },
+  // },
 });
 
 export const header = style({
