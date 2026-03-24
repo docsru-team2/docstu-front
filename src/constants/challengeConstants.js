@@ -12,3 +12,10 @@ export const DOCUMENT_TYPE_MAP = {
   BOOK: '책',
   ETC: '기타',
 };
+
+export const STATUS_MAP = {
+  PENDING: { label: '신청 대기', color: 'pending' },
+  REJECTED: { label: '신청 거절', color: 'rejected' },
+  APPROVED: { label: '신청 승인', color: 'approved' },
+  DELETED: { label: '챌린지 삭제', color: 'deleted' },
+};

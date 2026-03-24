@@ -23,6 +23,7 @@ import {
   LoadDraftsModal,
   ReasonModal,
 } from '@/components/Common/Modal';
+import { ChallengeTable } from '@/components/Challenge/ChallengeTable';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   const [keyword, setKeyword] = useState('');
@@ -37,6 +38,54 @@ export default function DevPage({ title, setTitle, content, setContent }) {
     { id: 1, title: '임시글1', updatedAt: '2026-03-24' },
     { id: 2, title: '임시글2', updatedAt: '2026-03-23' },
   ];
+
+ const list = [
+  {
+    id: 1,
+    title: 'Next.js 공식문서 스터디',
+    field: 'NEXT_JS', // FIELD_MAP key
+    documentType: 'OFFICIAL_DOC', // DOCUMENT_TYPE_MAP key
+    currentParticipants: 3,
+    maxParticipants: 5,
+    createdAt: '2026-03-20T10:00:00',
+    deadline: '2026-03-30T23:59:59',
+    reviewStatus: 'PENDING', // STATUS_MAP key
+  },
+  {
+    id: 2,
+    title: '모던 JS 핵심 개념 정리',
+    field: 'MODERN_JS',
+    documentType: 'BLOG',
+    currentParticipants: 5,
+    maxParticipants: 5,
+    createdAt: '2026-03-18T09:30:00',
+    deadline: '2026-03-25T23:59:59',
+    reviewStatus: 'APPROVED',
+  },
+  {
+    id: 3,
+    title: 'REST API 설계 스터디',
+    field: 'API',
+    documentType: 'BOOK',
+    currentParticipants: 2,
+    maxParticipants: 4,
+    createdAt: '2026-03-15T14:20:00',
+    deadline: '2026-03-28T23:59:59',
+    reviewStatus: 'REJECTED',
+  },
+  {
+    id: 4,
+    title: '웹 성능 최적화',
+    field: 'WEB',
+    documentType: 'ETC',
+    currentParticipants: 1,
+    maxParticipants: 3,
+    createdAt: '2026-03-10T12:00:00',
+    deadline: '2026-03-22T23:59:59',
+    reviewStatus: 'DELETED',
+  },
+];
+
   return (
     <>
       <Container>
@@ -233,6 +282,8 @@ export default function DevPage({ title, setTitle, content, setContent }) {
             />
           )}
         </>
+        <h2>챌린지 테이블 </h2>
+        <ChallengeTable dataList ={list}  getHref={(data) => '/'}/>
       </Container>
     </>
   );
