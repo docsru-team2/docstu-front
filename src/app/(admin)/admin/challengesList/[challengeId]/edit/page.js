@@ -73,12 +73,12 @@ export default function AdminChallengeEditPage() {
     form.deadline &&
     form.maxParticipants &&
     form.description.trim() &&
-    !isMaxParticipantsValid;
+    !isMaxParticipantsInvalid;
     
   // todo: BE 어드민 챌린지 수정 API(PATCH /admin/challenges/:id) 미구현 — 완성 후 동작 확인
   const handleSubmit = async () => {
     // 폼 미완성이거나 이미 제출 중이면 바로 리턴
-    if (!isFormVaild || isSubmitting) {
+    if (!isFormValid || isSubmitting) {
       return;
     }
 
@@ -119,7 +119,7 @@ export default function AdminChallengeEditPage() {
           label="원문 링크"
           value={form.sourceUrl}
           onChange={handleChange('sourceUrl')}
-          placeholder="원분 링크를 입력해주세요"
+          placeholder="원문 링크를 입력해주세요"
         />
 
         {/* 분야 - 폼필드가 select를 지원안해서 직접 작성 */}
