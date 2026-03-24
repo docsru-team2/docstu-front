@@ -22,7 +22,7 @@ export default function SearchBar({ keyword, setKeyword, setPage }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.container}>
       <div className={styles.searchWrapper}>
         <input
           type="text"

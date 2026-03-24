@@ -8,14 +8,15 @@ import closeIcon from '@public/img/btn/closeIcon.svg';
 import filterUnapplied from '@public/img/btn/filterUnapplied.svg';
 import filterApplied from '@public/img/btn/filterApplied.svg';
 import { DOCUMENT_TYPE_MAP, FIELD_MAP } from '@/constants/challengeConstants';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as styles from './FilterDropdown.css';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { Button } from '../Button';
 
-function FilterGroup({ label, type, value, options, onChange }) {
+function FilterGroup({ label, type, value, options, onChange, className }) {
   return (
-    <div className={styles.optionContainer}>
+    <div className={clsx(styles.optionContainer, className)}>
       <div>{label}</div>
       <ul className={styles.options}>
         {options.map((opt) => {
@@ -67,6 +68,7 @@ export default function FilterDropdown({
   onApply,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
   const [tempValues, setTempValues] = useState({
     field: field ?? [],
     documentType,
@@ -89,14 +91,24 @@ export default function FilterDropdown({
     };
   }, [isOpen]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setTempValues({
       field: field ?? [],
       documentType,
       progressStatus,
     });
     setIsOpen(false);
-  };
+  }, [field, documentType, progressStatus]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        handleClose();
+      }
+    };
+    if (isOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen, handleClose]);
 
   const handleSelect = (key, value, type) => {
     setTempValues((prev) => {
@@ -148,7 +160,7 @@ export default function FilterDropdown({
   );
 
   return (
-    <div className={styles.filterContainer}>
+    <div className={styles.filterContainer} ref={containerRef}>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         type="button"
@@ -196,15 +208,15 @@ export default function FilterDropdown({
               { label: '마감', value: 'CLOSED' },
             ]}
             onChange={(v) => handleSelect('progressStatus', v, 'radio')}
+            className={styles.noBorder}
           />
           <div className={styles.buttons}>
-            {/* 버튼 컴포넌트 추가하기 */}
-            <button className={styles.resetButton} onClick={handleReset}>
+            <Button onClick={handleReset} color="secondary" size="md">
               초기화
-            </button>
-            <button className={styles.applyButton} onClick={handleApply}>
+            </Button>
+            <Button onClick={handleApply} color="primary" size="md">
               적용하기
-            </button>
+            </Button>
           </div>
         </div>
       )}
