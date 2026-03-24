@@ -22,6 +22,7 @@ export default function ChallengeTable({ dataList, getHref }) {
   ];
 
   return (
+    <div className={styles.tableWrapper}>
     <div className={styles.gridTable}>
       <div className={styles.gridHeader}>
         {columns.map((col, i) => (
@@ -53,6 +54,7 @@ export default function ChallengeTable({ dataList, getHref }) {
           </div>
         );
       })}
+    </div>
     </div>
   );
 }

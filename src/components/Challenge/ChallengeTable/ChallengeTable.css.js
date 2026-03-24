@@ -1,5 +1,17 @@
-import { vars } from '@/styles/tokens.css';
+import { media, vars } from '@/styles/tokens.css';
 import { style } from '@vanilla-extract/css';
+
+export const tableWrapper = style({
+  width: '100%',
+  '@media': {
+    [media.belowMobile]: {
+      width: '100%',
+      overflowX: 'auto',
+      overflowY: 'hidden',
+      WebkitOverflowScrolling: 'touch',
+    },
+  },
+});
 
 export const gridTable = style({
   display: 'grid',
@@ -7,6 +19,7 @@ export const gridTable = style({
   overflow: 'hidden',
   gridTemplateColumns:
     '68px minmax(73px, 84px) minmax(69px, 84px) minmax(221px, 1fr) minmax(46px, 94px) minmax(67px, 94px) minmax(67px, 94px) minmax(85px, 120px)',
+  minWidth: '696px',
   width: '100%',
 });
 
@@ -35,6 +48,7 @@ export const cellHeader = style({
   padding: '11px 16px',
   fontSize: vars.font.size.sm,
   marginBottom: '7px',
+  whiteSpace: 'nowrap',
   selectors: {
     '&:first-child': {
       borderTopLeftRadius: '8px',
@@ -55,6 +69,7 @@ export const cell = style({
   padding: '11px 16px',
   alignItems: 'center',
   display: 'flex',
+  whiteSpace: 'nowrap',
   selectors: {
     [`${gridRow}:hover &`]: {
       backgroundColor: vars.color.gray50,
