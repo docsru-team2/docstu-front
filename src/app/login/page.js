@@ -10,7 +10,7 @@ export default function Login() {
     <div className={styles.container}>
       <div className={styles.loginWrapper}>
         <Link href="/">
-          <Image src={LoginLogo} alt="LoginLogo" />
+          <Image src={LoginLogo} alt="LoginLogo" className={styles.mediaLogo} />
         </Link>
         <LoginForm />
         <button className={styles.googleBtn}>

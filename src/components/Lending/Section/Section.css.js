@@ -1,11 +1,16 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '@/styles/tokens.css';
+import { media, vars } from '@/styles/tokens.css';
 
 export const sectionWrapper = style({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
   margin: '84px 0 96px 0',
+  '@media': {
+    [media.belowIPadMini]: {
+      padding: '0 24px',
+    },
+  },
 });
 
 export const sectionItem = style({
@@ -13,6 +18,30 @@ export const sectionItem = style({
   flexDirection: 'row',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
+
+  '@media': {
+    [media.belowIPadMini]: {
+      flexDirection: 'column',
+    },
+  },
+});
+
+export const imgSize = style({
+  '@media': {
+    [media.belowIPadMini]: {
+      width: '100%',
+      height: 'auto',
+    },
+  },
+});
+
+export const textBox = style({
+  '@media': {
+    [media.belowIPadMini]: {
+      marginBottom: '32px',
+      padding: '0 20px',
+    },
+  },
 });
 
 export const sectionTitle = style({

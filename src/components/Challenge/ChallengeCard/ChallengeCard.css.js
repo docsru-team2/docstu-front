@@ -12,13 +12,11 @@ export const cardContainer = style({
   borderRadius: '12px',
   backgroundColor: vars.color.white,
   '@media': {
-    [media.tablet]: {
+    [media.belowIPadMini]: {
       gap: '16px',
     },
   },
 });
-
-
 
 export const badgeInner = style({
   display: 'inline-flex',
@@ -66,7 +64,7 @@ export const currentStatusContainer = style({
   gridTemplateColumns: '1fr',
   gap: '8px',
   '@media': {
-    [media.tablet]: {
+    [media.belowIPadMini]: {
       gridTemplateColumns: '1fr 1fr',
     },
   },

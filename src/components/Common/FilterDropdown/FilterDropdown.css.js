@@ -41,15 +41,12 @@ export const dropdownContent = style({
 
   overflowY: 'auto',
   '@media': {
-    [media.tablet]: {
+    [media.belowIPadMini]: {
       position: 'absolute',
       inset: 'auto',
       top: 'calc(100% + 8px)',
       left: 0,
       width: '343px',
-
-      border: '1px solid #ddd',
-      borderRadius: '8px',
     },
   },
 });

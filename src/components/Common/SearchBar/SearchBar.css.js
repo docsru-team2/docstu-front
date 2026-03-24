@@ -19,7 +19,7 @@ export const searchInput = style({
     },
   },
   '@media': {
-    [media.tablet]: {
+    [media.belowIPadMini]: {
       fontSize: vars.font.size.lg,
     },
   },
