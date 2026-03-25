@@ -17,7 +17,7 @@ export const fieldGroup = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '24px',
-  width: '100%',  // 이거 추가
+  width: '100%', 
 });
 
 // select 전용 래퍼 — FormField 내부 div와 동일한 역할
