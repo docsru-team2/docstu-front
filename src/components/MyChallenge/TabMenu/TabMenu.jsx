@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import * as styles from './TabMenu.css';
 import { Button } from '@/components/Common/Button';
-import { style } from '@vanilla-extract/css';
 
 export default function TabMenu() {
   const pathname = usePathname();
@@ -24,26 +23,26 @@ export default function TabMenu() {
           <ul className={styles.tabContainer}>
             <li
               className={clsx(styles.tab, {
-                [styles.active]: pathname === '/user/ongoing',
+                [styles.active]: pathname === '/myChallenge/ongoing',
               })}
             >
-              <Link href="/user/ongoing">참여중인 챌린지</Link>
+              <Link href="/myChallenge/ongoing">참여중인 챌린지</Link>
             </li>
 
             <li
               className={clsx(styles.tab, {
-                [styles.active]: pathname === '/user/completed',
+                [styles.active]: pathname === '/myChallenge/completed',
               })}
             >
-              <Link href="/user/completed">완료한 챌린지</Link>
+              <Link href="/myChallenge/completed">완료한 챌린지</Link>
             </li>
 
             <li
               className={clsx(styles.tab, {
-                [styles.active]: pathname === '/user/applied',
+                [styles.active]: pathname === '/myChallenge/applied',
               })}
             >
-              <Link href="/user/applied">신청한 챌린지</Link>
+              <Link href="/myChallenge/applied">신청한 챌린지</Link>
             </li>
           </ul>
         </div>
