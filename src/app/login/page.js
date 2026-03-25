@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import * as styles from './login.css.js';
 import LoginLogo from '@public/img/logo/LoginLogo.svg';
-import LoginForm from '@/components/LoginForm/LoginForm.jsx';
 import Link from 'next/link';
 import GoogleLogo from '@public/img/btn/Google.svg';
+import { LoginForm } from '@/components/LoginForm';
 
 export default function Login() {
   return (

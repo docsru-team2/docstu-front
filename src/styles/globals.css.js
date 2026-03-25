@@ -29,3 +29,4 @@ globalStyle('main', {
   flexDirection: 'column',
   flex: 1,
 });
+

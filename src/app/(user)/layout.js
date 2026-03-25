@@ -1,12 +1,12 @@
-import { Container } from '@/components/Common/Container';
 import { UserHeader } from '@/components/Header/User';
+import ContainerWrapper from './ContainerWrapper';
 
 export default function UserLayout({ children }) {
   return (
     <>
       <UserHeader />
       <main>
-        <Container bg="dark">{children}</Container>
+        <ContainerWrapper>{children}</ContainerWrapper>
       </main>
     </>
   );
