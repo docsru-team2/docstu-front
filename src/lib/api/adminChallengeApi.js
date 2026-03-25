@@ -76,3 +76,10 @@ export const updateSubmission = async (submissionId, data) => {
 export const deleteSubmission = async (submissionId) => {
   return api.delete(`/admin/submissions/${submissionId}`);
 };
+
+
+// 어드민 피드백 삭제
+// DELETE /feedbacks/:feedbackId
+export const deleteFeedback = async (feedbackId) => {
+  return api.delete(`/feedbacks/${feedbackId}`);
+};
