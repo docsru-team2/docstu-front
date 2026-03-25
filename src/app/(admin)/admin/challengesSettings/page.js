@@ -74,10 +74,7 @@ export default function AdminChallengesSettings() {
           ))}
         </select>
 
-        <select
-          value={sort}
-          onChange={(e) => handleSortChange(e.target.value)}
-        >
+        <select value={sort} onChange={(e) => handleSortChange(e.target.value)}>
           {SORT_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -94,7 +91,6 @@ export default function AdminChallengesSettings() {
           <div
             key={challenge.id}
             onClick={() => handleRowClick(challenge.id)}
-            style={{ cursor: 'pointer' }}
           >
             <span>{challenge.id}</span>
             <span>{challenge.title}</span>
