@@ -28,10 +28,10 @@ export const inner = style({
   fontStyle: vars.font.size.lg,
   color: vars.color.gray800,
   '@media': {
-    [media.iPadMini]: {
+    [media.belowIPadMini]: {
       padding: '0 24px',
     },
-    [media.mobile]: {
+    [media.belowMobile]: {
       padding: '0 16px',
     },
   },
