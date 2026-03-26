@@ -1,4 +1,6 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+const BASE_URL = typeof window !== 'undefined'
+  ? '/api'
+  : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
 let accessToken = null;
 
@@ -24,36 +26,16 @@ async function baseFetch(url, options = {}) {
   return text ? JSON.parse(text) : {};
 }
 
-// 인증 필요한 fetch (401 시 자동 토큰 갱신)
+// 인증 필요한 fetch
 async function authFetch(url, options = {}) {
-  try {
-    return await baseFetch(url, {
-      ...options,
-      credentials: 'include',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        ...options.headers,
-      },
-    });
-  } catch (error) {
-    if (error.status === 401) {
-      const { accessToken: newToken } = await baseFetch('/auth/refresh', {
-        method: 'POST',
-        credentials: 'include',
-      });
-      accessToken = newToken;
-
-      return baseFetch(url, {
-        ...options,
-        credentials: 'include',
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-          ...options.headers,
-        },
-      });
-    }
-    throw error;
-  }
+  return baseFetch(url, {
+    ...options,
+    credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      ...options.headers,
+    },
+  });
 }
 
 // 인증 불필요한 fetch
@@ -69,7 +51,10 @@ export const api = {
   patch: (url, data) =>
     authFetch(url, { method: 'PATCH', body: JSON.stringify(data) }),
   delete: (url, data) =>
-    authFetch(url, { method: 'DELETE', body: data ? JSON.stringify(data) : undefined }),
+    authFetch(url, {
+      method: 'DELETE',
+      body: data ? JSON.stringify(data) : undefined,
+    }),
 };
 
 // 인증 불필요한 API
@@ -80,7 +65,10 @@ export const publicApi = {
   patch: (url, data) =>
     publicFetch(url, { method: 'PATCH', body: JSON.stringify(data) }),
   delete: (url, data) =>
-    publicFetch(url, { method: 'DELETE', body: data ? JSON.stringify(data) : undefined }),
+    publicFetch(url, {
+      method: 'DELETE',
+      body: data ? JSON.stringify(data) : undefined,
+    }),
 };
 // 로그인 성공시
 export function setAccessToken(token) {

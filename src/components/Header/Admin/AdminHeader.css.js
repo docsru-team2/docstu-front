@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '@/styles/tokens.css';
+import { media, vars } from '@/styles/tokens.css';
 
 export const wrapper = style({
   position: 'fixed',
@@ -24,6 +24,14 @@ export const inner = style({
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '0 360px',
+  '@media': {
+    [media.belowIPadMini]: {
+      padding: '0 24px',
+    },
+    [media.belowMobile]: {
+      padding: '0 16px',
+    },
+  },
 });
 
 export const navGroup = style({
