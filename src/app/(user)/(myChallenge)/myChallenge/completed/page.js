@@ -1,3 +1,7 @@
+import { MyChallengeList } from "@/components/MyChallenge/MyChallengeList";
+
 export default function completedPage() {
-  return (<div>완료한 챌린지 페이지</div>)
+  
+  // Api 연결하기 
+  return (<MyChallengeList/>)
 }
