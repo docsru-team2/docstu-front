@@ -2,6 +2,11 @@ import { style } from '@vanilla-extract/css';
 import { media, vars } from '@/styles/tokens.css';
 
 export const wrapper = style({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 100,
   width: '100%',
   height: '60px',
   backgroundColor: 'white',

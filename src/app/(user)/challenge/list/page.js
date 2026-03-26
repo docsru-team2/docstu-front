@@ -31,7 +31,7 @@ export default function ChallengeList() {
           </div>
         ))}
       </div>
-      <PaginationBar totalPages={10} page={1} setPage={10} />
+      <PaginationBar totalCount={128} />
     </div>
   );
 }
