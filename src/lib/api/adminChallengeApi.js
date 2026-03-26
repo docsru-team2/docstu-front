@@ -59,10 +59,10 @@ export const updateChallenge = async (challengeId, data) => {
 };
 
 // 챌린지 삭제
-// DELETE /admin/challenges/:challengeId
+// PATCH /admin/challenges/:challengeId/delete
 // 삭제 시 신청자 + 참여자 전체에게 사유 포함 알림 발송 (BE 처리)
 export const deleteChallenge = async (challengeId, deleteReason) => {
-  return api.delete(`/admin/challenges/${challengeId}`, { deleteReason });
+  return api.patch(`/admin/challenges/${challengeId}/delete`, { deleteReason });
 };
 
 // 어드민 작업물 수정
@@ -72,14 +72,14 @@ export const updateSubmission = async (submissionId, data) => {
 };
 
 // 어드민 작업물 삭제
-// DELETE /admin/submissions/:submissionId
+// PATCH /admin/submissions/:submissionId/delete
 export const deleteSubmission = async (submissionId) => {
-  return api.delete(`/admin/submissions/${submissionId}`);
+  return api.patch(`/admin/submissions/${submissionId}/delete`);
 };
 
 
 // 어드민 피드백 삭제
-// DELETE /feedbacks/:feedbackId
+// DELETE /admin/feedbacks/:feedbackId
 export const deleteFeedback = async (feedbackId) => {
-  return api.delete(`/feedbacks/${feedbackId}`);
+  return api.delete(`/admin/feedbacks/${feedbackId}`);
 };
