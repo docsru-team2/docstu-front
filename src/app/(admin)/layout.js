@@ -5,7 +5,7 @@ export default function AdminLayout({ children }) {
   return (
     <>
       <AdminHeader />
-      <main>
+      <main style={{ paddingTop: '60px' }}>
         <Container bg="gray">{children}</Container>
       </main>
     </>
