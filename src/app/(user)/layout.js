@@ -5,7 +5,7 @@ export default function UserLayout({ children }) {
   return (
     <>
       <UserHeader />
-      <main>
+      <main style={{ paddingTop: '60px' }}>
         <ContainerWrapper>{children}</ContainerWrapper>
       </main>
     </>
