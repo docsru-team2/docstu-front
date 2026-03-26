@@ -5,8 +5,10 @@ import { SearchBar } from '@/components/Common/SearchBar';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import * as styles from './MyChallengeList.css'
+import mockData from '@/mocks/challenges.json';
+import Link from 'next/link';
 
-export default function MyChallengeOngoing({ initialData }) {
+export default function MyChallengeOngoing({ list, hasNext }) {
   // const observerRef = useRef(null);
 
   // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status} =
@@ -36,16 +38,18 @@ export default function MyChallengeOngoing({ initialData }) {
 
   // if (status === 'pending') return <p>로딩중...</p>;
   // if (status === 'error') return <p>에러 발생</p>;
-
-
-
+ 
   return (
     <div>
+      <div className={styles.searchBarContainer}>
       <SearchBar />
+      </div>
       <div className={styles.cardList}>
-        {initialData.map((item) => (
-          <div key={item.id} className={styles.cardItem}>
-            <ChallengeCard data={item} />
+        {list.map((challenge) => (
+          <div key={challenge.id} className={styles.cardItem}>
+            <Link href={`/challengeList/${challenge.id}`}>
+            <ChallengeCard data={challenge} />
+            </Link>
           </div>
         ))}
       </div>

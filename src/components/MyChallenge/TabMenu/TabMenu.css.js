@@ -5,7 +5,7 @@ export const wrapper = style({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  margin: '24px 0 32px 0',
+  margin: '24px 0',
 });
 
 export const titleContainer = style({

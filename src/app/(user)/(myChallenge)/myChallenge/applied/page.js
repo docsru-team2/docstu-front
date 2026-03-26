@@ -1,5 +1,15 @@
-import { MyChallengeApplied } from "@/components/MyChallenge/MyChallengeApplied";
+import ChallengeApplied from '@/components/MyChallenge/ChallengeApplied/ChallengeApplied';
+import mockData from '@/mocks/my-applications.json';
+export default function appliedPage({ searchParams }) {
 
-export default function appliedPage() {
-  return (<MyChallengeApplied/>)
+  const items = mockData.data.items;
+  const totalcount = mockData.data.pagination.totalCount;
+  // Api 연결하기
+
+  return (
+    <ChallengeApplied
+      items={items}
+      totalCount={totalcount}
+    />
+  );
 }
