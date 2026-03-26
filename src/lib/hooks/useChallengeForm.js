@@ -12,6 +12,7 @@ const defaultValues = {
 
 export function useChallengeForm(initialData) {
   const [formData, setFormData] = useState(initialData ?? defaultValues);
+  console.log(formData);
   const handleChange = (e) => {
     const { name, value } = e.target;
     const parsed =
@@ -26,7 +27,7 @@ export function useChallengeForm(initialData) {
   };
 
   const handleDateChange = (date) => {
-    date.setUTCHours(23, 59, 59, 0);
+    date.setHours(23, 59, 59, 0);
     setFormData((prev) => ({ ...prev, deadline: date.toISOString() }));
   };
 
