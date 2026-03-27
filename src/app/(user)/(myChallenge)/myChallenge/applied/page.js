@@ -1,4 +1,4 @@
-import ChallengeApplied from '@/components/MyChallenge/ChallengeApplied/ChallengeApplied';
+import ChallengeApplied from '@/components/Challenge/ChallengeApplied/ChallengeApplied';
 import mockData from '@/mocks/my-applications.json';
 export default function appliedPage({ searchParams }) {
   //api 연결
