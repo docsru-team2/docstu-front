@@ -30,16 +30,14 @@ export const gridHeader = style({
   borderRadius: '8px',
 });
 
+export const rowLinkWrapper = style({
+  display: 'contents',
+  cursor: 'pointer',
+});
+
 export const gridRow = style({
   display: 'contents',
   borderRadius: '4px',
-  position: 'relative',
-});
-
-export const rowLink = style({
-  position: 'absolute',
-  inset: 0,
-  zIndex: 1,
 });
 
 export const cellHeader = style({
@@ -71,7 +69,7 @@ export const cell = style({
   display: 'flex',
   whiteSpace: 'nowrap',
   selectors: {
-    [`${gridRow}:hover &`]: {
+    [`${rowLinkWrapper}:hover &`]: {
       backgroundColor: vars.color.gray50,
     },
   },
