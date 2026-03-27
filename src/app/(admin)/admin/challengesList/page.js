@@ -1,22 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link.js';
-import mockData from '@/mocks/admin-challenges.json';
-import { deleteChallenge } from '@/lib/api/adminChallengeApi.js';
-
-// todo: 하림님 컴포넌트 경로/이름 확인 후 아래 import 수정
-// import Modal from '@/components/Common/Modal';
-// import Button from '@/components/Common/Button';
-// import ListCard from '@/components/Common/ListCard';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import {
+  fetchAdminChallenges,
+  deleteChallenge,
+} from '@/lib/api/adminChallengeApi.js';
+import ChallengeCard from '@/components/Challenge/ChallengeCard/ChallengeCard.jsx';
+import SearchBar from '@/components/Common/SearchBar/SearchBar.jsx';
+import FilterDropdown from '@/components/Common/FilterDropdown/FilterDropdown.jsx';
+import PaginationBar from '@/components/Common/PaginationBar/PaginationBar.jsx';
+import { EmptyState } from '@/components/Common/EmptyState/EmptyState.jsx';
+import { ReasonModal } from '@/components/Common/Modal';
 
 import * as styles from './page.css.js';
 
-// 상수
-const MENU_MODE = {
-  CLOSED: null,
-  OPEN: 'open',
-};
+const PAGE_SIZE = 10;
 
 const MODAL_MODE = {
   CLOSED: null,
@@ -24,44 +24,79 @@ const MODAL_MODE = {
 };
 
 export default function AdminChallengesList() {
-  // todo: BE API 완성 후 fetchAdminChallenges + useSuspenseQuery로 교체
-  const challenges = mockData.data.list;
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const queryClient = useQueryClient();
 
-  const [openMenuId, setOpenMenuId] = useState(MENU_MODE.CLOSED);
+  // URL searchParams에서 필터/검색/페이지 값 읽기
+  // SearchBar, FilterDropdown, PaginationBar가 URL을 직접 관리
+  const keyword = searchParams.get('keyword') ?? '';
+  const page = Number(searchParams.get('page') ?? 1);
+  const field = searchParams.getAll('field');
+  const documentType = searchParams.get('documentType') ?? '';
+  const progressStatus = searchParams.get('progressStatus') ?? '';
+
+  // viewType: 'LIST' - 승인된 챌린지만 조회
+  const { data, isLoading } = useQuery({
+    queryKey: [
+      'adminChallenges',
+      'LIST',
+      keyword,
+      page,
+      field,
+      documentType,
+      progressStatus,
+    ],
+    queryFn: () =>
+      fetchAdminChallenges({
+        viewType: 'LIST',
+        keyword: keyword || undefined,
+        page,
+        pageSize: PAGE_SIZE,
+        field: field.length > 0 ? field.join(',') : undefined,
+      }),
+  });
+
+  // BE 응답: { list, totalCount, hasNext }
+  const challenges = data?.list ?? [];
+  const totalCount = data?.totalCount ?? 0;
+
+  // 삭제 모달 상태
   const [modalMode, setModalMode] = useState(MODAL_MODE.CLOSED);
   const [selectedChallenge, setSelectedChallenge] = useState(null);
-  const [deleteReason, setDeleteReason] = useState('');
 
-  // 이미 열려있는 메뉴 다시 클릭 시 닫힘
-  const handleMenuToggle = (challengeId) => {
-    setOpenMenuId((prev) =>
-      prev === challengeId ? MENU_MODE.CLOSED : challengeId,
-    );
+  // 챌린지 삭제
+  const deleteMutation = useMutation({
+    mutationFn: ({ id, reason }) => deleteChallenge(id, reason),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['adminChallenges'] });
+      setModalMode(MODAL_MODE.CLOSED);
+      setSelectedChallenge(null);
+    },
+    onError: (error) => {
+      console.error('삭제 실패:', error);
+    },
+  });
+
+  // 메뉴 - 수정하기 클릭
+  const handleEditClick = (challengeId) => {
+    router.push(`/admin/challengesList/${challengeId}/edit`);
   };
 
-  // 삭제하기 클릭 시
+  // 메뉴 - 삭제하기 클릭 -> 모달 열기
   const handleDeleteClick = (challenge) => {
     setSelectedChallenge(challenge);
-    setOpenMenuId(MENU_MODE.CLOSED);
     setModalMode(MODAL_MODE.DELETE);
   };
 
-  const handleDeleteConfirm = async () => {
-    if (!deleteReason.trim()) {
-      return;
-    }
-    try {
-      await deleteChallenge(selectedChallenge?.id, deleteReason);
-    } catch (error) {
-      console.error('삭제 실패:', error);
-    }
-    handleModalClose();
+  // ReasonModal onSubmit - 사유와 함께 삭제
+  const handleDeleteSubmit = (reason) => {
+    deleteMutation.mutate({ id: selectedChallenge?.id, reason });
   };
 
   // 모달 닫기 + 상태 초기화
   const handleModalClose = () => {
     setModalMode(MODAL_MODE.CLOSED);
-    setDeleteReason('');
     setSelectedChallenge(null);
   };
 
@@ -69,71 +104,45 @@ export default function AdminChallengesList() {
     <>
       <h1 className={styles.heading}>챌린지 목록</h1>
 
-      {/* todo: 하림님 필터/검색 컴포넌트 + BE API 완성 후 API 연결필요 */}
+      {/* 필터 + 검색 */}
       <div className={styles.filterBar}>
-        {/* 필터 드롭다운, 검색 인풋 들어갈 자리 */}
+        <FilterDropdown />
+        <SearchBar />
       </div>
 
       {/* 카드 리스트 */}
-      <div className={styles.cardList}>
-        {challenges.map((challenge) => (
-          <div key={challenge.id} className={styles.cardWrapper}>
-            {/* : 메뉴(수정,삭제하기) */}
-            <div className={styles.menuWrapper}>
-              <button
-                className={styles.menuButton}
-                onClick={() => handleMenuToggle(challenge.id)}
-              >
-                <img
-                  className={styles.menuIcon}
-                  src="/img/btn/menu.svg"
-                  alt="챌린지 메뉴"
-                />
-              </button>
-
-              {openMenuId === challenge.id && (
-                <div className={styles.dropdown}>
-                  <Link
-                    href={`/admin/challengesList/${challenge.id}/edit`}
-                    className={styles.dropdownItem}
-                  >
-                    수정하기
-                  </Link>
-
-                  <button
-                    className={styles.dropdownItem}
-                    onClick={() => handleDeleteClick(challenge)}
-                  >
-                    삭제하기
-                  </button>
-                </div>
-              )}
+      {/* ChallengeCard: admin 경로에서 메뉴(수정/삭제) 자동 표시 */}
+      {/* onEdit/onDelete로 메뉴 동작 제어 */}
+      {isLoading ? (
+        <div>로딩 중...</div>
+      ) : challenges.length === 0 ? (
+        <EmptyState text="챌린지가 없습니다." />
+      ) : (
+        <div className={styles.cardList}>
+          {challenges.map((challenge) => (
+            <div key={challenge.id} className={styles.cardWrapper}>
+              <ChallengeCard
+                data={challenge}
+                onEdit={handleEditClick}
+                onDelete={handleDeleteClick}
+              />
             </div>
+          ))}
+        </div>
+      )}
 
-            {/* todo: 하림님 카드 컴포넌트 완성 시 교체 */}
-            <span>{challenge.title}</span>
-          </div>
-        ))}
-      </div>
+      {/* 페이지네이션 - totalCount 넘기면 내부에서 총 페이지 수 계산 */}
+      {totalCount > 0 && <PaginationBar totalCount={totalCount} />}
 
-      {/* todo: 하림님 페이지네이션 컴포넌트 완성 시 추가 */}
-
-      {/* 삭제사유 모달 */}
-      {/* todo: 하림님 Modal 완성 시 내부 스타일 맞추기 */}
-      {/* {modalMode === MODAL_MODE.DELETE ? (
-        <Modal title="삭제 사유" onClose={handleModalClose}>
-          <p>내용</p>
-          <textarea
-            value={deleteReason}
-            onChange={(e) => setDeleteReason(e.target.value)}
-            placeholder="삭제 사유를 입력해주세요"
-            rows={6}
-          />
-          <Button onClick={handleDeleteConfirm} disabled={!deleteReason.trim()}>
-            전송
-          </Button>
-        </Modal>
-      ) : null} */}
+      {/* 챌린지 삭제 사유 모달 - 스키마에 deleteReason 있음 */}
+      {modalMode === MODAL_MODE.DELETE ? (
+        <ReasonModal
+          title="삭제 사유"
+          placeholder="삭제 사유를 입력해주세요"
+          onSubmit={handleDeleteSubmit}
+          onClose={handleModalClose}
+        />
+      ) : null}
     </>
   );
 }
