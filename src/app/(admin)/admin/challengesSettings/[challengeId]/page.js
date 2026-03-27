@@ -85,7 +85,6 @@ export default function AdminChallengeDetailPage() {
       {challenge.reviewStatus === 'APPROVED' && (
         <div>신청이 승인된 챌린지입니다.</div>
       )}
-
       {/* 거절 후 배너 + 거절 사유 박스 */}
       {challenge.reviewStatus === 'REJECTED' && (
         <>
@@ -93,10 +92,15 @@ export default function AdminChallengeDetailPage() {
           <div>
             <h3>신청 거절 사유</h3>
             <p>{challenge.rejectReason ?? '거절 사유 없음'}</p>
+            <div>
+              <span>독스루 운영진</span>
+              <span>{formatDate(challenge.updatedAt, 'dot')}</span>
+            </div>
           </div>
         </>
       )}
 
+      
       {/* No. + 내비게이션 */}
       <div>
         <span>No. {challenge.id}</span>
@@ -107,10 +111,8 @@ export default function AdminChallengeDetailPage() {
           &gt;
         </button>
       </div>
-
       {/* todo: 챌린지 정보 공통 컴포넌트로 교체 */}
       {/* 제목, 뱃지, 설명, 작성자, 마감일, 참여인원, 원문 링크 */}
-
       {/* PENDING일 때만 거절하기 + 승인하기 버튼 */}
       {challenge.reviewStatus === 'PENDING' && (
         <div>
@@ -126,7 +128,6 @@ export default function AdminChallengeDetailPage() {
           </Button>
         </div>
       )}
-
       {/* 거절사유 모달 */}
       {modalMode === MODAL_MODE.REJECT ? (
         <ReasonModal
