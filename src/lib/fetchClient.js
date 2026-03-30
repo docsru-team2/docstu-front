@@ -2,8 +2,6 @@ const BASE_URL = typeof window !== 'undefined'
   ? '/api'
   : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
-let accessToken = null;
-
 // 공통 fetch 로직
 async function baseFetch(url, options = {}) {
   const response = await fetch(BASE_URL + url, {
@@ -22,19 +20,29 @@ async function baseFetch(url, options = {}) {
     };
   }
 
+  console.log('[fetchClient] set-cookie:', response.headers.get('set-cookie'));
   const text = await response.text();
   return text ? JSON.parse(text) : {};
 }
 
 // 인증 필요한 fetch
 async function authFetch(url, options = {}) {
+  if (typeof window === 'undefined') {
+    const { cookies } = await import('next/headers');
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.getAll().map((c) => `${c.name}=${c.value}`).join('; ');
+    return baseFetch(url, {
+      ...options,
+      headers: {
+        Cookie: cookieHeader,
+        ...options.headers,
+      },
+    });
+  }
+
   return baseFetch(url, {
     ...options,
     credentials: 'include',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      ...options.headers,
-    },
   });
 }
 
@@ -70,7 +78,3 @@ export const publicApi = {
       body: data ? JSON.stringify(data) : undefined,
     }),
 };
-// 로그인 성공시
-export function setAccessToken(token) {
-  accessToken = token;
-}
