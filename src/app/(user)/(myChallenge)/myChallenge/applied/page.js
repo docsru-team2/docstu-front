@@ -1,20 +1,40 @@
-import ChallengeApplied from '@/components/Challenge/ChallengeApplied/ChallengeApplied';
+import { MyChallengeApplied } from '@/components/MyChallenge/MyChallengeApplied';
+import { fetchMyChallengesApplied } from '@/lib/api/myChallengeApi';
+import { setAccessToken } from '@/lib/fetchClient';
 import mockData from '@/mocks/my-applications.json';
-export default function appliedPage({ searchParams }) {
-  //api 연결
-  //const page = Number(searchParams.page) || 1;
-  //const pageSize = Number(searchParams.pageSize) || 10;
-  //const sort = searchParams.sort || 'CREATED_DESC';
-  //const reviewStatus = searchParams.reviewStatus || '';
-  //const data = await ...
+import { cookies } from 'next/headers';
+export default async function AppliedPage({ searchParams }) {
+  const {
+    page = '1',
+    pageSize = '10',
+    reviewStatus = '',
+    sort = '',
+    keyword = '',
+  } = await searchParams;
 
-  const page = Number(searchParams.page) || 1;
-  const pageSize = 10;
-  const start = (page - 1) * pageSize;
-  const end = start + pageSize;
+  const pageNum = Number(page);
+  const pageSizeNum = Number(pageSize);
 
-  const pagedItems = mockData.data.items.slice(start, end);
-  const totalcount = mockData.data.pagination.totalCount;
+  // const cookieStore = await cookies()
+  // const token = cookieStore.get('accessToken')?.value;
+  // if (token) {
+  //   setAccessToken(token);
+  // }
 
-  return <ChallengeApplied items={pagedItems} totalCount={totalcount} />;
+  setAccessToken(
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMUtNUFJXVE1FMEczS1pFSE02WTJOQUExRCIsIm5pY2tuYW1lIjoidXNlcjMwIiwidXNlclR5cGUiOiJVU0VSIiwiaWF0IjoxNzc0ODAzNTc3LCJleHAiOjE3NzQ4ODk5Nzd9.SOSQftr3evLoiBZha8pY0Z6sdUhNDkIfUCZnV8Lwt8Q',
+  );
+
+  const data = await fetchMyChallengesApplied({
+    page : pageNum,
+    limit: pageSizeNum,
+    reviewStatus,
+    keyword,
+    sort,
+  });
+
+  const items = data.list;
+  const totalCount = data.pagination.totalCount;
+
+  return <MyChallengeApplied items={items} totalCount={totalCount} />;
 }
