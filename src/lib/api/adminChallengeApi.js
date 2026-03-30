@@ -8,7 +8,7 @@ const PAGE_SIZE = 5;
 export const fetchAdminChallenges = async ({
   page = 1,
   pageSize = PAGE_SIZE,
-  viewType = 'MANAGE', //전체 조회
+  viewType = 'MANAGE', 
   keyword,
   reviewStatus,
   field,
@@ -67,6 +67,24 @@ export const updateChallenge = async (challengeId, data) => {
 export const deleteChallenge = async (challengeId, deleteReason) => {
   return api.patch(`/admin/challenges/${challengeId}/delete`, { deleteReason });
 };
+
+
+// ── 작업물 관련 ──
+ 
+// 작업물 상세 조회 (유저 API - 어드민도 사용)
+// GET /submissions/:submissionId
+// todo: [BE 대기] submission controller 아직 비어있음
+export const fetchSubmissionDetail = async (submissionId) => {
+  return api.get(`/submissions/${submissionId}`);
+};
+ 
+// 작업물 피드백 목록 조회 (유저 API - 어드민도 사용)
+// GET /submissions/:submissionId/feedbacks
+// todo: [BE 대기] submission controller 아직 비어있음
+export const fetchSubmissionFeedbacks = async (submissionId) => {
+  return api.get(`/submissions/${submissionId}/feedbacks`);
+};
+
 
 // 어드민 작업물 수정
 // PATCH /admin/submissions/:submissionId
