@@ -17,3 +17,7 @@ export const cardList = style({
     },
   },
 });
+
+export const observerTrigger = style({
+  height: '50px'
+})

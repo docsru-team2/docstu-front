@@ -6,18 +6,22 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import * as styles from './MyChallengeList.css';
 import Link from 'next/link';
-import { fetchMyChallengesCompleted, fetchMyChallengesOngoing } from '@/lib/api/myChallengeApi';
+import {
+  fetchMyChallengesCompleted,
+  fetchMyChallengesOngoing,
+} from '@/lib/api/myChallengeApi';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function MyChallengeList({ initialData, queryKey, type }) {
   const searchParams = useSearchParams();
-  const router = useRouter();
-  const fetchFunction =
-    type === 'ongoing' ? fetchMyChallengesOngoing : fetchMyChallengesCompleted;
+  // const router = useRouter();
   const observerRef = useRef(null);
 
   const keyword = searchParams.get('keyword') || '';
-  //const keyword = '';
+
+  const fetchFunction =
+    type === 'ongoing' ? fetchMyChallengesOngoing : fetchMyChallengesCompleted;
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
       queryKey: [queryKey, keyword],
@@ -72,7 +76,7 @@ export default function MyChallengeList({ initialData, queryKey, type }) {
           </div>
         ))}
       </div>
-      <div ref={observerRef} style={{ height: '50px' }} />
+      <div ref={observerRef} className={styles.observerTrigger} />
 
       {isFetchingNextPage && <p>Loading...</p>}
     </div>
