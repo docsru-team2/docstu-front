@@ -6,9 +6,12 @@ import SearchBar from '@/components/Common/SearchBar/SearchBar.jsx';
 import ChallengeCard from '@/components/Challenge/ChallengeCard/ChallengeCard.jsx';
 import mockData from '@/mocks/challenge-list.json';
 import PaginationBar from '@/components/Common/PaginationBar/PaginationBar.jsx';
+import { api } from '@/lib/fetchClient.js';
 
-export default function ChallengeList() {
+export default async function ChallengeList() {
   const challenges = mockData.data.list;
+  const res = await api.get('/challenges');
+  console.log(res, 'zzzzz');
 
   return (
     <div className={styles.wrapper}>
