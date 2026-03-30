@@ -2,13 +2,18 @@
 
 import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import mockSubmission from '@/mocks/submission-detail.json';
-import mockFeedback from '@/mocks/feedback.json';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
+  fetchSubmissionDetail,
+  fetchSubmissionFeedbacks,
   deleteSubmission,
   deleteFeedback,
 } from '@/lib/api/adminChallengeApi.js';
+import { formatDate } from '@/utils/dateUtils';
+import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown.jsx';
 import { ConfirmModal } from '@/components/Common/Modal';
+
+import * as styles from './page.css.js';
 
 const MODAL_MODE = {
   CLOSED: null,
@@ -19,120 +24,144 @@ const MODAL_MODE = {
 export default function AdminSubmissionDetailPage() {
   const { challengeId, submissionId } = useParams();
   const router = useRouter();
+  const queryClient = useQueryClient();
 
-  // todo: [로그인 토큰 연결 후] mock 제거 → 실제 API 호출로 교체
-  // GET /submissions/:submissionId + useSuspenseQuery
-  // GET /submissions/:submissionId/feedbacks + useSuspenseQuery
-  const submission = mockSubmission.data;
-  const feedbacks = mockFeedback.data.list;
+  // 작업물 상세 조회
+  // todo: [BE 대기] GET /submissions/:submissionId - submission controller 구현 필요
+  const { data: submission, isLoading: isSubmissionLoading } = useQuery({
+    queryKey: ['submissionDetail', submissionId],
+    queryFn: () => fetchSubmissionDetail(submissionId),
+  });
+
+  // 피드백 목록 조회
+  // todo: [BE 대기] GET /submissions/:submissionId/feedbacks - submission controller 구현 필요
+  const { data: feedbackData, isLoading: isFeedbackLoading } = useQuery({
+    queryKey: ['submissionFeedbacks', submissionId],
+    queryFn: () => fetchSubmissionFeedbacks(submissionId),
+  });
+
+  const feedbacks = feedbackData?.list ?? [];
 
   const [modalMode, setModalMode] = useState(MODAL_MODE.CLOSED);
   const [selectedFeedbackId, setSelectedFeedbackId] = useState(null);
-  const [openFeedbackMenuId, setOpenFeedbackMenuId] = useState(null);
 
-  // 작업물 삭제 
+  // 작업물 삭제 - PATCH /admin/submissions/:id/delete
   // 사유 없이 삭제 — BE에서 작성자에게 "관리자에 의해 삭제" 알림 발송
-  const handleDeleteSubmission = async () => {
-    try {
-      await deleteSubmission(submissionId);
-      // todo: [로그인 토큰 연결 후] useMutation + onSuccess에서 챌린지 상세로 이동
+  const deleteSubmissionMutation = useMutation({
+    mutationFn: () => deleteSubmission(submissionId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['submissionDetail'] });
       router.push(`/admin/challengesList/${challengeId}`);
-    } catch (error) {
+    },
+    onError: (error) => {
       console.error('작업물 삭제 실패:', error);
-    }
-    setModalMode(MODAL_MODE.CLOSED);
-  };
+    },
+  });
 
-  // 피드백 - 메뉴 토글
-  const handleFeedbackMenuToggle = (feedbackId) => {
-    setOpenFeedbackMenuId((prev) =>
-      prev === feedbackId ? null : feedbackId,
-    );
-  };
-
-  // 피드백 삭제 - 모달 열기 
-  const handleDeleteFeedbackClick = (feedbackId) => {
-    setSelectedFeedbackId(feedbackId);
-    setOpenFeedbackMenuId(null);
-    setModalMode(MODAL_MODE.DELETE_FEEDBACK);
-  };
-
-  // 피드백 삭제 확인
+  // 피드백 삭제 - DELETE /admin/feedbacks/:feedbackId
   // 사유 없이 삭제 — BE에서 작성자에게 "관리자에 의해 삭제" 알림 발송
-  const handleDeleteFeedback = async () => {
-    try {
-      await deleteFeedback(selectedFeedbackId);
-      // todo: [로그인 토큰 연결 후] useMutation + invalidateQueries
-    } catch (error) {
+  const deleteFeedbackMutation = useMutation({
+    mutationFn: (feedbackId) => deleteFeedback(feedbackId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['submissionFeedbacks', submissionId] });
+      setModalMode(MODAL_MODE.CLOSED);
+      setSelectedFeedbackId(null);
+    },
+    onError: (error) => {
       console.error('피드백 삭제 실패:', error);
-    }
-    setModalMode(MODAL_MODE.CLOSED);
-    setSelectedFeedbackId(null);
-  };
+    },
+  });
 
+  // 작업물 드롭다운 메뉴 - 수정하기 / 삭제하기
+  const submissionMenuItems = [
+    {
+      key: 'edit',
+      label: '수정하기',
+      action: () =>
+        router.push(
+          `/admin/challengesList/${challengeId}/submissions/${submissionId}/edit`,
+        ),
+    },
+    {
+      key: 'delete',
+      label: '삭제하기',
+      action: () => setModalMode(MODAL_MODE.DELETE_SUBMISSION),
+    },
+  ];
+
+  // 피드백 드롭다운 메뉴 - 삭제하기만
+  const getFeedbackMenuItems = (feedbackId) => [
+    {
+      key: 'delete',
+      label: '삭제하기',
+      action: () => {
+        setSelectedFeedbackId(feedbackId);
+        setModalMode(MODAL_MODE.DELETE_FEEDBACK);
+      },
+    },
+  ];
+
+  // 모달 닫기 + 상태 초기화
   const handleModalClose = () => {
     setModalMode(MODAL_MODE.CLOSED);
     setSelectedFeedbackId(null);
   };
 
+  if (isSubmissionLoading || !submission) return <div>로딩 중...</div>;
+
   return (
     <>
+      {/* 작업물 헤더 - 제목 + 드롭다운 메뉴 */}
       {/* todo: 작업물 정보 공통 컴포넌트로 교체 */}
+      <div>
+        <h1>{submission.title}</h1>
+        <SimpleDropdown items={submissionMenuItems} />
+      </div>
 
-      {/* 작업물 ⋮ 메뉴 - 어드민 전용 */}
-      {/* todo: 드롭다운 공통 컴포넌트로 교체 */}
-      <button
-        onClick={() =>
-          router.push(
-            `/admin/challengesList/${challengeId}/submissions/${submissionId}/edit`,
-          )
-        }
-      >
-        수정하기
-      </button>
-      <button onClick={() => setModalMode(MODAL_MODE.DELETE_SUBMISSION)}>
-        삭제하기
-      </button>
+      {/* 작성자 + 날짜 */}
+      <div>
+        <span>{submission.user?.nickname}</span>
+        <span>{formatDate(submission.createdAt)}</span>
+      </div>
 
-      {/* todo: 피드백 입력 공통 컴포넌트로 교체 */}
+      {/* 작업물 본문 */}
+      {/* todo: 마크다운 교체 */}
+      <div>{submission.content}</div>
 
       {/* 피드백 목록 */}
-      {feedbacks.map((feedback) => (
-        <div key={feedback.id}>
-          {/* todo: 피드백 아이템 공통 컴포넌트로 교체 */}
-          <span>{feedback.author?.nickname}</span>
-          <span>{feedback.content}</span>
-
-          <button onClick={() => handleFeedbackMenuToggle(feedback.id)}>
-            ⋮
-          </button>
-          {openFeedbackMenuId === feedback.id && (
+      {isFeedbackLoading ? (
+        <div>피드백 로딩 중...</div>
+      ) : (
+        feedbacks.map((feedback) => (
+          <div key={feedback.id}>
+            {/* todo: 피드백 아이템 공통 컴포넌트로 교체 */}
             <div>
-              <button onClick={() => handleDeleteFeedbackClick(feedback.id)}>
-                삭제하기
-              </button>
+              <span>{feedback.author?.nickname}</span>
+              <span>{formatDate(feedback.createdAt)}</span>
+              <SimpleDropdown items={getFeedbackMenuItems(feedback.id)} />
             </div>
-          )}
-        </div>
-      ))}
+            <p>{feedback.content}</p>
+          </div>
+        ))
+      )}
 
-      {/* todo: "더 보기" — hasNext 기반 피드백 추가 로드 */}
+      {/* todo: "더 보기" - hasNext 기반 피드백 추가 로드 */}
 
-      {/* 작업물 삭제 확인 모달 — 사유 없음, BE에서 알림 발송 */}
+      {/* 작업물 삭제 확인 모달 - 사유 없음, BE에서 알림 발송 */}
       {modalMode === MODAL_MODE.DELETE_SUBMISSION ? (
         <ConfirmModal
           message="작업물을 삭제하시겠습니까?"
-          onConfirm={handleDeleteSubmission}
+          onConfirm={() => deleteSubmissionMutation.mutate()}
           onClose={handleModalClose}
           singleButton={false}
         />
       ) : null}
 
-      {/* 피드백 삭제 확인 모달 — 사유 없음, BE에서 알림 발송 */}
+      {/* 피드백 삭제 확인 모달 - 사유 없음, BE에서 알림 발송 */}
       {modalMode === MODAL_MODE.DELETE_FEEDBACK ? (
         <ConfirmModal
           message="피드백을 삭제하시겠습니까?"
-          onConfirm={handleDeleteFeedback}
+          onConfirm={() => deleteFeedbackMutation.mutate(selectedFeedbackId)}
           onClose={handleModalClose}
           singleButton={false}
         />
