@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
@@ -34,17 +34,18 @@ export default function AdminChallengeEditPage() {
   // 현재 참여인원 - 최대인원 유효성 검사에 사용(현재 참여자보다 작게 설정 불가)
   const [currentParticipants, setCurrentParticipants] = useState(0);
 
+  // 데이터 로드 후 한 번만 초기값 설정(무한루프 방지)
+  const [isInitialized, setIsInitialized] = useState(false);
+
+
   // GET /admin/challenges/:challengeId
   const { data: challenge, isLoading } = useQuery({
     queryKey: ['adminChallengeDetail', challengeId],
     queryFn: () => fetchAdminChallengeDetail(challengeId),
   });
 
-  // API 데이터 로드 후 폼 초기값 설정
-  useEffect(() => {
-    if (!challenge) {
-      return;
-    }
+  // API 데이터 로드 후 폼 초기값 설정 - 한 번만 실행
+  if (challenge && !isInitialized) {
     setForm({
       title: challenge.title ?? '',
       sourceUrl: challenge.sourceUrl ?? '',
@@ -59,7 +60,8 @@ export default function AdminChallengeEditPage() {
     setCurrentParticipants(
       challenge.currentParticipants ?? challenge._count?.participants ?? 0,
     );
-  }, [challenge]);
+    setIsInitialized(true);
+  }
 
   // 챌린지 수정 — PATCH /admin/challenges/:challengeId
   const updateMutation = useMutation({
