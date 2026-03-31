@@ -11,10 +11,16 @@ import { cardContainer } from './ChallengeCard.css';
 import * as styles from './ChallengeCard.css';
 import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Button } from '@/components/Common/Button';
+import arrow from '@public/img/arrow/btnArrowRight.svg';
+import documentIcon from '@public/img/btn/document.svg';
 
-export default function ChallengeCard({ data }) {
+export default function ChallengeCard({ data, onEdit, onDelete }) {
   const pathname = usePathname();
   const isAdmin = pathname.includes('/admin');
+  const isOngoing = pathname.includes('/myChallenge/ongoing');
+  const isCompleted = pathname.includes('/myChallenge/completed');
 
   if (!data) return null;
 
@@ -32,12 +38,12 @@ export default function ChallengeCard({ data }) {
   const isClosedExpired = new Date() > new Date(deadline);
 
   const menuItems = [
-    { key: 'edit', label: '수정하기', action: () => console.log('수정', id) },
-    { key: 'delete', label: '삭제하기', action: () => console.log('삭제', id) },
+    { key: 'edit', label: '수정하기', action: () => onEdit?.(id) },
+    { key: 'delete', label: '삭제하기', action: () => onDelete?.(data) },
   ];
 
   return (
-    <div className={cardContainer}>
+    <Link className={cardContainer} href="/challenge/apply">
       <div>
         {isClosedExpired ? (
           <div style={{ marginBottom: '12px' }}>
@@ -60,7 +66,13 @@ export default function ChallengeCard({ data }) {
         ) : null}
       </div>
       {isAdmin && (
-        <div className={styles.menu}>
+        <div
+          className={styles.menu}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+        >
           <SimpleDropdown items={menuItems} />
         </div>
       )}
@@ -88,9 +100,34 @@ export default function ChallengeCard({ data }) {
             {currentParticipants} / {maxParticipants} 참여중
           </div>
         </div>
-        <div>zz</div>
-        {/* 도전 계속하기 / 내 작업물 보기 버튼 추가 */}
+        {isOngoing && (
+          <div className={styles.btnWrapper}>
+            <Button
+              roundBtn
+              size="sm"
+              color="secondary"
+              hasIcon={arrow}
+              fontSize
+            >
+              도전 계속하기
+            </Button>
+          </div>
+        )}
+
+        {isCompleted && (
+          <div className={styles.btnWrapper}>
+            <Button
+              roundBtn
+              size="sm"
+              color="opacity"
+              hasIcon={documentIcon}
+              fontSize
+            >
+              내 작업물 보기
+            </Button>
+          </div>
+        )}
       </div>
-    </div>
+    </Link>
   );
 }

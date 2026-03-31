@@ -68,7 +68,7 @@ export default function MyChallengeList({ initialData, queryKey, type }) {
       </div>
       <div className={styles.cardList}>
         {allItems.map((challenge) => (
-          <div key={challenge.id} className={styles.cardItem}>
+          <div key={challenge.id}>
             <Link href={`/challengeList/${challenge.id}`}>
               <ChallengeCard data={challenge} />
             </Link>
