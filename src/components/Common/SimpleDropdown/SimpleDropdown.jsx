@@ -6,11 +6,20 @@ import * as styles from './SimpleDropdown.css';
 import { useSimpleDropdown } from '@/lib/hooks/useSimpleDropdown';
 
 export default function SimpleDropdown({ items = [], paramName }) {
-  const { isOpen, isFilterMode, dropdownRef, selectedLabel, handleToggle, handleClick } =
-    useSimpleDropdown({ items, paramName });
+  const {
+    isOpen,
+    isFilterMode,
+    dropdownRef,
+    selectedLabel,
+    handleToggle,
+    handleClick,
+  } = useSimpleDropdown({ items, paramName });
 
   return (
-    <div ref={dropdownRef} className={isFilterMode ? styles.filterWrapper : styles.menuWrapper}>
+    <div
+      ref={dropdownRef}
+      className={isFilterMode ? styles.filterWrapper : styles.menuWrapper}
+    >
       {isFilterMode ? (
         <button
           type="button"

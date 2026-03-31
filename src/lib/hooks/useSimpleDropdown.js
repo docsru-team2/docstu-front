@@ -25,7 +25,8 @@ export function useSimpleDropdown({ items = [], paramName } = {}) {
       const params = new URLSearchParams(searchParams);
       if (item.value) params.set(paramName, item.value);
       else params.delete(paramName);
-      router.push(`?${params.toString()}`);
+      params.set('page', '1');
+      router.replace(`?${params.toString()}`);
     } else {
       item.action?.();
     }

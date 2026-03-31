@@ -18,7 +18,7 @@ export const fetchMyChallengesOngoing = async ({
 
   params.set('progressStatus', 'OPEN');
 
-  return api.get(`/challenges/me/ongoing?${params}`);
+  return api.get(`/challenges/joined?${params}`);
 };
 
 //내가 완료한 목록조회
@@ -36,7 +36,7 @@ export const fetchMyChallengesCompleted = async ({
 
   params.set('progressStatus', 'CLOSED');
 
-  return api.get(`/challenges/me/completed?${params}`);
+  return api.get(`/challenges/joined?${params}`);
 };
 
 //내가 신청한 목록조회
@@ -46,15 +46,13 @@ export const fetchMyChallengesApplied = async ({
   limit = PAGE_SIZE,
   reviewStatus,
   keyword,
+  orderBy,
 }) => {
   const params = new URLSearchParams({ page, limit });
 
-  if (keyword) {
-    params.set('keyword', keyword);
-  }
-  if (reviewStatus) {
-    params.set(`reviewStatus`, reviewStatus);
-  }
+  if (keyword) params.set('keyword', keyword);
+  if (reviewStatus) params.set('reviewStatus', reviewStatus);
+  if (orderBy) params.set('orderBy', orderBy);
 
   return api.get(`/challenges/me/applied?${params}`, { cache: 'no-store' });
 };

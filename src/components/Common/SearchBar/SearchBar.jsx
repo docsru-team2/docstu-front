@@ -23,7 +23,7 @@ export default function SearchBar() {
     }
 
     params.set('page', '1');
-    router.push(`?${params.toString()}`);
+    router.replace(`?${params.toString()}`);
   };
 
   return (

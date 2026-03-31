@@ -5,7 +5,6 @@ import { SearchBar } from '@/components/Common/SearchBar';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import * as styles from './MyChallengeList.css';
-import Link from 'next/link';
 import {
   fetchMyChallengesCompleted,
   fetchMyChallengesOngoing,
@@ -69,9 +68,7 @@ export default function MyChallengeList({ initialData, queryKey, type }) {
       <div className={styles.cardList}>
         {allItems.map((challenge) => (
           <div key={challenge.id}>
-            <Link href={`/challengeList/${challenge.id}`}>
-              <ChallengeCard data={challenge} />
-            </Link>
+            <ChallengeCard data={challenge} />
           </div>
         ))}
       </div>

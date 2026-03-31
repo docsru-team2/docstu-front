@@ -19,6 +19,7 @@ export default function MyChallengeApplied({ items, totalCount }) {
     { key: 'deadlineDESC', label: '마감 기한 느린순', value: 'DEADLINE_DESC' },
   ];
   const filterItems = [
+    { key: 'all', label: '전체', value: '' },
     { key: 'pending', label: '승인 대기', value: 'PENDING' },
     { key: 'approved', label: '신청 승인', value: 'APPROVED' },
     { key: 'rejected', label: '신청 거절', value: 'REJECTED' },
@@ -30,7 +31,7 @@ export default function MyChallengeApplied({ items, totalCount }) {
         <SearchBar />
         <div className={styles.dropDownContainer}>
           <SimpleDropdown items={filterItems} paramName="reviewStatus" />
-          <SimpleDropdown items={sortItems} paramName="sort" />
+          <SimpleDropdown items={sortItems} paramName="orderBy" />
         </div>
       </div>
       {/* 드롭다운 */}

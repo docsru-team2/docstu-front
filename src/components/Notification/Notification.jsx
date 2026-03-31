@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 import { useNotification } from '@/lib/hooks/useNotification';
 import bell from '@public/img/header/bell.svg';
 import Image from 'next/image';
@@ -42,6 +42,18 @@ export default function Notification() {
 
 
   const [open, setOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    if (open) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [open]);
+
   const handleList = () => {
     setOpen(!open);
   };
@@ -64,7 +76,7 @@ export default function Notification() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={containerRef}>
       <div onClick={handleList}>
         <Image src={bell} alt="bell" />
         {unreadCount > 0 && <div className={styles.unreadCount}>N</div>}

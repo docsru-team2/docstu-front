@@ -8,7 +8,7 @@ export default async function AppliedPage({ searchParams }) {
     page = '1',
     pageSize = '10',
     reviewStatus = '',
-    sort = '',
+    orderBy = '',
     keyword = '',
   } = await searchParams;
 
@@ -20,7 +20,7 @@ export default async function AppliedPage({ searchParams }) {
     limit: pageSizeNum,
     reviewStatus,
     keyword,
-    sort,
+    orderBy,
   });
 
   const items = data.list;
