@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Image from 'next/image';
 import * as styles from './Modal.css.js';
 import closeIcon from '@public/img/btn/closeIcon.svg';
@@ -8,6 +9,10 @@ import checkIcon from '@public/img/checkIcon.svg';
 import { formatDate } from '@/utils/dateUtils.js';
 
 export function Modal({ children, onClose }) {
+  useEffect(() => {
+    document.documentElement.style.overflow = 'hidden';
+    return () => { document.documentElement.style.overflow = ''; };
+  }, []);
   const preventOverlayClick = (event) => {
     event.stopPropagation();
   };
@@ -115,7 +120,7 @@ export function LoadDraftsModal({ data, onClose, onSelectDraft }) {
         <ul className={styles.draftsList}>
           <span className={styles.draftsCount}>총 {data.length}개</span>
           {data.map((draft) => (
-            <li key={draft.id} className={styles.draft}>
+            <li key={draft.id}>
               <button
                 type="button"
                 onClick={() => handleSelectDraft(draft)}

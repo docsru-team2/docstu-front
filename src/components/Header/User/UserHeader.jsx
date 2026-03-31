@@ -15,7 +15,7 @@ export default async function UserHeader() {
     <header className={styles.wrapper}>
       <div className={styles.inner}>
         <Link href={'/challenge/list'}>
-          <Image src={headerLogo} alt="headerLogo" className={styles.logo} />
+          <Image src={headerLogo} alt="headerLogo" className={styles.logo} priority />
         </Link>
 
         {isLoggedIn ? (
