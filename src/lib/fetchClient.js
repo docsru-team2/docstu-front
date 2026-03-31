@@ -1,6 +1,7 @@
-const BASE_URL = typeof window !== 'undefined'
-  ? '/api'
-  : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+export const BASE_URL =
+  typeof window !== 'undefined'
+    ? '/api'
+    : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
 let accessToken = null;
 
