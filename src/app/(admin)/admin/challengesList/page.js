@@ -120,13 +120,12 @@ export default function AdminChallengesList() {
       ) : (
         <div className={styles.cardList}>
           {challenges.map((challenge) => (
-            <div key={challenge.id} className={styles.cardWrapper}>
               <ChallengeCard
+                key={challenge.id}
                 data={challenge}
                 onEdit={handleEditClick}
                 onDelete={handleDeleteClick}
               />
-            </div>
           ))}
         </div>
       )}
