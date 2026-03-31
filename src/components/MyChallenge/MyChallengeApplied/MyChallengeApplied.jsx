@@ -1,3 +1,5 @@
+'use client';
+
 import { ChallengeTable } from '@/components/Challenge/ChallengeTable';
 import { PaginationBar } from '@/components/Common/PaginationBar';
 import { SearchBar } from '@/components/Common/SearchBar';
