@@ -61,7 +61,7 @@ export const filterDropdown = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  width: '138px',
+  width: '142px',
   backgroundColor: vars.color.white,
   border: `1px solid ${vars.color.gray200}`,
   borderRadius: '8px',

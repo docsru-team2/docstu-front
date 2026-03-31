@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import * as styles from './AdminHeader.css';
 import headerLogo from '@public/img/logo/headerLogo.svg';
-import adminProfile from '@public/img/header/admin.svg';
 import AdminNav from './AdminNav';
 import Link from 'next/link';
+import { api } from '@/lib/fetchClient.js';
+import UserInfo from '@/components/UserInfo/UserInfo';
 
-export default function AdminHeader() {
+export default async function AdminHeader() {
+  const userData = await api.get('/auth/me');
   return (
     <header className={styles.wrapper}>
       <div className={styles.inner}>
@@ -15,7 +17,8 @@ export default function AdminHeader() {
           </Link>
           <AdminNav />
         </div>
-        <Image src={adminProfile} alt="adminProfile" />
+
+        <UserInfo userData={userData} />
       </div>
     </header>
   );
