@@ -11,7 +11,7 @@ export default function AdminHeader() {
       <div className={styles.inner}>
         <div className={styles.navGroup}>
           <Link href={'/admin/challengesSettings'}>
-            <Image src={headerLogo} alt="headerLogo" />
+            <Image src={headerLogo} alt="headerLogo" priority />
           </Link>
           <AdminNav />
         </div>

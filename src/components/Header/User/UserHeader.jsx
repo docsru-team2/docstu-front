@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import * as styles from './UserHeader.css.js';
 import headerLogo from '@public/img/logo/headerLogo.svg';
-import bell from '@public/img/header/bell.svg';
 import userProfile from '@public/img/header/user.svg';
 import Link from 'next/link.js';
 import Button from '@/components/Common/Button/Button.jsx';
+import Notification from '@/components/Notification/Notification.jsx';
 import { cookies } from 'next/headers';
 
 export default async function UserHeader() {
@@ -15,12 +15,12 @@ export default async function UserHeader() {
     <header className={styles.wrapper}>
       <div className={styles.inner}>
         <Link href={'/challenge/list'}>
-          <Image src={headerLogo} alt="headerLogo" className={styles.logo} />
+          <Image src={headerLogo} alt="headerLogo" className={styles.logo} priority />
         </Link>
 
         {isLoggedIn ? (
           <div className={styles.loginProfieGroup}>
-            <Image src={bell} alt="bell" />
+            <Notification />
             <Image src={userProfile} alt="userProfile" />
           </div>
         ) : (

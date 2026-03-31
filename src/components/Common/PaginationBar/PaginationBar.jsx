@@ -14,7 +14,7 @@ export default function PaginationBar({ totalCount }) {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get('page') ?? 1);
   const totalPages = Math.ceil(totalCount / 10);
-
+  if (totalCount <= 10) return null;
   const setPage = (p) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', p);
@@ -43,7 +43,10 @@ export default function PaginationBar({ totalCount }) {
         disabled={page === 1}
         className={styles.paginationArrowButton}
       >
-        <Image src={page > 1 ? arrowLeftActive : arrowLeftInactive} alt="이전" />
+        <Image
+          src={page > 1 ? arrowLeftActive : arrowLeftInactive}
+          alt="이전"
+        />
       </button>
 
       <div className={styles.numberButtons}>
@@ -66,7 +69,10 @@ export default function PaginationBar({ totalCount }) {
         disabled={page === totalPages}
         className={styles.paginationArrowButton}
       >
-        <Image src={page < totalPages ? arrowRightActive : arrowRightInactive} alt="다음" />
+        <Image
+          src={page < totalPages ? arrowRightActive : arrowRightInactive}
+          alt="다음"
+        />
       </button>
     </div>
   );

@@ -1,11 +1,21 @@
 import { MyChallengeList } from '@/components/MyChallenge/MyChallengeList';
-import mockData from '@/mocks/my-ongoing-challenges.json';
+import { fetchMyChallengesOngoing } from '@/lib/api/myChallengeApi';
 
-export default function ongoingPage() {
-  // const initialData = await fetchData({ pageParam: 1 });
+export default async function ongoingPage({ searchParams }) {
+  const { page = '1', pageSize = '10', keyword = '' } = await searchParams;
 
-  const list = mockData.data.list
-  const hasNext = mockData.data.pagination.hasNext
+  const data = await fetchMyChallengesOngoing({
+    page: Number(page),
+    limit: Number(pageSize),
+    keyword,
+  });
+
   // Api 연결하기
-  return <MyChallengeList list={list} hasNext={hasNext} />;
+  return (
+    <MyChallengeList
+      initialData={data}
+      type="ongoing"
+      queryKey="ongoingChallenges"
+    />
+  );
 }

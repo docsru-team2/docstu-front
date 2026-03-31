@@ -47,7 +47,7 @@ export const divider = style({
   width: '100%',
   height: '1px',
   backgroundColor: vars.color.gray200,
-  margin: '12px 0',
+  margin: '16px 0',
 });
 
 export const currentStatusContainer = style({
@@ -80,4 +80,8 @@ export const currentStatus = style({
   fontSize: vars.font.size.sm,
   fontWeight: vars.font.weight.regular,
   color: vars.color.gray600,
+});
+
+export const btnWrapper = style({
+  width: '132px',
 });

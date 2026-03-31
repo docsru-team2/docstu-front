@@ -6,12 +6,16 @@ import SearchBar from '@/components/Common/SearchBar/SearchBar.jsx';
 import ChallengeCard from '@/components/Challenge/ChallengeCard/ChallengeCard.jsx';
 import mockData from '@/mocks/challenge-list.json';
 import PaginationBar from '@/components/Common/PaginationBar/PaginationBar.jsx';
-import { api } from '@/lib/fetchClient.js';
+import { fetchChallenges } from '@/lib/api/challengeApi.js';
 
-export default async function ChallengeList() {
-  const challenges = mockData.data.list;
-  const res = await api.get('/challenges');
-  console.log(res, 'zzzzz');
+export default async function ChallengeList({ searchParams }) {
+  const resolvedParams = await searchParams;
+  const page = resolvedParams?.page ?? 1;
+  const fields = resolvedParams?.field ? [resolvedParams.field].flat() : [];
+  const documentType = resolvedParams?.documentType ?? '';
+  const progressStatus = resolvedParams?.progressStatus ?? '';
+  const keyword = resolvedParams?.keyword ?? '';
+  const challenges = await fetchChallenges({ page, fields, documentType, progressStatus, keyword });
 
   return (
     <div className={styles.wrapper}>
@@ -28,13 +32,13 @@ export default async function ChallengeList() {
         <SearchBar />
       </div>
       <div className={styles.cardWrapper}>
-        {challenges.map((item) => (
+        {challenges.list.map((item) => (
           <div key={item.id} className={styles.cardItem}>
             <ChallengeCard data={item} />
           </div>
         ))}
       </div>
-      <PaginationBar totalCount={128} />
+      <PaginationBar totalCount={challenges.pagination.totalCount} />
     </div>
   );
 }

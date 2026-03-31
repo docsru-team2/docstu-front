@@ -15,7 +15,7 @@ export default function TabMenu() {
         <div className={styles.titleContainer}>
           <div className={styles.titleText}>나의 챌린지</div>
           <div className={styles.btnGroup}>
-            <Button size="md" roundBtn hasIcon={pluse}>
+            <Button size="md" roundBtn hasIcon={pluse} href="/challenge/apply">
               신규 챌린지 신청
             </Button>
           </div>

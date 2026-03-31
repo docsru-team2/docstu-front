@@ -10,9 +10,9 @@ const defaultValues = {
   maxParticipants: '',
 };
 
-export function useChallengeForm(initialData) {
+export function useChallengeForm(initialData, onFieldChange) {
   const [formData, setFormData] = useState(initialData ?? defaultValues);
-  console.log(formData);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     const parsed =
@@ -20,15 +20,19 @@ export function useChallengeForm(initialData) {
         ? value.replace(/\D/g, '').replace(/^0+/, '')
         : value;
     setFormData((prev) => ({ ...prev, [name]: parsed }));
+    onFieldChange?.({ name, value: parsed });
   };
 
   const handleSelect = ({ name, value }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+    onFieldChange?.({ name, value });
   };
 
   const handleDateChange = (date) => {
     date.setHours(23, 59, 59, 0);
-    setFormData((prev) => ({ ...prev, deadline: date.toISOString() }));
+    const iso = date.toISOString();
+    setFormData((prev) => ({ ...prev, deadline: iso }));
+    onFieldChange?.({ name: 'deadline', value: iso });
   };
 
   return {

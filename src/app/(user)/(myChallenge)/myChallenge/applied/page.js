@@ -1,20 +1,30 @@
-import ChallengeApplied from '@/components/Challenge/ChallengeApplied/ChallengeApplied';
-import mockData from '@/mocks/my-applications.json';
-export default function appliedPage({ searchParams }) {
-  //api 연결
-  //const page = Number(searchParams.page) || 1;
-  //const pageSize = Number(searchParams.pageSize) || 10;
-  //const sort = searchParams.sort || 'CREATED_DESC';
-  //const reviewStatus = searchParams.reviewStatus || '';
-  //const data = await ...
+import { MyChallengeApplied } from '@/components/MyChallenge/MyChallengeApplied';
+import { fetchMyChallengesApplied } from '@/lib/api/myChallengeApi';
 
-  const page = Number(searchParams.page) || 1;
-  const pageSize = 10;
-  const start = (page - 1) * pageSize;
-  const end = start + pageSize;
 
-  const pagedItems = mockData.data.items.slice(start, end);
-  const totalcount = mockData.data.pagination.totalCount;
+export default async function AppliedPage({ searchParams }) {
 
-  return <ChallengeApplied items={pagedItems} totalCount={totalcount} />;
+  const {
+    page = '1',
+    pageSize = '10',
+    reviewStatus = '',
+    sort = '',
+    keyword = '',
+  } = await searchParams;
+
+  const pageNum = Number(page);
+  const pageSizeNum = Number(pageSize);
+
+  const data = await fetchMyChallengesApplied({
+    page: pageNum,
+    limit: pageSizeNum,
+    reviewStatus,
+    keyword,
+    sort,
+  });
+
+  const items = data.list;
+  const totalCount = data.pagination.totalCount;
+
+  return <MyChallengeApplied items={items} totalCount={totalCount} />;
 }
