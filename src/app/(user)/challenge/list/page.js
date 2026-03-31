@@ -6,20 +6,16 @@ import SearchBar from '@/components/Common/SearchBar/SearchBar.jsx';
 import ChallengeCard from '@/components/Challenge/ChallengeCard/ChallengeCard.jsx';
 import mockData from '@/mocks/challenge-list.json';
 import PaginationBar from '@/components/Common/PaginationBar/PaginationBar.jsx';
-import { api } from '@/lib/fetchClient.js';
+import { fetchChallenges } from '@/lib/api/challengeApi.js';
 
 export default async function ChallengeList({ searchParams }) {
   const resolvedParams = await searchParams;
   const page = resolvedParams?.page ?? 1;
   const fields = resolvedParams?.field ? [resolvedParams.field].flat() : [];
-  const fieldQuery = fields.map((f) => `field=${f}`).join('&');
   const documentType = resolvedParams?.documentType ?? '';
   const progressStatus = resolvedParams?.progressStatus ?? '';
   const keyword = resolvedParams?.keyword ?? '';
-  const challenges = await api.get(
-    `/challenges?page=${page}&limit=10${fieldQuery ? `&${fieldQuery}` : ''}${documentType ? `&documentType=${documentType}` : ''}${progressStatus ? `&progressStatus=${progressStatus}` : ''}${keyword ? `&keyword=${keyword}` : ''}`,
-  );
-  console.log(challenges);
+  const challenges = await fetchChallenges({ page, fields, documentType, progressStatus, keyword });
 
   return (
     <div className={styles.wrapper}>
