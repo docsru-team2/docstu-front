@@ -1,16 +1,20 @@
 import { MyChallengeList } from '@/components/MyChallenge/MyChallengeList';
-import mockData from '@/mocks/my-completed-challenges.json';
+import { fetchMyChallengesCompleted } from '@/lib/api/myChallengeApi';
 
-export default function completedPage({searchParams}) {
+export default async function completedPage({ searchParams }) {
+  const { page = '1', pageSize = '10', keyword = '' } = await searchParams;
 
-  //목데이터연결
-  const page = Number(searchParams.page) || 1;
-  const pageSize = 10;
-  const start = (page - 1) * pageSize;
-  const end = start + pageSize;
+  const data = await fetchMyChallengesCompleted({
+    page: Number(page),
+    limit: Number(pageSize),
+    keyword,
+  });
 
-  const pagedList = mockData.data.list.slice(start, end);
-  const hasNext = mockData.data.pagination.hasNext;
-  // Api 연결하기
-  return <MyChallengeList list={pagedList} hasNext={hasNext} />;
+  return (
+    <MyChallengeList
+      initialData={data}
+      queryKey="completedChallenges"
+      type="completed"
+    />
+  );
 }
