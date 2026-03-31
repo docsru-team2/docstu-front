@@ -31,7 +31,7 @@ export default function LoginForm() {
       });
       document.cookie = `userType=${data.userType}; path=/`;
       router.push(
-        data.userType === 'ADMIN' ? '/admin/challengesList' : '/challenge/list',
+        data.userType === 'ADMIN' ? '/admin/challengesSettings' : '/challenge/list',
       );
     } catch (err) {
       if (err.status === 401) {
