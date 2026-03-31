@@ -45,3 +45,9 @@ export const inputIcon = style({
   transform: 'translateY(-50%)',
   cursor: 'pointer',
 });
+
+export const errorText = style({
+  marginTop: '8px',
+  fontSize: vars.font.size.xs,
+  color: vars.color.error,
+});
