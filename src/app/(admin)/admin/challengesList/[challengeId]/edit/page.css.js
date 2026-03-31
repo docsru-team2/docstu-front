@@ -17,7 +17,7 @@ export const fieldGroup = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '24px',
-  width: '100%', 
+  width: '100%',
 });
 
 // select 전용 래퍼 — FormField 내부 div와 동일한 역할
@@ -64,4 +64,18 @@ export const submitArea = style({
       justifyContent: 'flex-end',
     },
   },
+});
+
+export const container = style({
+  margin: '24px auto 34px auto',
+  maxWidth: '560px',
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: 'calc(100vh - 118px)',
+});
+
+export const title = style({
+  fontSize: vars.font.size['2xl'],
+  fontWeight: vars.font.weight.semibold,
+  marginBottom: '32px',
 });

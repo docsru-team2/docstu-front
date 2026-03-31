@@ -20,12 +20,12 @@ const documentTypeOptions = Object.entries(DOCUMENT_TYPE_MAP).map(
   }),
 );
 
-export default function ChallengeApplyForm({ initialData, btnName }) {
+export default function ChallengeApplyForm({ initialData, btnName, onSubmit }) {
   const { formData, handleChange, handleSelect, handleDateChange } =
     useChallengeForm(initialData);
 
   return (
-    <form className={styles.container}>
+    <form className={styles.container} onSubmit={(e) => { e.preventDefault(); onSubmit?.(formData); }}>
       <div className={styles.inputWrapper}>
         <label>제목</label>
         <input
