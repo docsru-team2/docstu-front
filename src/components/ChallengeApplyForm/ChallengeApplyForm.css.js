@@ -42,3 +42,8 @@ export const textarea = style({
   overflowY: 'auto',
 });
 
+export const errorMessage = style({
+  fontSize: vars.font.size.sm,
+  color: vars.color.error,
+});
+
