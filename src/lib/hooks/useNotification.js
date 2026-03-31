@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { api, BASE_URL } from '@/lib/fetchClient';
+import { api } from '@/lib/fetchClient';
 
 export function useNotification() {
   const [notifications, setNotifications] = useState([]);
