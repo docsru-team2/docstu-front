@@ -1,6 +1,7 @@
-const BASE_URL = typeof window !== 'undefined'
-  ? '/api'
-  : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+const BASE_URL =
+  typeof window !== 'undefined'
+    ? '/api'
+    : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
 // 공통 fetch 로직
 async function baseFetch(url, options = {}) {
@@ -30,7 +31,10 @@ async function authFetch(url, options = {}) {
   if (typeof window === 'undefined') {
     const { cookies } = await import('next/headers');
     const cookieStore = await cookies();
-    const cookieHeader = cookieStore.getAll().map((c) => `${c.name}=${c.value}`).join('; ');
+    const cookieHeader = cookieStore
+      .getAll()
+      .map((c) => `${c.name}=${c.value}`)
+      .join('; ');
     return baseFetch(url, {
       ...options,
       headers: {

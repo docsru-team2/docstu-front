@@ -26,7 +26,8 @@ export default function FilterGroup({ label, type, value, options, onChange, cla
                   type={type}
                   className={styles.hiddenInput}
                   checked={checked}
-                  onChange={() => onChange(opt.value)}
+                  onChange={() => {}}
+                  onClick={() => onChange(opt.value)}
                 />
                 <Image
                   src={checked ? OptionIcons[type].checked : OptionIcons[type].unchecked}

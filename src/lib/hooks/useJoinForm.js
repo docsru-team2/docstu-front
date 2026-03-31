@@ -52,7 +52,7 @@ export function useJoinForm() {
         nickname: joinData.nickname,
       });
 
-      router.push('/login');
+      router.push('/join/welcome');
     } catch (err) {
       const message = err?.message;
       if (message?.includes('이메일')) {
