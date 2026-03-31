@@ -17,13 +17,13 @@ export const wrapper = style({
 });
 
 export const inner = style({
-  maxWidth: '1920px',
+  maxWidth: '1200px',
   width: '100%',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: '0 360px',
+  padding: '0 24px',
 
   fontStyle: vars.font.size.lg,
   color: vars.color.gray800,

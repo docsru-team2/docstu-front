@@ -127,7 +127,9 @@ export function LoadDraftsModal({ data, onClose, onSelectDraft }) {
                 className={styles.draftButton}
               >
                 <div>{draft.title}</div>
-                <div className={styles.date}> {formatDate(draft.updatedAt, 'dot') }</div>
+                <div className={styles.date}>
+                  {formatDate(draft.updatedAt, 'dot')}
+                </div>
               </button>
             </li>
           ))}
