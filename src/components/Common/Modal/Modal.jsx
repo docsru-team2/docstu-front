@@ -115,14 +115,16 @@ export function LoadDraftsModal({ data, onClose, onSelectDraft }) {
         <ul className={styles.draftsList}>
           <span className={styles.draftsCount}>총 {data.length}개</span>
           {data.map((draft) => (
-            <li key={draft.id} className={styles.draft}>
+            <li key={draft.id}>
               <button
                 type="button"
                 onClick={() => handleSelectDraft(draft)}
                 className={styles.draftButton}
               >
                 <div>{draft.title}</div>
-                <div className={styles.date}> {formatDate(draft.updatedAt, 'dot') }</div>
+                <div className={styles.date}>
+                  {formatDate(draft.updatedAt, 'dot')}
+                </div>
               </button>
             </li>
           ))}

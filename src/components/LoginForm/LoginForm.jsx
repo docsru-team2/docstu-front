@@ -24,7 +24,7 @@ export default function LoginForm() {
       email: form.email,
       password: form.password,
     });
-    console.log(user, 'user');
+
     setAccessToken(accessToken);
     document.cookie = `userType=${user.userType}; path=/`;
     router.push(
