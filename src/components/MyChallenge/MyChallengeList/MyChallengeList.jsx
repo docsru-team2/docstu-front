@@ -51,7 +51,6 @@ export default function MyChallengeList({ initialData, queryKey, type }) {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
-          console.log('observer triggered');
           fetchNextPage();
         }
       },

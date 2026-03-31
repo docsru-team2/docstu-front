@@ -1,6 +1,9 @@
 import { MyChallengeApplied } from '@/components/MyChallenge/MyChallengeApplied';
 import { fetchMyChallengesApplied } from '@/lib/api/myChallengeApi';
+
+
 export default async function AppliedPage({ searchParams }) {
+
   const {
     page = '1',
     pageSize = '10',
