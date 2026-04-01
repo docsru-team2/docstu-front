@@ -7,7 +7,7 @@ import ChallengeTable from '@/components/Challenge/ChallengeTable/ChallengeTable
 import SearchBar from '@/components/Common/SearchBar/SearchBar.jsx';
 import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown.jsx';
 import PaginationBar from '@/components/Common/PaginationBar/PaginationBar.jsx';
-import { EmptyState } from '@/components/Common/EmptyState/EmptyState.jsx';
+import { EmptyState } from '@/components/Common/EmptyState';
 
 import * as styles from './page.css.js';
 
@@ -15,7 +15,7 @@ const PAGE_SIZE = 10;
 
 // 드롭다운 1. 신청 상태 필터
 const REVIEW_STATUS_OPTIONS = [
-  { key: 'all', label: '전체', value: '' },
+  { key: 'all', label: '신청 상태', value: '' },
   { key: 'PENDING', label: '승인 대기', value: 'PENDING' },
   { key: 'APPROVED', label: '신청 승인', value: 'APPROVED' },
   { key: 'REJECTED', label: '신청 거절', value: 'REJECTED' },
@@ -65,18 +65,22 @@ export default function AdminChallengesSettings() {
 
   return (
     <>
-      <h1>챌린지 신청 관리</h1>
+      <h1 className={styles.heading}>챌린지 신청 관리</h1>
 
       {/* 드롭다운 + 검색 */}
-      <div>
-        {/* SimpleDropdown paramName 모드 - reviewStatus 관리 */}
-        <SimpleDropdown
-          items={REVIEW_STATUS_OPTIONS}
-          paramName="reviewStatus"
-        />
-        {/* SimpleDropdown paramName 모드 - orderBy 관리 */}
-        <SimpleDropdown items={SORT_OPTIONS} paramName="orderBy" />
+      <div className={styles.filterBar}>
         <SearchBar />
+        {/* SimpleDropdown paramName 모드 - reviewStatus 관리 */}
+        <div className={styles.filterItem}>
+          <SimpleDropdown
+            items={REVIEW_STATUS_OPTIONS}
+            paramName="reviewStatus"
+          />
+        </div>
+        {/* SimpleDropdown paramName 모드 - orderBy 관리 */}
+        <div className={styles.filterItem}>
+          <SimpleDropdown items={SORT_OPTIONS} paramName="orderBy" />
+        </div>
       </div>
 
       {/* 테이블 */}
