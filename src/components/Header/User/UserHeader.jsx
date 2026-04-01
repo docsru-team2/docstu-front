@@ -7,12 +7,12 @@ import Button from '@/components/Common/Button/Button.jsx';
 import Notification from '@/components/Notification/Notification.jsx';
 import { cookies } from 'next/headers';
 import UserInfo from '@/components/UserInfo/UserInfo.jsx';
-import { api } from '@/lib/fetchClient.js';
+import { getMe } from '@/lib/api/userApi';
 
 export default async function UserHeader() {
   const cookieStore = await cookies();
   const isLoggedIn = !!cookieStore.get('refreshToken')?.value;
-  const userData = isLoggedIn ? await api.get('/auth/me') : null;
+  const userData = isLoggedIn ? await getMe() : null;
 
   return (
     <header className={styles.wrapper}>
