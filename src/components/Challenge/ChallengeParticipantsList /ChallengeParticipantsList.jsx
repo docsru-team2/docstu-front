@@ -1,31 +1,57 @@
 import { Pager } from '@/components/Common/Pager';
 import * as styles from './ChallengeParticipantsList.css';
+import Image from 'next/image';
+import crown from '@public/img/crown.svg';
+import user from '@public/img/header/user.svg';
+import fillHeart from '@public/img/fillHeart.svg';
+import arrowRight from '@public/img/arrow/arrowRightActive.svg';
+import Link from 'next/link';
+import { formatLikeCount } from '@/utils/formatLikeCount';
 
-export default function ChallengeParticipantsList({ dataList }) {
+export default function ChallengeParticipantsList({ dataList, totalCount }) {
   return (
-    <div>
-      <div>
-        헤더
-        <h2>참여현황</h2>
-        <Pager />
+    <div className={styles.listContainer}>
+      <div className={styles.listHeader}>
+        <p>참여현황</p>
+        <Pager totalCount={totalCount} />
       </div>
 
-      <div className={styles.listWrapper}>
-        {dataList.map((data, i) => (
-          <div key={data.id} className={styles.item}>
-            <div className={styles.rank}> {(i + 1).toString().padStart(2, '0')}</div>
-            <div className={styles.user}>
-              <div>아이콘</div> 
-              <div>{data.author.nickname}</div>
-              <div>{data.author.grage}</div>
+      <div className={styles.list}>
+        {dataList.map((data, i) => {
+          const { nickname, grade, likeCount } = data.author;
+          return (
+            <div key={data.id} className={styles.item}>
+              <div className={styles.leftWrapper}>
+                <div className={styles.rank}>
+                  {i === 0 && <Image src={crown} alt="왕관아이콘" />}
+                  {(i + 1).toString().padStart(2, '0')}
+                </div>
+                <div className={styles.userWrapper}>
+                  <div>
+                    <Image src={user} alt="사용자아이콘" />{' '}
+                  </div>
+                  <div className={styles.user}>
+                    <div>{nickname}</div>
+                    <div className={styles.gradeFont}>
+                      {grade === 'NORMAL' ? '일반' : '전문가'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.rightWrapper}>
+                <div className={styles.likeCount}>
+                  <Image src={fillHeart} alt="추천아이콘" />
+                  {formatLikeCount(likeCount)}
+                </div>
+                <div>
+                  <Link href={`/challenges/${data.id}`} className={styles.link}>
+                    작업물보기 <Image src={arrowRight} alt="작업물보기" />
+                  </Link>
+                </div>
+              </div>
             </div>
-            <div> {data.author.likeCount}</div>
-            <div>
-            
-              <link href={`/challenges/${data.id}` }>작업물보기 </link>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
