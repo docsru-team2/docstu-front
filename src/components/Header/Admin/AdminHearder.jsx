@@ -3,11 +3,11 @@ import * as styles from './AdminHeader.css';
 import headerLogo from '@public/img/logo/headerLogo.svg';
 import AdminNav from './AdminNav';
 import Link from 'next/link';
-import { api } from '@/lib/fetchClient.js';
+import { getMe } from '@/lib/api/userApi';
 import UserInfo from '@/components/UserInfo/UserInfo';
 
 export default async function AdminHeader() {
-  const userData = await api.get('/auth/me');
+  const userData = await getMe();
   return (
     <header className={styles.wrapper}>
       <div className={styles.inner}>
