@@ -15,7 +15,7 @@ export default function ChallengeParticipantsList({ dataList, totalCount }) {
         <p>참여현황</p>
         {totalCount > 5 && <Pager totalCount={totalCount} /> }
       </div>
-
+      {dataList.length === 0 ? (<p className={styles.emptyText}>아직 참여한 도전자가 없어요,<br/> 지금 바로 도전해보세요!</p>) : (
       <div className={styles.list}>
         {dataList.map((data, i) => {
           const { nickname, grade, likeCount } = data.author;
@@ -53,6 +53,7 @@ export default function ChallengeParticipantsList({ dataList, totalCount }) {
           );
         })}
       </div>
+      )}
     </div>
   );
 }

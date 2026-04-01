@@ -86,6 +86,11 @@ export default function DevPage({ title, setTitle, content, setContent }) {
     },
   ];
 
+  const mockDataList1 = { list : [] , pagination: {
+      totalCount: 0,
+      hasNext: false,
+    },}
+
   const mockDataList = {
     list: [
       {

@@ -1,6 +1,18 @@
 import { media, vars } from '@/styles/tokens.css';
 import { style } from '@vanilla-extract/css';
 
+export const emptyText = style({
+  display: 'flex',
+  justifyContent:'center',
+  alignItems:'center',
+  color: vars.color.gray500,
+  fontSize: vars.font.size.lg,
+  fontWeight: vars.font.weight.regular,
+  padding: '22px 0 63px',
+  textAlign: 'center',
+  whiteSpace: 'pre-wrap',
+});
+
 export const listContainer = style({
   display: 'flex',
   flexDirection: 'column',
@@ -106,5 +118,5 @@ export const link = style({
 
 export const arrowSize = style({
   width: '32px',
-  height: '32px'
-})
+  height: '32px',
+});
