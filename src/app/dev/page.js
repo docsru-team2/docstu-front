@@ -153,9 +153,22 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         },
         createdAt: '2026-03-30T12:38:23.636Z',
       },
+      {
+        id: '01KMZC174M4CBQ8Z25TYNRFRMK',
+        author: {
+          id: '01KMZC15V9TF9JF96SZ3P5YS09',
+          nickname: 'user5',
+          grade: 'EXPERT',
+          _count: {
+            submissionLike: 2,
+          },
+          likeCount: 200,
+        },
+        createdAt: '2026-03-30T12:38:23.636Z',
+      },
     ],
     pagination: {
-      totalCount: 5,
+      totalCount: 6,
       hasNext: false,
     },
   };

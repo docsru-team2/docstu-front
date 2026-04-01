@@ -101,4 +101,10 @@ export const link = style({
   alignItems: 'center',
   fontSize: vars.font.size.xs,
   fontWeight: vars.font.weight.medium,
+  color: vars.color.gray800,
 });
+
+export const arrowSize = style({
+  width: '32px',
+  height: '32px'
+})

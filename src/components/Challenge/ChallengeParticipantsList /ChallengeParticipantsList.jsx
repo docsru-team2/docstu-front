@@ -13,7 +13,7 @@ export default function ChallengeParticipantsList({ dataList, totalCount }) {
     <div className={styles.listContainer}>
       <div className={styles.listHeader}>
         <p>참여현황</p>
-        <Pager totalCount={totalCount} />
+        {totalCount > 5 && <Pager totalCount={totalCount} /> }
       </div>
 
       <div className={styles.list}>
@@ -45,7 +45,7 @@ export default function ChallengeParticipantsList({ dataList, totalCount }) {
                 </div>
                 <div>
                   <Link href={`/challenges/${data.id}`} className={styles.link}>
-                    작업물보기 <Image src={arrowRight} alt="작업물보기" />
+                    작업물보기 <Image src={arrowRight} alt="작업물보기" className={styles.arrowSize}/>
                   </Link>
                 </div>
               </div>
