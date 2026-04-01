@@ -43,7 +43,7 @@ export default function ChallengeCard({ data, onEdit, onDelete }) {
   ];
 
   return (
-    <Link className={cardContainer} href="/challenge/apply">
+    <Link className={cardContainer} href={`/challenge/detail/${id}`}>
       <div>
         {isClosedExpired ? (
           <div style={{ marginBottom: '12px' }}>

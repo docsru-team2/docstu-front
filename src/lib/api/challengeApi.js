@@ -2,7 +2,13 @@ import { api } from '@/lib/fetchClient';
 
 // 챌린지 목록 조회
 // GET /challenges
-export const fetchChallenges = async ({ page = 1, fields = [], documentType, progressStatus, keyword } = {}) => {
+export const fetchChallenges = async ({
+  page = 1,
+  fields = [],
+  documentType,
+  progressStatus,
+  keyword,
+} = {}) => {
   const params = new URLSearchParams({ page, limit: 10 });
   fields.forEach((f) => params.append('field', f));
   if (documentType) params.set('documentType', documentType);
@@ -15,4 +21,9 @@ export const fetchChallenges = async ({ page = 1, fields = [], documentType, pro
 // POST /challenges
 export const createChallenge = async (data) => {
   return api.post('/challenges', data);
+};
+
+//get /challenges 챌린지 상세조회
+export const challengeDetail = async (id) => {
+  return api.get(`/challenges/${id}`);
 };
