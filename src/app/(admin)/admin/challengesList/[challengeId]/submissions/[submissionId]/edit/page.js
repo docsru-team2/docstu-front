@@ -17,7 +17,6 @@ export default function AdminSubmissionEditPage() {
   const queryClient = useQueryClient();
 
   // 작업물 상세 조회 - 수정할 데이터 로드
-  // todo: [BE 대기] submission controller 구현 필요
   const { data: submission, isLoading } = useQuery({
     queryKey: ['submissionDetail', submissionId],
     queryFn: () => fetchSubmissionDetail(submissionId),

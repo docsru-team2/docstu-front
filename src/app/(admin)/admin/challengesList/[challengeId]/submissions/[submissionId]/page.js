@@ -27,14 +27,12 @@ export default function AdminSubmissionDetailPage() {
   const queryClient = useQueryClient();
 
   // 작업물 상세 조회
-  // todo: [BE 대기] GET /submissions/:submissionId - submission controller 구현 필요
   const { data: submission, isLoading: isSubmissionLoading } = useQuery({
     queryKey: ['submissionDetail', submissionId],
     queryFn: () => fetchSubmissionDetail(submissionId),
   });
 
   // 피드백 목록 조회
-  // todo: [BE 대기] GET /submissions/:submissionId/feedbacks - submission controller 구현 필요
   const { data: feedbackData, isLoading: isFeedbackLoading } = useQuery({
     queryKey: ['submissionFeedbacks', submissionId],
     queryFn: () => fetchSubmissionFeedbacks(submissionId),
@@ -136,7 +134,7 @@ export default function AdminSubmissionDetailPage() {
           <div key={feedback.id}>
             {/* todo: 피드백 아이템 공통 컴포넌트로 교체 */}
             <div>
-              <span>{feedback.author?.nickname}</span>
+              <span>{feedback.user?.nickname}</span>
               <span>{formatDate(feedback.createdAt)}</span>
               <SimpleDropdown items={getFeedbackMenuItems(feedback.id)} />
             </div>
