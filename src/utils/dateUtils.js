@@ -5,6 +5,7 @@ export function formatDate(dateString, type = 'slash') {
     ko: 'yyyy년 MM월 dd일',
     slash: 'yyyy/MM/dd',
     datetime: 'yyyy/MM/dd HH:mm',
+    shortDatetime: 'yy/MM/dd HH:mm',
     dot: 'yyyy. MM. dd',
 
   };
