@@ -24,6 +24,7 @@ import {
 } from '@/components/Common/Modal';
 import { ChallengeTable } from '@/components/Challenge/ChallengeTable';
 import { ChallengeParticipantsList } from '@/components/Challenge/ChallengeParticipantsList ';
+import FeedbackItem from '@/components/Feedback/FeedbackItem/feedbackItem';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   const [keyword, setKeyword] = useState('');
@@ -177,6 +178,22 @@ export default function DevPage({ title, setTitle, content, setContent }) {
       hasNext: false,
     },
   };
+
+  const mockFeedbackData = 
+    {
+      "id": "01KN3WSD8R2TP9HV6NGJY6CJNQ",
+      "submissionId": "01KN3WSA8YF6GMH5JTS6FYSGBA",
+      "userId": "01KN3WS7YYQVKKVPWW42V39S7S",
+      "content": "Corrupti rem thermae. Audio cupio varius vere. Tergum capitulus voco cognatus sollers vinitor placeat.\nVeritatis demulceo suus impedit vorax. Suadeo iusto ancilla vaco depono. Delinquo acidus vicissitudo vespillo.\nVicissitudo vos voluptate subito ustulo beatus vulnero in peior. Derelinquo est voluptate demonstro. Socius congregatio vestrum voluptatem versus adhaero aegrus sequi apostolus.",
+      "createdAt": "2026-04-01T06:48:11.288Z",
+      "updatedAt": "2026-04-01T06:48:11.288Z",
+      "user": {
+        "id": "01KN3WS7YYQVKKVPWW42V39S7S",
+        "nickname": "user36",
+        "grade": "EXPERT"
+      }
+    }
+  
 
   return (
     <>
@@ -403,6 +420,9 @@ export default function DevPage({ title, setTitle, content, setContent }) {
           dataList={mockDataList.list}
           totalCount={mockDataList.pagination.totalCount}
         />
+      </Container>
+      <Container>
+        <FeedbackItem data={mockFeedbackData}/>
       </Container>
     </>
   );
