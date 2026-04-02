@@ -21,6 +21,7 @@ export const STATUS_MAP = {
 };
 
 export const REVIEW_STATUS_CONFIG = {
+  APPROVED: { color: 'APPROVED', text: '신청 승인된 챌린지입니다.' },
   DELETED: { color: 'DELETED', text: '삭제된 챌린지입니다.' },
   PENDING: { color: 'PENDING', text: '승인 대기 중입니다.' },
   REJECTED: { color: 'REJECTED', text: '신청이 거절되었습니다.' },

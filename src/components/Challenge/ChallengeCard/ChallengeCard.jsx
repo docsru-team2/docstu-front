@@ -24,26 +24,19 @@ export default function ChallengeCard({ data, onEdit, onDelete }) {
 
   if (!data) return null;
 
-  const {
-    id,
-    title,
-    field,
-    documentType,
-    deadline,
-    currentParticipants,
-    maxParticipants,
-  } = data;
+  const { id, title, field, documentType, deadline, _count, maxParticipants } =
+    data;
   const fieldInfo = FIELD_MAP[field];
-  const isClosedFull = currentParticipants >= maxParticipants;
+  const isClosedFull = _count.participants >= maxParticipants;
   const isClosedExpired = new Date() > new Date(deadline);
 
   const menuItems = [
     { key: 'edit', label: '수정하기', action: () => onEdit?.(id) },
     { key: 'delete', label: '삭제하기', action: () => onDelete?.(data) },
   ];
-
+  console.log(data);
   return (
-    <Link className={cardContainer} href={`/challenge/detail/${id}`}>
+    <Link className={cardContainer} href={`/challenge/detail/${id}?page=1`}>
       <div>
         {isClosedExpired ? (
           <div style={{ marginBottom: '12px' }}>
@@ -97,7 +90,7 @@ export default function ChallengeCard({ data, onEdit, onDelete }) {
           </div>
           <div className={styles.currentStatus}>
             <Image src={person} alt="참여인원" />
-            {currentParticipants} / {maxParticipants} 참여중
+            {_count.participants} / {maxParticipants} 참여중
           </div>
         </div>
         {isOngoing && (
