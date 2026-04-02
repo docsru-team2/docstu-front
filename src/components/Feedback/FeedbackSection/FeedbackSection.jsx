@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import FeedbackItem from '../FeedbackItem/feedbackItem';
 import * as styles from './FeedbackSection.css';
+import { useFeedbackThread } from '@/lib/hooks/useFeedbackThread';
+import { FeedbackItem } from '../FeedbackItem';
 
-export default function FeedbackSection({ submissionId, initialfeedbacks, initialNextCursor, currentUser }) {
+export default function FeedbackSection({ submissionId, initialFeedbacks, initialNextCursor, currentUser }) {
   const [newFeedback, setNewFeedback] = useState('');
   const {
     feedbacks,
@@ -16,7 +17,7 @@ export default function FeedbackSection({ submissionId, initialfeedbacks, initia
     deleteMutation,
   } = useFeedbackThread({
     submissionId,
-    initialfeedbacks,
+    initialFeedbacks,
     initialNextCursor
   });
 

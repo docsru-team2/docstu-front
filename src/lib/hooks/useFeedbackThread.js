@@ -1,7 +1,8 @@
 'use client';
 
-import { useQueryClient } from '@tanstack/react-query';
-import { deleteFeedback } from '../api/adminChallengeApi';
+import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { createSubmissionFeedback, fetchSubmissionFeedbackList, removeFeedback, updateFeedback } from '../api/feedbackApi';
+
 
 export function useFeedbackThread({
   submissionId,
@@ -22,16 +23,16 @@ export function useFeedbackThread({
         }),
       initialData: initialFeedbacks.length
         ? {
-            pages: [initialFeedbacks],
+            pages: [{list:initialFeedbacks}],
             pageParams: [1],
           }
         : undefined,
       getNextPageParam: (lastPage, allPages, lastPageParam) => {
-        return lastPage.pagination.hasNext ? allPages.length + 1 : undefined;
+        return lastPage?.pagination?.hasNext ? allPages.length + 1 : undefined;
       },
     });
 
-  const feedback = data?.pages.flatMap((page) => page) ?? [];
+  const feedbacks = data?.pages.flatMap((page) => page.list) ?? [];
 
   // 피드백 작성
   const createMutation = useMutation({
@@ -62,7 +63,7 @@ export function useFeedbackThread({
   });
   // 피드백 삭제
   const deleteMutation = useMutation({
-    mutationFn: (feedbackId) => deleteFeedback(feedbackId),
+    mutationFn: (feedbackId) => removeFeedback(feedbackId),
     onSuccess: (_, feedbackId) => {
       queryClient.setQueryData(['feedbacks', submissionId], (oldData) => ({
         ...oldData,
@@ -74,7 +75,7 @@ export function useFeedbackThread({
   });
 
   return {
-    feedback,
+    feedbacks,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,

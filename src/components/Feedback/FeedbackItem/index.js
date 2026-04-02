@@ -1,1 +1,1 @@
-export { default as feedbackItem } from './feedbackItem'
+export { default as FeedbackItem } from './FeedbackItem'

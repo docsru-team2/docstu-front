@@ -9,7 +9,7 @@ import { Button } from '@/components/Common/Button';
 import pluse from '@public/img/btn/plus.svg';
 //import { FormField } from '@/components/Common/FormField';
 import { PaginationBar } from '@/components/Common/PaginationBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { FilterDropdown } from '@/components/Common/FilterDropdown';
 import { EmptyState } from '@/components/Common/EmptyState/EmptyState';
@@ -24,8 +24,10 @@ import {
 } from '@/components/Common/Modal';
 import { ChallengeTable } from '@/components/Challenge/ChallengeTable';
 import { ChallengeParticipantsList } from '@/components/Challenge/ChallengeParticipantsList ';
-import FeedbackItem from '@/components/Feedback/FeedbackItem/feedbackItem';
+
 import FeedbackSection from '@/components/Feedback/FeedbackSection/FeedbackSection';
+import { getMe } from '@/lib/api/userApi';
+import { useQuery } from '@tanstack/react-query';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   const [keyword, setKeyword] = useState('');
@@ -88,10 +90,13 @@ export default function DevPage({ title, setTitle, content, setContent }) {
     },
   ];
 
-  const mockDataList1 = { list : [] , pagination: {
+  const mockDataList1 = {
+    list: [],
+    pagination: {
       totalCount: 0,
       hasNext: false,
-    },}
+    },
+  };
 
   const mockDataList = {
     list: [
@@ -180,21 +185,59 @@ export default function DevPage({ title, setTitle, content, setContent }) {
     },
   };
 
-  const mockFeedbackData = 
-    {
-      "id": "01KN3WSD8R2TP9HV6NGJY6CJNQ",
-      "submissionId": "01KN3WSA8YF6GMH5JTS6FYSGBA",
-      "userId": "01KN3WS7YYQVKKVPWW42V39S7S",
-      "content": "Corrupti rem thermae. Audio cupio varius vere. Tergum capitulus voco cognatus sollers vinitor placeat.\nVeritatis demulceo suus impedit vorax. Suadeo iusto ancilla vaco depono. Delinquo acidus vicissitudo vespillo.\nVicissitudo vos voluptate subito ustulo beatus vulnero in peior. Derelinquo est voluptate demonstro. Socius congregatio vestrum voluptatem versus adhaero aegrus sequi apostolus.",
-      "createdAt": "2026-04-01T06:48:11.288Z",
-      "updatedAt": "2026-04-01T06:48:11.288Z",
-      "user": {
-        "id": "01KN3WS7YYQVKKVPWW42V39S7S",
-        "nickname": "user36",
-        "grade": "EXPERT"
-      }
-    }
-  
+  const { data: user } = useQuery({
+    queryKey: ['me'],
+    queryFn: getMe,
+  });
+  const mockFeedbackData = {
+    list: [
+      {
+        id: '01KN67ZFQQKBAY6PRQ6PVRBTA9',
+        submissionId: '01KN619WGG8930VTKZN6EA48BD',
+        userId: '01KN619T623HR9J9M7H388TZST',
+        content: '좋은 번역이네요!',
+        createdAt: '2026-04-02T04:42:13.604Z',
+        updatedAt: '2026-04-02T04:42:13.604Z',
+        user: {
+          id: '01KN619T623HR9J9M7H388TZST',
+          nickname: 'user30',
+          grade: 'EXPERT',
+        },
+      },
+      {
+        id: '01KN619Z8KRHGGEN1JX7NYBJ8A',
+        submissionId: '01KN619WGG8930VTKZN6EA48BD',
+        userId: '01KN619T611WRSWRWPD8HWY3SD',
+        content:
+          'Adipisci deleo infit defetiscor cumque cupiditate. Omnis velociter demum titulus. Terminatio anser sulum suscipio tendo calculus tantum corrigo coniecto.\nDemens incidunt ademptio ad autus suffragium. Adamo sperno statim a dapifer reiciendis magnam. Curia vilitas maiores eum spes cresco delego dolorem ustulo curatio.',
+        createdAt: '2026-04-02T02:45:37.171Z',
+        updatedAt: '2026-04-02T02:45:37.171Z',
+        user: {
+          id: '01KN619T611WRSWRWPD8HWY3SD',
+          nickname: 'user4',
+          grade: 'EXPERT',
+        },
+      },
+      {
+        id: '01KN619Z89BCZAYFVJZ7MPAY3Q',
+        submissionId: '01KN619WGG8930VTKZN6EA48BD',
+        userId: '01KN619T63W0JMYGWBC8Y5BBXT',
+        content:
+          'Carmen depulso coma paulatim qui cogo. Angulus creo valeo clam culpo territo derideo vulnero trado. Aqua terminatio cena quod.',
+        createdAt: '2026-04-02T02:45:37.161Z',
+        updatedAt: '2026-04-02T02:45:37.161Z',
+        user: {
+          id: '01KN619T63W0JMYGWBC8Y5BBXT',
+          nickname: 'user40',
+          grade: 'EXPERT',
+        },
+      },
+    ],
+    pagination: {
+      totalCount: 3,
+      hasNext: false,
+    },
+  };
 
   return (
     <>
@@ -423,7 +466,11 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         />
       </Container>
       <Container>
-        <FeedbackSection />
+        <FeedbackSection
+          initialFeedbacks={mockFeedbackData.list}
+          initialNextCursor={mockFeedbackData.pagination.hasNext}
+          currentUser={user}
+        />
       </Container>
     </>
   );
