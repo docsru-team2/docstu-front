@@ -1,142 +1,55 @@
-'use client';
-
-import { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import {
-  fetchAdminChallengeDetail,
-  approveChallenge,
-  rejectChallenge,
-} from '@/lib/api/adminChallengeApi.js';
-import { formatDate } from '@/utils/dateUtils';
-import { Button } from '@/components/Common/Button';
-import { ReasonModal } from '@/components/Common/Modal';
+import { fetchAdminChallengeDetail } from '@/lib/api/adminChallengeApi.js';
+import ChallengeDetailContent from '@/components/ChallengeDetail/ChallengeDetailContent/ChallengeDetailContent.jsx';
+import AdminActions from './AdminActions.jsx';
+import Image from 'next/image';
+import arrowLeftActive from '@public/img/arrow/arrowLeftActive.svg';
+import arrowLeftInactive from '@public/img/arrow/arrowLeftInactive.svg';
+import arrowRightActive from '@public/img/arrow/arrowRightActive.svg';
+import arrowRightInactive from '@public/img/arrow/arrowRightInactive.svg';
 
 import * as styles from './page.css.js';
 
-const MODAL_MODE = {
-  CLOSED: null,
-  REJECT: 'reject',
-};
+export default async function AdminChallengeDetailPage({ params }) {
+  const { challengeId } = await params;
 
-export default function AdminChallengeDetailPage() {
-  const { challengeId } = useParams();
-  const router = useRouter();
-  const queryClient = useQueryClient();
-
-  // GET /admin/challenges/:challengeId
-  const { data: challenge, isLoading } = useQuery({
-    queryKey: ['adminChallengeDetail', challengeId],
-    queryFn: () => fetchAdminChallengeDetail(challengeId),
-  });
-
-  const [modalMode, setModalMode] = useState(MODAL_MODE.CLOSED);
-
-  // 챌린지 승인
-  const approveMutation = useMutation({
-    mutationFn: () => approveChallenge(challengeId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['adminChallengeDetail', challengeId],
-      });
-      queryClient.invalidateQueries({ queryKey: ['adminChallenges'] });
-    },
-    onError: (error) => {
-      console.error('승인 실패:', error);
-    },
-  });
-
-  // 챌린지 거절
-  const rejectMutation = useMutation({
-    mutationFn: (reason) => rejectChallenge(challengeId, reason),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['adminChallengeDetail', challengeId],
-      });
-      queryClient.invalidateQueries({ queryKey: ['adminChallenges'] });
-      setModalMode(MODAL_MODE.CLOSED);
-    },
-    onError: (error) => {
-      console.error('거절 실패:', error);
-    },
-  });
-
-  // < > 내비게이션
-  const handlePrev = () => {
-    if (!challenge?.navigation?.prevId) return;
-    router.push(`/admin/challengesSettings/${challenge.navigation.prevId}`);
-  };
-
-  const handleNext = () => {
-    if (!challenge?.navigation?.nextId) return;
-    router.push(`/admin/challengesSettings/${challenge.navigation.nextId}`);
-  };
-
-  // 거절 사유 전달
-  const handleRejectSubmit = (reason) => {
-    rejectMutation.mutate(reason);
-  };
-
-  if (isLoading || !challenge) return <div>로딩 중...</div>;
+  // 어드민 API로 네비게이션 + reviewStatus 데이터 조회
+  const challenge = await fetchAdminChallengeDetail(challengeId);
+  const { reviewStatus, navigation } = challenge;
 
   return (
-    <>
-      {/* 승인 후 배너 */}
-      {challenge.reviewStatus === 'APPROVED' && (
-        <div>신청이 승인된 챌린지입니다.</div>
-      )}
-      {/* 거절 후 배너 + 거절 사유 박스 */}
-      {challenge.reviewStatus === 'REJECTED' && (
-        <>
-          <div>신청이 거절된 챌린지입니다.</div>
-          <div>
-            <h3>신청 거절 사유</h3>
-            <p>{challenge.rejectReason ?? '거절 사유 없음'}</p>
-            <div>
-              <span>독스루 운영진</span>
-              <span>{formatDate(challenge.updatedAt, 'dot')}</span>
-            </div>
-          </div>
-        </>
-      )}
-
-      
-      {/* No. + 내비게이션 */}
-      <div>
-        <span>No. {challenge.id}</span>
-        <button onClick={handlePrev} disabled={!challenge.navigation?.prevId}>
-          &lt;
-        </button>
-        <button onClick={handleNext} disabled={!challenge.navigation?.nextId}>
-          &gt;
-        </button>
-      </div>
-      {/* todo: 챌린지 정보 공통 컴포넌트로 교체 */}
-      {/* 제목, 뱃지, 설명, 작성자, 마감일, 참여인원, 원문 링크 */}
-      {/* PENDING일 때만 거절하기 + 승인하기 버튼 */}
-      {challenge.reviewStatus === 'PENDING' && (
-        <div>
-          <Button
-            size="lg"
-            color="abandon"
-            onClick={() => setModalMode(MODAL_MODE.REJECT)}
+    <div className={styles.container}>
+      {/* No. + 네비게이션 */}
+      <div className={styles.navigationBar}>
+        <span className={styles.challengeNo}>No. {challenge.id}</span>
+        <div className={styles.navButtons}>
+          <a
+            className={styles.navButton}
+            href={navigation?.prevId ? `/admin/challengesSettings/${navigation.prevId}` : undefined}
           >
-            거절하기
-          </Button>
-          <Button size="lg" onClick={() => approveMutation.mutate()}>
-            승인하기
-          </Button>
+            <Image
+              src={navigation?.prevId ? arrowLeftActive : arrowLeftInactive}
+              alt="이전"
+            />
+          </a>
+          <a
+            className={styles.navButton}
+            href={navigation?.nextId ? `/admin/challengesSettings/${navigation.nextId}` : undefined}
+          >
+            <Image
+              src={navigation?.nextId ? arrowRightActive : arrowRightInactive}
+              alt="다음"
+            />
+          </a>
         </div>
+      </div>
+
+      {/* 챌린지 정보 */}
+      <ChallengeDetailContent id={challengeId} page="1" />
+
+      {/* PENDING일 때만 승인/거절 버튼 */}
+      {reviewStatus === 'PENDING' && (
+        <AdminActions challengeId={challengeId} />
       )}
-      {/* 거절사유 모달 */}
-      {modalMode === MODAL_MODE.REJECT ? (
-        <ReasonModal
-          title="거절 사유"
-          placeholder="거절 사유를 입력해주세요"
-          onSubmit={handleRejectSubmit}
-          onClose={() => setModalMode(MODAL_MODE.CLOSED)}
-        />
-      ) : null}
-    </>
+    </div>
   );
 }
