@@ -6,11 +6,11 @@ import { SearchBar } from '@/components/Common/SearchBar';
 import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 import * as styles from './MyChallengeApplied.css';
 import { EmptyState } from '@/components/Common/EmptyState';
+import { useSearchParams } from 'next/navigation';
 
 export default function MyChallengeApplied({ items, totalCount }) {
-  if (!items.length) {
-    return <EmptyState text={'아직 챌린지가 없어요'} />;
-  }
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get('keyword') || '';
 
   const sortItems = [
     { key: 'createedASC', label: '신청 시간 빠른순', value: 'CREATED_ASC' },
@@ -34,11 +34,20 @@ export default function MyChallengeApplied({ items, totalCount }) {
           <SimpleDropdown items={sortItems} paramName="orderBy" />
         </div>
       </div>
-      {/* 드롭다운 */}
-      <ChallengeTable
-        dataList={items}
-        getHref={(item) => `/challenge/detail/${item.id}`}
-      />
+      {items.length === 0 ? (
+        <EmptyState
+          text={
+            keyword
+              ? `'${keyword}'로 검색된 결과가 없어요.`
+              : '아직 챌린지가 없어요'
+          }
+        />
+      ) : (
+        <ChallengeTable
+          dataList={items}
+          getHref={(item) => `/myChallenge/applied/${item.id}`}
+        />
+      )}
       <div className={styles.paginationBarContainer}>
         <PaginationBar totalCount={totalCount} />
       </div>

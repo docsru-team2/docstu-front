@@ -9,11 +9,11 @@ import {
   fetchMyChallengesCompleted,
   fetchMyChallengesOngoing,
 } from '@/lib/api/myChallengeApi';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { EmptyState } from '@/components/Common/EmptyState';
 
 export default function MyChallengeList({ initialData, queryKey, type }) {
   const searchParams = useSearchParams();
-  // const router = useRouter();
   const observerRef = useRef(null);
 
   const keyword = searchParams.get('keyword') || '';
@@ -65,13 +65,17 @@ export default function MyChallengeList({ initialData, queryKey, type }) {
       <div className={styles.searchBarContainer}>
         <SearchBar />
       </div>
-      <div className={styles.cardList}>
-        {allItems.map((challenge) => (
-          <div key={challenge.id}>
-            <ChallengeCard data={challenge} />
-          </div>
-        ))}
-      </div>
+      {allItems.length === 0 ? (
+        <EmptyState text={ keyword ? `'${keyword}'로 검색된 결과가 없어요.` : '아직 챌린지가 없어요'} />
+      ) : (
+        <div className={styles.cardList}>
+          {allItems.map((challenge) => (
+            <div key={challenge.id}>
+              <ChallengeCard data={challenge} />
+            </div>
+          ))}
+        </div>
+      )}
       <div ref={observerRef} className={styles.observerTrigger} />
 
       {isFetchingNextPage && <p>Loading...</p>}

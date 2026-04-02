@@ -23,6 +23,7 @@ import {
   ReasonModal,
 } from '@/components/Common/Modal';
 import { ChallengeTable } from '@/components/Challenge/ChallengeTable';
+import { ChallengeParticipantsList } from '@/components/Challenge/ChallengeParticipantsList ';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   const [keyword, setKeyword] = useState('');
@@ -84,6 +85,98 @@ export default function DevPage({ title, setTitle, content, setContent }) {
       reviewStatus: 'DELETED',
     },
   ];
+
+  const mockDataList1 = { list : [] , pagination: {
+      totalCount: 0,
+      hasNext: false,
+    },}
+
+  const mockDataList = {
+    list: [
+      {
+        id: '01KN39X46HF4PZF7TGFMWT24K7',
+        author: {
+          id: '01KN1CVR9PSNCDGR4201YNP757',
+          nickname: 'test55',
+          grade: 'NORMAL',
+          _count: {
+            submissionLike: 0,
+          },
+          likeCount: 10000,
+        },
+        createdAt: '2026-04-01T01:18:10.119Z',
+      },
+      {
+        id: '01KN0Q74M1A54AK3ETBYPNCPFP',
+        author: {
+          id: '01KMZC15VA06ACFAQDF2Q7WV1K',
+          nickname: 'user30',
+          grade: 'EXPERT',
+          _count: {
+            submissionLike: 1,
+          },
+          likeCount: 1,
+        },
+        createdAt: '2026-03-31T01:13:06.414Z',
+      },
+      {
+        id: '01KMZC17J5QV908ZT6DYBE2RQA',
+        author: {
+          id: '01KMZC15VBJ0DY6APDC6Z0ETQ9',
+          nickname: 'user45',
+          grade: 'EXPERT',
+          _count: {
+            submissionLike: 1,
+          },
+          likeCount: 1,
+        },
+        createdAt: '2026-03-30T12:38:24.069Z',
+      },
+      {
+        id: '01KMZC17CDTEC0S28SVDBN25SW',
+        author: {
+          id: '01KMZC15VAX1SK12NSVTE08YDR',
+          nickname: 'user28',
+          grade: 'EXPERT',
+          _count: {
+            submissionLike: 0,
+          },
+          likeCount: 0,
+        },
+        createdAt: '2026-03-30T12:38:23.885Z',
+      },
+      {
+        id: '01KMZC174M4CBQ8Z25TYNRZRMK',
+        author: {
+          id: '01KMZC15V9TF9JF96SZ3P5YS09',
+          nickname: 'user5',
+          grade: 'EXPERT',
+          _count: {
+            submissionLike: 2,
+          },
+          likeCount: 200,
+        },
+        createdAt: '2026-03-30T12:38:23.636Z',
+      },
+      {
+        id: '01KMZC174M4CBQ8Z25TYNRFRMK',
+        author: {
+          id: '01KMZC15V9TF9JF96SZ3P5YS09',
+          nickname: 'user5',
+          grade: 'EXPERT',
+          _count: {
+            submissionLike: 2,
+          },
+          likeCount: 200,
+        },
+        createdAt: '2026-03-30T12:38:23.636Z',
+      },
+    ],
+    pagination: {
+      totalCount: 6,
+      hasNext: false,
+    },
+  };
 
   return (
     <>
@@ -304,6 +397,12 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         </>
         <h2>챌린지 테이블 </h2>
         <ChallengeTable dataList={list} getHref={(data) => '/'} />
+      </Container>
+      <Container>
+        <ChallengeParticipantsList
+          dataList={mockDataList.list}
+          totalCount={mockDataList.pagination.totalCount}
+        />
       </Container>
     </>
   );
