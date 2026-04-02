@@ -12,14 +12,14 @@ export default function Pager({ totalCount }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get('page'));
-  const page = isNaN(rawPage) ? 1 : rawPage;
+  const page = !rawPage || rawPage < 1 ? 1 : rawPage;
   const safeTotalCount = Number(totalCount) || 0;
   const totalPages = Math.ceil(safeTotalCount / 5);
   if (totalCount <= 5) return null;
   const setPage = (p) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', p);
-    router.push(`?${params.toString()}`, { scroll: false });
+    router.replace(`?${params.toString()}`, { scroll: false });
   };
   return (
     <div className={styles.pagerContainer}>

@@ -4,11 +4,13 @@ import Badge from '@/components/Common/Badge/Badge.jsx';
 import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown.jsx';
 import { FIELD_MAP, DOCUMENT_TYPE_MAP } from '@/constants/challengeConstants';
 import { formatDate } from '@/utils/dateUtils';
+import Button from '@/components/Common/Button/Button.jsx';
 import DescriptionBtn from './DescriptionBtn/DescriptionBtn.jsx';
 import * as styles from './DescriptionBanner.css.js';
 import clock from '@public/img/challengeCard/clock.svg';
 import person from '@public/img/challengeCard/person.svg';
 import user from '@public/img/header/user.svg';
+import iconCLick from '@public/img/arrow/iconClick.svg';
 import deadlineClock from '@public/img/challengeCard/deadlineClock.svg';
 
 export default function DescriptionBanner({
@@ -65,7 +67,13 @@ export default function DescriptionBanner({
             </Badge>
           </div>
           <div className={styles.descriptionWrapper}>{description}</div>
-          {isOwner ? (
+          {(!isOwner || me.userType === 'ADMIN') && (
+            <div className={styles.nickNameGroup}>
+              <Image src={user} alt="user" />
+              {creator.nickname}
+            </div>
+          )}
+          {(isOwner || me.userType === 'ADMIN') && (
             <div className={styles.infoGroup}>
               <div className={styles.infoItem}>
                 <Image src={clock} alt="clock" />
@@ -75,11 +83,6 @@ export default function DescriptionBanner({
                 <Image src={person} alt="person" />
                 {maxParticipants} 명
               </div>
-            </div>
-          ) : (
-            <div className={styles.nickNameGroup}>
-              <Image src={user} alt="user" />
-              {creator.nickname}
             </div>
           )}
         </div>
@@ -97,7 +100,7 @@ export default function DescriptionBanner({
         )}
       </div>
       <div className={styles.underLine} />
-      {sourceUrl && (
+      {(isOwner || me.userType === 'ADMIN') && (
         <>
           <div className={styles.iframeSectionTitle}>원문 링크</div>
           <div className={styles.iframeWrapper}>
@@ -105,14 +108,17 @@ export default function DescriptionBanner({
               src={`/api/proxy?url=${encodeURIComponent(sourceUrl)}`}
               className={styles.iframe}
             />
-            <a
-              href={sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.iframeOpenBtn}
-            >
-              원문 열기 ↗
-            </a>
+            <div className={styles.iframeOpenBtn}>
+              <Button
+                size="sm"
+                color="opacity"
+                hasIcon={iconCLick}
+                href={sourceUrl}
+                target="_blank"
+              >
+                원문 열기
+              </Button>
+            </div>
           </div>
         </>
       )}
