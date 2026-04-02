@@ -27,3 +27,10 @@ export const createChallenge = async (data) => {
 export const challengeDetail = async (id) => {
   return api.get(`/challenges/${id}`);
 };
+
+// 챌린지 참가자 목록 조회
+// GET /challenges/:id/participants
+export const getChallengeParticipants = async (id) => {
+  return api.get(`/challenges/${id}/participants`);
+};
+

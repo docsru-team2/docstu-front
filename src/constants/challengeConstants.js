@@ -19,3 +19,14 @@ export const STATUS_MAP = {
   APPROVED: { label: '신청 승인', color: 'approved' },
   DELETED: { label: '챌린지 삭제', color: 'deleted' },
 };
+
+export const REVIEW_STATUS_CONFIG = {
+  DELETED: { color: 'DELETED', text: '삭제된 챌린지입니다.' },
+  PENDING: { color: 'PENDING', text: '승인 대기 중입니다.' },
+  REJECTED: { color: 'REJECTED', text: '신청이 거절되었습니다.' },
+};
+
+export const REASON_CONFIG = {
+  DELETED: '삭제 사유',
+  REJECTED: '신청 거절 사유',
+};

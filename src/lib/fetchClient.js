@@ -21,7 +21,6 @@ async function baseFetch(url, options = {}) {
     };
   }
 
-  console.log('[fetchClient] set-cookie:', response.headers.get('set-cookie'));
   const text = await response.text();
   return text ? JSON.parse(text) : {};
 }
