@@ -45,7 +45,7 @@ export default function MyChallengeApplied({ items, totalCount }) {
       ) : (
         <ChallengeTable
           dataList={items}
-          getHref={(item) => `/myChallenge/applied/${item.id}`}
+          getHref={(item) => `/challenge/detail/${item.id}`}
         />
       )}
       <div className={styles.paginationBarContainer}>

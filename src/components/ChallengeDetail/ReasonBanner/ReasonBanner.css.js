@@ -12,6 +12,10 @@ export const container = recipe({
   },
   variants: {
     color: {
+      APPROVED: {
+        backgroundColor: '#DFF0FF',
+        color: '#4095DE',
+      },
       DELETED: {
         backgroundColor: vars.color.gray500,
         color: 'white',
