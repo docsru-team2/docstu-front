@@ -30,7 +30,6 @@ export default function Notification() {
       if (!node) return;
 
       observerRef.current = new IntersectionObserver((entries) => {
-        console.log('[Observer] isIntersecting:', entries[0].isIntersecting, 'hasMore:', hasMore);
         if (entries[0].isIntersecting && hasMore) {
           loadMore();
         }

@@ -62,12 +62,12 @@ export const menu = style({
 export const tab = style({
   display: 'flex',
   gap: '5px',
-  fontSize: '14px',
+  fontSize: vars.font.md,
 });
 
 export const list = style({
-  color: 'var(--gray-gray800, #262626)',
-  fontSize: '14px',
+  color: vars.color.gray500,
+  fontSize: vars.font.md,
   fontStyle: 'normal',
   fontWeight: '600',
   lineHeight: 'normal',
