@@ -10,7 +10,6 @@ export default async function ongoingPage({ searchParams }) {
     keyword,
   });
 
-  // Api 연결하기
   return (
     <MyChallengeList
       initialData={data}
