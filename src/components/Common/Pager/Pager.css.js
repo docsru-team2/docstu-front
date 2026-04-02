@@ -18,6 +18,7 @@ export const pager = style({
   backgroundColor: vars.color.gray50,
   color: vars.color.gray800,
   fontSize: vars.font.size.sm,
+  fontWeight: vars.font.weight.medium,
   gap: '4px',
 });
 
