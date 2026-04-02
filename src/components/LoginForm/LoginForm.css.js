@@ -18,7 +18,7 @@ export const input = style({
   padding: '12px 20px',
   border: `1px solid ${vars.color.gray200}`,
   borderRadius: '12px',
-  fontSize: '14px',
+  fontSize: vars.font.md,
 
   selectors: {
     '&::placeholder': {
