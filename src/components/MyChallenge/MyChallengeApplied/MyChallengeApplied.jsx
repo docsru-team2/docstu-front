@@ -11,7 +11,7 @@ export default function MyChallengeApplied({ items, totalCount }) {
   if (!items.length) {
     return <EmptyState text={'아직 챌린지가 없어요'} />;
   }
-  
+
   const sortItems = [
     { key: 'createedASC', label: '신청 시간 빠른순', value: 'CREATED_ASC' },
     { key: 'createdDESC', label: '신청 시간 느린순', value: 'CREATED_DESC' },
@@ -37,10 +37,10 @@ export default function MyChallengeApplied({ items, totalCount }) {
       {/* 드롭다운 */}
       <ChallengeTable
         dataList={items}
-        getHref={(item) => `/myChallenge/applied/${item.id}`}
+        getHref={(item) => `/challenge/detail/${item.id}`}
       />
       <div className={styles.paginationBarContainer}>
-      <PaginationBar totalCount={totalCount} />
+        <PaginationBar totalCount={totalCount} />
       </div>
     </div>
   );
