@@ -46,7 +46,8 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
   const reason = reviewStatus === 'DELETED' ? deleteReason : rejectReason;
   const formattedDate = formatDate(updatedAt, 'shortDatetime');
 
-  if (reviewStatus === 'PENDING' && !isOwner) redirect('/');
+  if (reviewStatus === 'PENDING' && !isOwner && me.userType !== 'ADMIN')
+    redirect('/');
 
   return (
     <>
