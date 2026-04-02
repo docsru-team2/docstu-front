@@ -6,17 +6,42 @@ import * as styles from './FeedbackItem.css';
 import { formatDate } from '@/utils/dateUtils';
 import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
-export default function FeedbackItem({ data, onDelete }) {
+export default function FeedbackItem({
+  data,
+  currentUser,
+  onUpdate,
+  onDelete,
+}) {
+  const { id, user, content, createdAt } = data;
+
+  const isOwner = currentUser?.id === user.id;
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(content);
+
+  const ownerMenuItems = [
+    { key: 'edit', label: '수정하기', action: () => setIsEditing(true) },
+    { key: 'delete', label: '삭제하기', action: () => onDelete?.(data) },
+  ];
+  const adminMenuItems = [
+    { key: 'delete', label: '삭제하기', action: () => onDelete?.(data) },
+  ];
+
   const pathname = usePathname();
   const isAdmin = pathname.includes('/admin');
 
   if (!data) return null;
-  const { user, content, createdAt } = data;
 
-  const menuItems = [
-    { key: 'delete', label: '삭제하기', action: () => onDelete?.(data) },
-  ];
+  const handleUpdate = async () => {
+    if (!onUpdate) return;
+    await onUpdate({
+      id: data.id,
+      content: editText,
+    });
+    setIsEditing(false);
+  };
 
   return (
     <div className={styles.feedbackContainer}>
@@ -30,18 +55,48 @@ export default function FeedbackItem({ data, onDelete }) {
           </div>
         </div>
       </div>
-      {isAdmin && (
-        <div
-          className={styles.menu}
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
-        >
-          <SimpleDropdown items={menuItems} />
+      {isEditing ? (
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              setIsEditing(false);
+              setEditText(content);
+            }}
+          >
+            취소
+          </button>
+          <button type='button'
+          onClick={handleUpdate}>수정완료</button>
         </div>
+      ) : (
+        <>
+          {(isOwner || isAdmin) && (
+            <div
+              className={styles.menu}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+            >
+              <SimpleDropdown
+                items={isOwner ? ownerMenuItems : adminMenuItems}
+              />
+            </div>
+          )}
+        </>
       )}
-      <div>{content}</div>
+
+      {isEditing ? (
+        <div>
+          <textarea
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
+          />
+        </div>
+      ) : (
+        <div>{content}</div>
+      )}
     </div>
   );
 }

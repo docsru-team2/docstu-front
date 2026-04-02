@@ -25,6 +25,7 @@ import {
 import { ChallengeTable } from '@/components/Challenge/ChallengeTable';
 import { ChallengeParticipantsList } from '@/components/Challenge/ChallengeParticipantsList ';
 import FeedbackItem from '@/components/Feedback/FeedbackItem/feedbackItem';
+import FeedbackSection from '@/components/Feedback/FeedbackSection/FeedbackSection';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   const [keyword, setKeyword] = useState('');
@@ -422,7 +423,7 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         />
       </Container>
       <Container>
-        <FeedbackItem data={mockFeedbackData}/>
+        <FeedbackSection />
       </Container>
     </>
   );
