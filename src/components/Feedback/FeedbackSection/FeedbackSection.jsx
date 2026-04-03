@@ -29,15 +29,14 @@ export default function FeedbackSection({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newFeedback.trim()) return;
-    console.log('등록 시도:', newFeedback);
     createMutation.mutate(newFeedback, {
       onSuccess: () => setNewFeedback(''),
     });
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
         <textarea
           id="content"
           value={newFeedback}
@@ -45,11 +44,11 @@ export default function FeedbackSection({
           onChange={(e) => setNewFeedback(e.target.value)}
           className={styles.feedbackContent}
         />
-        <button type="submit"> 등록</button>
+        <button className={styles.submitButton} type="submit"> 등록</button>
       </form>
 
       {feedbacks.length > 0 && (
-        <div>
+        <div className={styles.feedbackList}>
           {feedbacks.map((feedback, index) => (
             <FeedbackItem
               key={feedback.id ?? index}
@@ -65,14 +64,16 @@ export default function FeedbackSection({
       )}
 
       {hasNextPage && (
+        <div className={styles.buttonWrapper}>
         <button
           type="button"
-          className={styles.nextButton}
           onClick={() => fetchNextPage()}
           disabled={isFetchingNextPage}
+          className={styles.nextButton}
         >
           {isFetchingNextPage ? '불러오는 중...' : '더 보기'}
         </button>
+        </div>
       )}
     </div>
   );

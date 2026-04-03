@@ -7,6 +7,8 @@ import { formatDate } from '@/utils/dateUtils';
 import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import clsx from 'clsx';
+import { Button } from '@/components/Common/Button';
 
 export default function FeedbackItem({
   data,
@@ -42,7 +44,11 @@ export default function FeedbackItem({
   };
 
   return (
-    <div className={styles.feedbackContainer}>
+    <div
+      className={clsx(styles.feedbackContainer, {
+        [styles.editingFeedbackContainer]: isEditing,
+      })}
+    >
       <div className={styles.userContainer}>
         <Image src={userIcon} alt="사용자 아이콘" />
 
@@ -57,9 +63,10 @@ export default function FeedbackItem({
       {(isOwner || isAdmin) && (
         <div className={styles.menu} onClick={(e) => e.stopPropagation()}>
           {isEditing ? (
-            <div>
+            <div className={styles.buttonWrapper}>
               <button
                 type="button"
+                className={styles.cancelButton}
                 onClick={() => {
                   setIsEditing(false);
                   setEditText(content);
@@ -67,9 +74,12 @@ export default function FeedbackItem({
               >
                 취소
               </button>
-              <button type="button" onClick={handleUpdate}>
+             <div className={styles.editButton}>
+              <Button color='primary' size='sm' type="button" onClick={handleUpdate} >
                 수정완료
-              </button>
+              </Button>
+              </div>
+
             </div>
           ) : (
             <SimpleDropdown items={isOwner ? ownerMenuItems : adminMenuItems} />
@@ -77,12 +87,13 @@ export default function FeedbackItem({
         </div>
       )}
 
-      <div className={styles.contentArea}>
+      <div>
         {isEditing ? (
           <div>
             <textarea
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
+              className={styles.editTextarea}
             />
           </div>
         ) : (
