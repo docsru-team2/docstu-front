@@ -11,7 +11,7 @@ import ChallengeCard from '@/components/Challenge/ChallengeCard/ChallengeCard.js
 import SearchBar from '@/components/Common/SearchBar/SearchBar.jsx';
 import FilterDropdown from '@/components/Common/FilterDropdown/FilterDropdown.jsx';
 import PaginationBar from '@/components/Common/PaginationBar/PaginationBar.jsx';
-import { EmptyState } from '@/components/Common/EmptyState/EmptyState.jsx';
+import { EmptyState } from '@/components/Common/EmptyState';
 import { ReasonModal } from '@/components/Common/Modal';
 
 import * as styles from './page.css.js';
@@ -59,7 +59,7 @@ export default function AdminChallengesList() {
 
   // BE 응답: { list, totalCount, hasNext }
   const challenges = data?.list ?? [];
-  const totalCount = data?.totalCount ?? 0;
+  const totalCount = data?.pagination?.totalCount ?? 0;
 
   // 삭제 모달 상태
   const [modalMode, setModalMode] = useState(MODAL_MODE.CLOSED);
@@ -120,18 +120,22 @@ export default function AdminChallengesList() {
       ) : (
         <div className={styles.cardList}>
           {challenges.map((challenge) => (
-              <ChallengeCard
-                key={challenge.id}
-                data={challenge}
-                onEdit={handleEditClick}
-                onDelete={handleDeleteClick}
-              />
+            <ChallengeCard
+              key={challenge.id}
+              data={challenge}
+              onEdit={handleEditClick}
+              onDelete={handleDeleteClick}
+            />
           ))}
         </div>
       )}
 
       {/* 페이지네이션 - totalCount 넘기면 내부에서 총 페이지 수 계산 */}
-      {totalCount > 0 && <PaginationBar totalCount={totalCount} />}
+      {totalCount > 0 && (
+        <div className={styles.paginationWrapper}>
+          <PaginationBar totalCount={totalCount} />
+        </div>
+      )}
 
       {/* 챌린지 삭제 사유 모달 - 스키마에 deleteReason 있음 */}
       {modalMode === MODAL_MODE.DELETE ? (

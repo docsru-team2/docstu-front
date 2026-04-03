@@ -29,3 +29,8 @@ export const filterItem = style({
   flexShrink: 0,
   width: '160px',
 });
+
+export const paginationWrapper = style({
+  marginTop: '40px',
+  marginBottom: '40px',
+});
