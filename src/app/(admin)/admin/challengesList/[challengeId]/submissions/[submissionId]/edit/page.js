@@ -22,14 +22,11 @@ export default function AdminSubmissionEditPage() {
     queryFn: () => fetchSubmissionDetail(submissionId),
   });
 
-  // useQuery 데이터 로드 후 초기값 설정
-  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [isInitialized, setIsInitialized] = useState(false);
 
   // submission 데이터 로드 후 한 번만 초기값 설정
   if (submission && !isInitialized) {
-    setTitle(submission.title ?? '');
     setContent(submission.content ?? '');
     setIsInitialized(true);
   }
@@ -38,7 +35,9 @@ export default function AdminSubmissionEditPage() {
   const updateMutation = useMutation({
     mutationFn: (data) => updateSubmission(submissionId, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['submissionDetail', submissionId] });
+      queryClient.invalidateQueries({
+        queryKey: ['submissionDetail', submissionId],
+      });
       router.push(
         `/admin/challengesList/${challengeId}/submissions/${submissionId}`,
       );
@@ -49,31 +48,31 @@ export default function AdminSubmissionEditPage() {
   });
 
   const handleSubmit = () => {
-    updateMutation.mutate({ title, content });
+    updateMutation.mutate({ content });
   };
 
   if (isLoading) return <div>로딩 중...</div>;
 
   return (
-    <>
+    <div className={styles.container}>
       {/* 제목 */}
-      <h1>{submission?.title}</h1>
+      <h1 className={styles.title}>{submission?.title}</h1>
 
       {/* 수정하기 버튼 */}
-      <div>
+      <div className={styles.buttonWrapper}>
         <Button size="md" onClick={handleSubmit}>
           수정하기
         </Button>
       </div>
 
-      {/* todo: 텍스트 에디터 - 한준님 작업 예정 */}
-      {/* 에디터 완성 시 content state와 연결, textarea 제거 */}
+      {/* todo: 에디터 완성 시 textarea 교체 -> (editor)/admin/translations/[id] 에서 처리 */}
       <textarea
+        className={styles.editor}
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="번역 내용을 입력해주세요"
         rows={20}
       />
-    </>
+    </div>
   );
 }
