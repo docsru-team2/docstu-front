@@ -8,7 +8,12 @@ import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-export default function FeedbackItem({ data, currentUser, onUpdate, onDelete }) {
+export default function FeedbackItem({
+  data,
+  currentUser,
+  onUpdate,
+  onDelete,
+}) {
   const { id, user, content, createdAt } = data;
 
   const [isEditing, setIsEditing] = useState(false);
@@ -27,9 +32,9 @@ export default function FeedbackItem({ data, currentUser, onUpdate, onDelete }) 
   ];
 
   if (!data) return null;
-  const handleUpdate = async () => {
+  const handleUpdate = () => {
     if (!onUpdate) return;
-    await onUpdate({
+    onUpdate({
       id,
       content: editText,
     });
@@ -42,9 +47,9 @@ export default function FeedbackItem({ data, currentUser, onUpdate, onDelete }) 
         <Image src={userIcon} alt="사용자 아이콘" />
 
         <div className={styles.userInfo}>
-          <div>{user.nickname}</div>
+          <div>{user?.nickname}</div>
           <div className={styles.createdAtFont}>
-            {formatDate(createdAt, 'shortDatetime')}
+            {createdAt ? formatDate(createdAt, 'shortDatetime') : ''}
           </div>
         </div>
       </div>

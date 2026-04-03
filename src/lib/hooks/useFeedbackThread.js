@@ -51,47 +51,24 @@ export function useFeedbackThread({
   const createMutation = useMutation({
     mutationFn: (content) =>
       createSubmissionFeedback({ submissionId, content }),
-    onSuccess: (newFeedback) => {
-      queryClient.setQueryData(['feedbacks', submissionId], (oldData) => ({
-        ...oldData,
-        pages: [
-          {
-            list: [newFeedback, ...oldData.pages[0].list],
-            pagination: oldData.pages[0].pagination,
-          },
-          ...oldData.pages.slice(1),
-        ],
-      }));
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['feedbacks', submissionId] });
     },
   });
 
   // 피드백 수정
   const updateMutation = useMutation({
     mutationFn: ({ feedbackId, content }) =>
-      updateFeedback({ feedbackId, content }),
-    onSuccess: (updatedFeedback) => {
-      queryClient.setQueryData(['feedbacks', submissionId], (oldData) => ({
-        ...oldData,
-        pages: oldData.pages.map((page) => ({
-          ...page,
-          list: page.list.map((fb) =>
-            fb.id === updatedFeedback.id ? updatedFeedback : fb,
-          ),
-        })),
-      }));
+      updateFeedback(feedbackId, { content }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['feedbacks', submissionId] });
     },
   });
   // 피드백 삭제
   const deleteMutation = useMutation({
     mutationFn: (feedbackId) => removeFeedback(feedbackId),
-    onSuccess: (_, feedbackId) => {
-      queryClient.setQueryData(['feedbacks', submissionId], (oldData) => ({
-        ...oldData,
-        pages: oldData.pages.map((page) => ({
-          ...page,
-          list: page.list.filter((fb) => fb.id !== feedbackId),
-        })),
-      }));
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['feedbacks', submissionId] });
     },
   });
 

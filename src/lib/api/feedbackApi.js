@@ -13,8 +13,8 @@ export const fetchSubmissionFeedbackList = async ({
 };
 
 //피드백 생성
-export const createSubmissionFeedback = async ({submissionId, content}) => {
-  return api.post(`/submissions/${submissionId}/feedbacks`, {content});
+export const createSubmissionFeedback = async ({ submissionId, content }) => {
+  return api.post(`/submissions/${submissionId}/feedbacks`, { content });
 };
 
 //피드백 수정

@@ -50,16 +50,13 @@ export default function FeedbackSection({
 
       {feedbacks.length > 0 && (
         <div>
-          {feedbacks.map((feedback) => (
+          {feedbacks.map((feedback, index) => (
             <FeedbackItem
-              key={feedback.id}
+              key={feedback.id ?? index}
               data={feedback}
               currentUser={currentUser}
-              onUpdate={(data) =>
-                updateMutation.mutate({
-                  feedbackId: data.id,
-                  content: data.content,
-                })
+              onUpdate={(e) =>
+                updateMutation.mutate({ feedbackId: e.id, content: e.content })
               }
               onDelete={(id) => deleteMutation.mutate(id)}
             />

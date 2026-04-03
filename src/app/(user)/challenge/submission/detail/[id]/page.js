@@ -13,7 +13,7 @@ export default async function SubmissionDetailPage({ params }) {
   const isOwner = submission.data.userId === me.id;
 
   const feedbackData = await fetchSubmissionFeedbackList({
-    submissionId: id,
+    submissionId: submissionData.id,
     limit: 3,
     page: 1,
   });
@@ -28,7 +28,7 @@ export default async function SubmissionDetailPage({ params }) {
         challengeData={challengeData}
       />
       <FeedbackSection
-        submissionId={id}
+        submissionId={submissionData.id}
         initialFeedbacks={initialFeedbacks}
         initialNextCursor={initialNextCursor}
         currentUser={me}
