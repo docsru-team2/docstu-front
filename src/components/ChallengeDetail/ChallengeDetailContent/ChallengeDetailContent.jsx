@@ -90,6 +90,7 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
             <ChallengeParticipantsList
               dataList={submissions.rankList}
               totalCount={submissions.pagination?.totalCount ?? 0}
+              isAdmin={me.userType === 'ADMIN'}
             />
           )}
         </>

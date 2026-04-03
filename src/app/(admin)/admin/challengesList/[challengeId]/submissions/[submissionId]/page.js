@@ -3,12 +3,17 @@
 import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import Image from 'next/image';
+import userIcon from '@public/img/header/user.svg';
 import {
   fetchSubmissionDetail,
   deleteSubmission,
   deleteFeedback,
 } from '@/lib/api/adminChallengeApi.js';
-import { fetchSubmissionFeedbackList } from '@/lib/api/feedbackApi.js';
+import {
+  fetchSubmissionFeedbackList,
+  createSubmissionFeedback,
+} from '@/lib/api/feedbackApi.js';
 import { challengeDetail } from '@/lib/api/challengeApi.js';
 import { formatDate } from '@/utils/dateUtils';
 import { ConfirmModal } from '@/components/Common/Modal';
@@ -34,7 +39,7 @@ export default function AdminSubmissionDetailPage() {
     queryFn: () => fetchSubmissionDetail(submissionId),
   });
 
-  // 챌린지 정보 조회 - Submission 컴포넌트에 필요
+  // 챌린지 정보 조회
   const { data: challenge } = useQuery({
     queryKey: ['challengeDetail', submission?.challengeId],
     queryFn: () => challengeDetail(submission.challengeId),
@@ -51,6 +56,7 @@ export default function AdminSubmissionDetailPage() {
 
   const [modalMode, setModalMode] = useState(MODAL_MODE.CLOSED);
   const [selectedFeedbackId, setSelectedFeedbackId] = useState(null);
+  const [newFeedback, setNewFeedback] = useState('');
 
   // 작업물 삭제
   const deleteSubmissionMutation = useMutation({
@@ -61,6 +67,21 @@ export default function AdminSubmissionDetailPage() {
     },
     onError: (error) => {
       console.error('작업물 삭제 실패:', error);
+    },
+  });
+
+  // 피드백 작성
+  const createFeedbackMutation = useMutation({
+    mutationFn: (content) =>
+      createSubmissionFeedback({ submissionId, content }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['submissionFeedbacks', submissionId],
+      });
+      setNewFeedback('');
+    },
+    onError: (error) => {
+      console.error('피드백 작성 실패:', error);
     },
   });
 
@@ -79,6 +100,17 @@ export default function AdminSubmissionDetailPage() {
     },
   });
 
+  // Submission 컴포넌트 onDelete
+  const handleSubmissionDelete = () => {
+    setModalMode(MODAL_MODE.DELETE_SUBMISSION);
+  };
+
+  // 피드백 등록
+  const handleCreateFeedback = () => {
+    if (!newFeedback.trim()) return;
+    createFeedbackMutation.mutate(newFeedback);
+  };
+
   // 피드백 드롭다운 메뉴 - 삭제하기만
   const getFeedbackMenuItems = (feedbackId) => [
     {
@@ -90,10 +122,6 @@ export default function AdminSubmissionDetailPage() {
       },
     },
   ];
-
-  const handleSubmissionDelete = () => {
-    setModalMode(MODAL_MODE.DELETE_SUBMISSION);
-  };
 
   const handleModalClose = () => {
     setModalMode(MODAL_MODE.CLOSED);
@@ -115,21 +143,51 @@ export default function AdminSubmissionDetailPage() {
       />
 
       {/* 피드백 영역 */}
-      <div className={styles.feedbackSection}>
-        <h2 className={styles.feedbackTitle}>피드백</h2>
+      <div className={styles.feedbackContainer}>
+        {/* 피드백 입력 */}
+        <div className={styles.formContainer}>
+          <textarea
+            className={styles.feedbackTextarea}
+            value={newFeedback}
+            onChange={(e) => setNewFeedback(e.target.value)}
+            placeholder="피드백을 남겨주세요"
+          />
+          <button
+            className={styles.submitButton}
+            onClick={handleCreateFeedback}
+          >
+            등록
+          </button>
+        </div>
+
+        {/* 피드백 목록 */}
         {isFeedbackLoading ? (
           <div>피드백 로딩 중...</div>
         ) : (
-          feedbacks.map((feedback) => (
-            <div key={feedback.id} className={styles.feedbackItem}>
-              <div className={styles.feedbackHeader}>
-                <span>{feedback.user?.nickname}</span>
-                <span>{formatDate(feedback.createdAt, 'shortDatetime')}</span>
-                <SimpleDropdown items={getFeedbackMenuItems(feedback.id)} />
+          <div className={styles.feedbackList}>
+            {feedbacks.map((feedback) => (
+              <div key={feedback.id} className={styles.feedbackItem}>
+                <div className={styles.feedbackUserContainer}>
+                  <Image
+                    src={userIcon}
+                    alt="사용자 아이콘"
+                    width={32}
+                    height={32}
+                  />
+                  <div className={styles.feedbackUserInfo}>
+                    <div>{feedback.user?.nickname}</div>
+                    <div className={styles.feedbackDate}>
+                      {formatDate(feedback.createdAt, 'shortDatetime')}
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.feedbackMenu}>
+                  <SimpleDropdown items={getFeedbackMenuItems(feedback.id)} />
+                </div>
+                <div>{feedback.content}</div>
               </div>
-              <p>{feedback.content}</p>
-            </div>
-          ))
+            ))}
+          </div>
         )}
       </div>
 
