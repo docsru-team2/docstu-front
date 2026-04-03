@@ -89,7 +89,10 @@ export default function AdminSubmissionDetailPage() {
     {
       key: 'edit',
       label: '수정하기',
-      action: () => router.push(`/admin/translations/${submissionId}`),
+      action: () =>
+        router.push(
+          `/admin/translations/${challengeId}?submissionId=${submissionId}`,
+        ),
     },
     {
       key: 'delete',
