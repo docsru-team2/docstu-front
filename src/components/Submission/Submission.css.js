@@ -3,7 +3,8 @@ import { style } from '@vanilla-extract/css';
 
 export const container = style({
   width: '100%',
-  maxWidth: '890px',
+  height: 'calc(100vh - 60px)',
+  overflowY: 'auto',
   position: 'relative',
   background: '#ffffffff',
   margin: '0 auto',
@@ -63,4 +64,8 @@ export const asideInfo = style({
   display: 'flex',
   alignItems: 'center',
   gap: '12px',
+});
+
+export const constentsWrapper = style({
+  padding: '24px 0',
 });
