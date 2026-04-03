@@ -8,7 +8,8 @@ import arrowRight from '@public/img/arrow/arrowRightActive.svg';
 import Link from 'next/link';
 import { formatLikeCount } from '@/utils/formatLikeCount';
 
-export default function ChallengeParticipantsList({ dataList, totalCount }) {
+
+export default function ChallengeParticipantsList({ dataList, totalCount, isAdmin }) {
   console.log(dataList);
   return (
     <div className={styles.listContainer}>
@@ -52,7 +53,7 @@ export default function ChallengeParticipantsList({ dataList, totalCount }) {
                   </div>
                   <div>
                     <Link
-                      href={`/challenge/submission/detail/${data.id}`}
+                      href={isAdmin ? `/admin/challengesList/${data.challengeId}/submissions/${data.id}` : `/challenge/submission/detail/${data.id}`}
                       className={styles.link}
                     >
                       작업물보기{' '}
