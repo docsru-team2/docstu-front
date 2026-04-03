@@ -9,7 +9,7 @@ import { Button } from '@/components/Common/Button';
 import pluse from '@public/img/btn/plus.svg';
 //import { FormField } from '@/components/Common/FormField';
 import { PaginationBar } from '@/components/Common/PaginationBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { FilterDropdown } from '@/components/Common/FilterDropdown';
 import { EmptyState } from '@/components/Common/EmptyState/EmptyState';
@@ -24,6 +24,10 @@ import {
 } from '@/components/Common/Modal';
 import { ChallengeTable } from '@/components/Challenge/ChallengeTable';
 import { ChallengeParticipantsList } from '@/components/Challenge/ChallengeParticipantsList ';
+
+import FeedbackSection from '@/components/Feedback/FeedbackSection/FeedbackSection';
+import { getMe } from '@/lib/api/userApi';
+import { useQuery } from '@tanstack/react-query';
 
 export default function DevPage({ title, setTitle, content, setContent }) {
   const [keyword, setKeyword] = useState('');
@@ -86,10 +90,13 @@ export default function DevPage({ title, setTitle, content, setContent }) {
     },
   ];
 
-  const mockDataList1 = { list : [] , pagination: {
+  const mockDataList1 = {
+    list: [],
+    pagination: {
       totalCount: 0,
       hasNext: false,
-    },}
+    },
+  };
 
   const mockDataList = {
     list: [
@@ -174,6 +181,60 @@ export default function DevPage({ title, setTitle, content, setContent }) {
     ],
     pagination: {
       totalCount: 6,
+      hasNext: false,
+    },
+  };
+
+  const { data: user } = useQuery({
+    queryKey: ['me'],
+    queryFn: getMe,
+  });
+  const mockFeedbackData = {
+    list: [
+      {
+        id: '01KN67ZFQQKBAY6PRQ6PVRBTA9',
+        submissionId: '01KN619WGG8930VTKZN6EA48BD',
+        userId: '01KN619T623HR9J9M7H388TZST',
+        content: '좋은 번역이네요!',
+        createdAt: '2026-04-02T04:42:13.604Z',
+        updatedAt: '2026-04-02T04:42:13.604Z',
+        user: {
+          id: '01KN619T623HR9J9M7H388TZST',
+          nickname: 'user30',
+          grade: 'EXPERT',
+        },
+      },
+      {
+        id: '01KN619Z8KRHGGEN1JX7NYBJ8A',
+        submissionId: '01KN619WGG8930VTKZN6EA48BD',
+        userId: '01KN619T611WRSWRWPD8HWY3SD',
+        content:
+          'Adipisci deleo infit defetiscor cumque cupiditate. Omnis velociter demum titulus. Terminatio anser sulum suscipio tendo calculus tantum corrigo coniecto.\nDemens incidunt ademptio ad autus suffragium. Adamo sperno statim a dapifer reiciendis magnam. Curia vilitas maiores eum spes cresco delego dolorem ustulo curatio.',
+        createdAt: '2026-04-02T02:45:37.171Z',
+        updatedAt: '2026-04-02T02:45:37.171Z',
+        user: {
+          id: '01KN619T611WRSWRWPD8HWY3SD',
+          nickname: 'user4',
+          grade: 'EXPERT',
+        },
+      },
+      {
+        id: '01KN619Z89BCZAYFVJZ7MPAY3Q',
+        submissionId: '01KN619WGG8930VTKZN6EA48BD',
+        userId: '01KN619T63W0JMYGWBC8Y5BBXT',
+        content:
+          'Carmen depulso coma paulatim qui cogo. Angulus creo valeo clam culpo territo derideo vulnero trado. Aqua terminatio cena quod.',
+        createdAt: '2026-04-02T02:45:37.161Z',
+        updatedAt: '2026-04-02T02:45:37.161Z',
+        user: {
+          id: '01KN619T63W0JMYGWBC8Y5BBXT',
+          nickname: 'user40',
+          grade: 'EXPERT',
+        },
+      },
+    ],
+    pagination: {
+      totalCount: 3,
       hasNext: false,
     },
   };
@@ -402,6 +463,13 @@ export default function DevPage({ title, setTitle, content, setContent }) {
         <ChallengeParticipantsList
           dataList={mockDataList.list}
           totalCount={mockDataList.pagination.totalCount}
+        />
+      </Container>
+      <Container>
+        <FeedbackSection
+          initialFeedbacks={mockFeedbackData.list}
+          initialNextCursor={mockFeedbackData.pagination.hasNext}
+          currentUser={user}
         />
       </Container>
     </>
