@@ -5,10 +5,10 @@ import { useParams, useRouter } from 'next/navigation';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   fetchSubmissionDetail,
-  fetchSubmissionFeedbacks,
   deleteSubmission,
   deleteFeedback,
 } from '@/lib/api/adminChallengeApi.js';
+import { fetchSubmissionFeedbackList } from '@/lib/api/feedbackApi.js';
 import { challengeDetail } from '@/lib/api/challengeApi.js';
 import { formatDate } from '@/utils/dateUtils';
 import { FIELD_MAP, DOCUMENT_TYPE_MAP } from '@/constants/challengeConstants';
@@ -49,7 +49,7 @@ export default function AdminSubmissionDetailPage() {
   // 피드백 목록 조회
   const { data: feedbackData, isLoading: isFeedbackLoading } = useQuery({
     queryKey: ['submissionFeedbacks', submissionId],
-    queryFn: () => fetchSubmissionFeedbacks(submissionId),
+    queryFn: () => fetchSubmissionFeedbackList({ submissionId }),
   });
 
   const feedbacks = feedbackData?.list ?? [];
