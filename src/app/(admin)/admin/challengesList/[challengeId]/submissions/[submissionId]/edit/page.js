@@ -65,7 +65,6 @@ export default function AdminSubmissionEditPage() {
         </Button>
       </div>
 
-      {/* todo: 에디터 완성 시 textarea 교체 -> (editor)/admin/translations/[id] 에서 처리 */}
       <textarea
         className={styles.editor}
         value={content}

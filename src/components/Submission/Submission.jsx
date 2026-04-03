@@ -10,16 +10,26 @@ import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown';
 import EmptyState from '@/components/Common/EmptyState/EmptyState.jsx';
 import { api } from '@/lib/fetchClient';
 
-export default function Submission({ submissionData, isOwner, challengeData, userType }) {
+export default function Submission({
+  submissionData,
+  isOwner,
+  challengeData,
+  userType,
+  onDelete
+}) {
   const router = useRouter();
 
   const handleDelete = async () => {
+    if (onDelete) {
+      onDelete(submissionData);
+      return;
+    }
     if (isOwner) {
       await api.delete(`/submissions/${submissionData.id}`);
       router.push(`/challenge/detail/${submissionData.challengeId}?page=1`);
     }
-    // 어드민 유저일 때 삭제 로직 작성
   };
+
   const { id, createdAt, content, user, _count, title, challengeId } =
     submissionData;
   const { field, documentType } = challengeData;
@@ -28,7 +38,7 @@ export default function Submission({ submissionData, isOwner, challengeData, use
     .toISOString()
     .slice(2, 10)
     .replace(/-/g, '/');
-  console.log(submissionData);
+    
   return (
     <div className={styles.container}>
       <nav>
