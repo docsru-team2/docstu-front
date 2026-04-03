@@ -18,6 +18,7 @@ import OriginalViewer from './OriginalViewer/OriginalViewer.jsx';
 import EditorHeader from '@/components/Header/Editor/Editor.jsx';
 import { ConfirmModal, LoadDraftsModal } from '@/components/Common/Modal/Modal';
 import { api } from '@/lib/fetchClient';
+import { withdrawChallenge } from '@/lib/api/challengeApi';
 import Button from '@/components/Common/Button/Button.jsx';
 
 export default function SubmissionEditor({
@@ -35,6 +36,7 @@ export default function SubmissionEditor({
   const [drafts, setDrafts] = useState([]);
   const [showDraftBar, setShowDraftBar] = useState(false);
   const [showDraftsModal, setShowDraftsModal] = useState(false);
+  const [showWithdrawModal, setShowWithdrawModal] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -43,6 +45,7 @@ export default function SubmissionEditor({
       async function fetchSubmission() {
         try {
           const data = await api.get(`/submissions/${submissionId}`);
+          console.log(data);
           setTitle(data.data.title || '');
           setContent(data.data.content || '');
           if (editorRef.current) {
@@ -123,6 +126,20 @@ export default function SubmissionEditor({
     }
   };
 
+  const handleWithdraw = () => {
+    setShowWithdrawModal(true);
+  };
+
+  const handleWithdrawConfirm = async () => {
+    try {
+      await withdrawChallenge(challengeId);
+      setShowWithdrawModal(false);
+      router.push(`/challenge/detail/${challengeId}?page=1`);
+    } catch (e) {
+      console.error('포기 실패:', e);
+    }
+  };
+
   const handleSelectDraft = (draft) => {
     setTitle(draft.title || '');
     setContent(draft.content || '');
@@ -155,8 +172,17 @@ export default function SubmissionEditor({
         userType={userType}
         isParticipant={isParticipant}
         onSaveDraft={handleSaveDraft}
+        onWithdraw={handleWithdraw}
         onSubmit={handleSubmit}
       />
+      {showWithdrawModal && (
+        <ConfirmModal
+          message="정말 챌린지 도전을 포기하시겠습니까?"
+          singleButton={false}
+          onConfirm={handleWithdrawConfirm}
+          onClose={() => setShowWithdrawModal(false)}
+        />
+      )}
       {modalMessage && (
         <ConfirmModal
           message={modalMessage}
@@ -175,27 +201,6 @@ export default function SubmissionEditor({
         />
       )}
       <div className={styles.container}>
-        {userType !== 'ADMIN' && showDraftBar && (
-          <div className={styles.draftBar}>
-            <div className={styles.draftBarLeft}>
-              <button
-                type="button"
-                className={styles.draftCloseBtn}
-                onClick={() => setShowDraftBar(false)}
-              >
-                <Image src={closeIcon} alt="닫기" />
-              </button>
-              임시 저장된 작업물이 있어요. 저장된 작업물을 불러오시겠어요??
-            </div>
-            <Button
-              size="sm"
-              color="primary"
-              onClick={() => setShowDraftsModal(true)}
-            >
-              불러오기
-            </Button>
-          </div>
-        )}
         {showDraftsModal && (
           <LoadDraftsModal
             data={drafts}
@@ -351,6 +356,29 @@ export default function SubmissionEditor({
           }}
         />
         <OriginalViewer />
+        {userType !== 'ADMIN' && showDraftBar && (
+          <div className={styles.draftBar}>
+            <div className={styles.draftBarLeft}>
+              <button
+                type="button"
+                className={styles.draftCloseBtn}
+                onClick={() => setShowDraftBar(false)}
+              >
+                <Image src={closeIcon} alt="닫기" />
+              </button>
+              임시 저장된 작업물이 있어요. 저장된 작업물을 불러오시겠어요??
+            </div>
+            <div style={{ width: '90px' }}>
+              <Button
+                size="sm"
+                color="primary"
+                onClick={() => { setShowDraftsModal(true); setShowDraftBar(false); }}
+              >
+                불러오기
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
