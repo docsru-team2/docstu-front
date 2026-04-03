@@ -1,3 +1,8 @@
-export default function EditorUserTranslations() {
-  return <div>유저 챌린저 수정하기</div>;
+import EditorWrapper from '@/components/SubmissionEditor/EditorWrapper';
+
+export default async function EditorUserTranslations({ params, searchParams }) {
+  const { id } = await params;
+  const { submissionId } = await searchParams;
+
+  return <EditorWrapper challengeId={id} querySubmissionId={submissionId} />;
 }

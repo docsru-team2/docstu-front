@@ -18,6 +18,7 @@ export default function DescriptionBanner({
   isOwner,
   me,
   isParticipant,
+  isClosed,
 }) {
   const {
     title,
@@ -29,10 +30,9 @@ export default function DescriptionBanner({
     deadline,
     creator,
     _count,
-    progressStatus,
     sourceUrl,
   } = challenge;
-
+  console.log(challenge);
   const fieldInfo = FIELD_MAP[field];
   const menuItems = [
     { key: 'delete', label: '취소하기', action: () => console.log('취소') },
@@ -42,7 +42,7 @@ export default function DescriptionBanner({
     <div className={styles.container}>
       <div className={styles.contentGroup}>
         <div className={styles.contentLeft}>
-          {progressStatus === 'CLOSED' && (
+          {isClosed && (
             <div className={styles.topBadge}>
               <Badge badgeStyle="closedStatus" color="closedExpired">
                 <div className={styles.badgeInner}>
@@ -88,12 +88,13 @@ export default function DescriptionBanner({
         </div>
         {!isOwner && me.userType !== 'ADMIN' && (
           <DescriptionBtn
+            challengeId={challenge.id}
             date={formatDate(deadline, 'ko')}
             maxParticipants={maxParticipants}
-            count={_count.participants}
+            count={_count.submissions}
             personIcon={person}
             clockIcon={clock}
-            progressStatus={progressStatus}
+            isClosed={isClosed}
             sourceUrl={sourceUrl}
             isParticipant={isParticipant}
           />

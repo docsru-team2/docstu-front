@@ -24,7 +24,7 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
       getMe(),
       getChallengeParticipants(id).catch(() => []),
       getChallengeSubmissions(id, { page: Number(page) }).catch(() => ({
-        list: [],
+        rankList: [],
         pagination: { totalCount: 0 },
       })),
       getChallengeSubmissionsBest(id).catch(() => null),
@@ -39,6 +39,9 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
     progressStatus,
   } = challengeData;
   const isOwner = creatorId === me.id;
+  const isClosed =
+    progressStatus === 'CLOSED' ||
+    new Date() > new Date(challengeData.deadline);
   const isParticipant =
     participants?.list?.some((p) => p.author.id === me.id) ?? false;
   const reviewStatusData = REVIEW_STATUS_CONFIG[reviewStatus];
@@ -78,15 +81,14 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
         isOwner={isOwner}
         me={me}
         isParticipant={isParticipant}
+        isClosed={isClosed}
       />
       {reviewStatus === 'APPROVED' && (
         <>
-          {progressStatus === 'CLOSED' && (
-            <SubmissionsBest submissions={submissionBest ?? []} />
-          )}
-          {submissions.list?.length > 0 && (
+          {isClosed && <SubmissionsBest submissions={submissionBest ?? []} />}
+          {submissions.rankList?.length > 0 && (
             <ChallengeParticipantsList
-              dataList={submissions.list}
+              dataList={submissions.rankList}
               totalCount={submissions.pagination?.totalCount ?? 0}
             />
           )}
