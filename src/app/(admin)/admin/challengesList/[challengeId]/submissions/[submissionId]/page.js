@@ -11,14 +11,9 @@ import {
 import { fetchSubmissionFeedbackList } from '@/lib/api/feedbackApi.js';
 import { challengeDetail } from '@/lib/api/challengeApi.js';
 import { formatDate } from '@/utils/dateUtils';
-import { FIELD_MAP, DOCUMENT_TYPE_MAP } from '@/constants/challengeConstants';
-import { Badge } from '@/components/Common/Badge';
-import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown.jsx';
 import { ConfirmModal } from '@/components/Common/Modal';
-
-// todo: 공통 컴포넌트 머지 후 교체
-// import Submission from '@/components/Submission/Submission.jsx';
-// import { FeedbackSection } from '@/components/Feedback/FeedbackSection';
+import SimpleDropdown from '@/components/Common/SimpleDropdown/SimpleDropdown.jsx';
+import Submission from '@/components/Submission/Submission.jsx';
 
 import * as styles from './page.css.js';
 
@@ -84,23 +79,6 @@ export default function AdminSubmissionDetailPage() {
     },
   });
 
-  // 작업물 드롭다운 메뉴
-  const submissionMenuItems = [
-    {
-      key: 'edit',
-      label: '수정하기',
-      action: () =>
-        router.push(
-          `/admin/translations/${challengeId}?submissionId=${submissionId}`,
-        ),
-    },
-    {
-      key: 'delete',
-      label: '삭제하기',
-      action: () => setModalMode(MODAL_MODE.DELETE_SUBMISSION),
-    },
-  ];
-
   // 피드백 드롭다운 메뉴 - 삭제하기만
   const getFeedbackMenuItems = (feedbackId) => [
     {
@@ -113,47 +91,30 @@ export default function AdminSubmissionDetailPage() {
     },
   ];
 
+  const handleSubmissionDelete = () => {
+    setModalMode(MODAL_MODE.DELETE_SUBMISSION);
+  };
+
   const handleModalClose = () => {
     setModalMode(MODAL_MODE.CLOSED);
     setSelectedFeedbackId(null);
   };
 
-  if (isSubmissionLoading || !submission) return <div>로딩 중...</div>;
-
-  const fieldInfo = FIELD_MAP[challenge?.field];
+  if (isSubmissionLoading || !submission || !challenge)
+    return <div>로딩 중...</div>;
 
   return (
     <div className={styles.container}>
       {/* 작업물 영역 */}
-
-      {/* todo: Submission 컴포넌트 교체 시 아래 블록 -> <Submission submissionData={submission} isOwner={false} challengeData={challenge} /> */}
-      <nav>
-        <div className={styles.top}>
-          <h1 className={styles.title}>{challenge?.title}</h1>
-          <SimpleDropdown items={submissionMenuItems} />
-        </div>
-        {challenge && (
-          <div className={styles.badgeGroup}>
-            <Badge badgeStyle="field" color={fieldInfo?.color}>
-              {fieldInfo?.label}
-            </Badge>
-            <Badge badgeStyle="documentType">
-              {DOCUMENT_TYPE_MAP[challenge.documentType]}
-            </Badge>
-          </div>
-        )}
-      </nav>
-
-      <div className={styles.meta}>
-        <span>{submission.user?.nickname}</span>
-        <span>{formatDate(submission.createdAt, 'shortDatetime')}</span>
-      </div>
-
-      <div className={styles.content}>{submission.content}</div>
+      <Submission
+        submissionData={submission}
+        isOwner={false}
+        challengeData={challenge}
+        userType="ADMIN"
+        onDelete={handleSubmissionDelete}
+      />
 
       {/* 피드백 영역 */}
-      {/* todo: FeedbackSection 머지 후 아래 블록 교체 */}
-      {/* <FeedbackSection submissionId={submissionId} initialFeedbacks={feedbacks} initialNextCursor={null} currentUser={null} /> */}
       <div className={styles.feedbackSection}>
         <h2 className={styles.feedbackTitle}>피드백</h2>
         {isFeedbackLoading ? (
