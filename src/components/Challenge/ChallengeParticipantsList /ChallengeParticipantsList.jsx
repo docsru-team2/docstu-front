@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { formatLikeCount } from '@/utils/formatLikeCount';
 
 export default function ChallengeParticipantsList({ dataList, totalCount }) {
+  console.log(dataList);
   return (
     <div className={styles.listContainer}>
       <div className={styles.listHeader}>
@@ -17,7 +18,8 @@ export default function ChallengeParticipantsList({ dataList, totalCount }) {
       </div>
       {dataList.length === 0 ? (
         <p className={styles.emptyText}>
-          아직 참여한 도전자가 없어요,<br /> 지금 바로 도전해보세요!
+          아직 참여한 도전자가 없어요,
+          <br /> 지금 바로 도전해보세요!
         </p>
       ) : (
         <div className={styles.list}>
@@ -50,7 +52,7 @@ export default function ChallengeParticipantsList({ dataList, totalCount }) {
                   </div>
                   <div>
                     <Link
-                      href={`/challenges/${data.id}`}
+                      href={`/challenge/submission/detail/${data.id}`}
                       className={styles.link}
                     >
                       작업물보기{' '}

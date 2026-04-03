@@ -29,7 +29,7 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
       })),
       getChallengeSubmissionsBest(id).catch(() => null),
     ]);
-
+  console.log(submissions, 'submissions');
   const {
     reviewStatus,
     rejectReason,
