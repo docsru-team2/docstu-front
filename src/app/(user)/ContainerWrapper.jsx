@@ -5,12 +5,8 @@ import { Container } from '@/components/Common/Container';
 
 export default function ContainerWrapper({ children }) {
   const pathname = usePathname();
-  const bg =
-    pathname === '/challenge/apply' || pathname.startsWith('/translations')
-      ? 'white'
-      : 'gray';
   const whitePaths = ['/challenge/apply'];
-  const whitePrefixes = ['/challenge/submission/detail/'];
+  const whitePrefixes = ['/challenge/submission/detail/', '/translations'];
 
   const bg = (
     whitePaths.includes(pathname) ||
