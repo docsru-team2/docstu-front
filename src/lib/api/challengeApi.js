@@ -34,6 +34,12 @@ export const getChallengeParticipants = async (id) => {
   return api.get(`/challenges/${id}/participants`);
 };
 
+// 챌린지 참가 포기
+// DELETE /challenges/:id/participants
+export const withdrawChallenge = async (id) => {
+  return api.delete(`/challenges/${id}/participants`);
+};
+
 // 챌린지 최다추천 작업물 조회
 // GET /challenges/:id/submissions/best
 export const getChallengeSubmissionsBest = async (id) => {
@@ -42,8 +48,10 @@ export const getChallengeSubmissionsBest = async (id) => {
 
 // 챌린지 작업물 목록 조회
 // GET /challenges/:id/submissions
-export const getChallengeSubmissions = async (id, { page = 1, limit = 5, orderBy = 'CREATED_DESC' } = {}) => {
+export const getChallengeSubmissions = async (
+  id,
+  { page = 1, limit = 5, orderBy = 'CREATED_DESC' } = {},
+) => {
   const params = new URLSearchParams({ page, limit, orderBy });
   return api.get(`/challenges/${id}/submissions?${params}`);
 };
-

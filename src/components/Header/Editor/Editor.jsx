@@ -7,7 +7,7 @@ import Link from 'next/link.js';
 import Button from '@/components/Common/Button/Button.jsx';
 import Frame from '@public/img/Frame.svg';
 
-export default function EditorHeader({ userType, isParticipant = false, onSaveDraft, onSubmit }) {
+export default function EditorHeader({ userType, isParticipant = false, onSaveDraft, onSubmit, onWithdraw }) {
   const isEdit = userType === 'ADMIN' || isParticipant;
   return (
     <header className={styles.wrapper}>
@@ -24,7 +24,7 @@ export default function EditorHeader({ userType, isParticipant = false, onSaveDr
           {userType !== 'ADMIN' && (
             <>
               <div className={styles.FrameBtn}>
-                <Button size="md" color="abandon" hasIcon={Frame}>
+                <Button size="md" color="abandon" hasIcon={Frame} onClick={onWithdraw}>
                   포기
                 </Button>
               </div>

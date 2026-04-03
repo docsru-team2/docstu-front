@@ -102,6 +102,8 @@ export const draftsList = style({
   display: 'flex',
   padding: '12px 0',
   flexDirection: 'column',
+  height: '440px',
+  overflowY: 'auto',
 });
 
 export const draftsCount = style({

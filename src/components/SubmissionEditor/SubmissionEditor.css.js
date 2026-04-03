@@ -84,6 +84,7 @@ export const draftBar = style({
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '12px 16px',
+  backgroundColor: vars.color.gray50,
   border: `1px solid ${vars.color.gray200}`,
   borderRadius: '8px',
   marginBottom: '16px',
