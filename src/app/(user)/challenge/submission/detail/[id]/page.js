@@ -26,7 +26,7 @@ export default async function SubmissionDetailPage({ params }) {
         submissionData={submissionData}
         isOwner={isOwner}
         challengeData={challengeData}
-        userType={me.role}
+        userType={me.userType}
       />
       <div style={{ marginBottom: '64px' }}>
         <FeedbackSection

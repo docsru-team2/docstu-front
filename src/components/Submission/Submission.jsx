@@ -15,7 +15,7 @@ export default function Submission({
   isOwner,
   challengeData,
   userType,
-  onDelete
+  onDelete,
 }) {
   const router = useRouter();
 
@@ -38,7 +38,7 @@ export default function Submission({
     .toISOString()
     .slice(2, 10)
     .replace(/-/g, '/');
-    
+  console.log(userType, 'userType');
   return (
     <div className={styles.container}>
       <nav>

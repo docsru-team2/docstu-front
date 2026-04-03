@@ -36,7 +36,7 @@ export default function ChallengeCard({ data, onEdit, onDelete }) {
   ];
   console.log(data);
   return (
-    <Link className={cardContainer} href={`/challenge/detail/${id}?page=1`}>
+    <Link className={cardContainer} href={isAdmin ? `/admin/challengesSettings/${id}` : `/challenge/detail/${id}?page=1`}>
       <div>
         {isClosedExpired ? (
           <div style={{ marginBottom: '12px' }}>

@@ -9,8 +9,8 @@ export default async function UserLayout({ children }) {
 
   return (
     <>
-      {/* {userType === 'ADMIN' ? <AdminHeader /> : <UserHeader />} */}
-      <UserHeader />
+      {userType === 'ADMIN' ? <AdminHeader /> : <UserHeader />}
+      {/* <UserHeader /> */}
       <main style={{ paddingTop: '60px' }}>
         <ContainerWrapper>{children}</ContainerWrapper>
       </main>
