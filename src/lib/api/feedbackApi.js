@@ -13,13 +13,13 @@ export const fetchSubmissionFeedbackList = async ({
 };
 
 //피드백 생성
-export const createSubmissionFeedback = async (submissionId, data) => {
-  return api.post(`/submissions/${submissionId}/feedbacks`, data);
+export const createSubmissionFeedback = async ({submissionId, content}) => {
+  return api.post(`/submissions/${submissionId}/feedbacks`, {content});
 };
 
 //피드백 수정
 export const updateFeedback = async (id, data) => {
-  return api.patch(`/feedback/${id}`, data);
+  return api.patch(`/feedbacks/${id}`, data);
 };
 
 //피드백 삭제

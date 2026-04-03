@@ -5,7 +5,12 @@ import * as styles from './FeedbackSection.css';
 import { useFeedbackThread } from '@/lib/hooks/useFeedbackThread';
 import { FeedbackItem } from '../FeedbackItem';
 
-export default function FeedbackSection({ submissionId, initialFeedbacks, initialNextCursor, currentUser }) {
+export default function FeedbackSection({
+  submissionId,
+  initialFeedbacks,
+  initialNextCursor,
+  currentUser,
+}) {
   const [newFeedback, setNewFeedback] = useState('');
   const {
     feedbacks,
@@ -18,13 +23,13 @@ export default function FeedbackSection({ submissionId, initialFeedbacks, initia
   } = useFeedbackThread({
     submissionId,
     initialFeedbacks,
-    initialNextCursor
+    initialNextCursor,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newFeedback.trim()) return;
-
+    console.log('등록 시도:', newFeedback);
     createMutation.mutate(newFeedback, {
       onSuccess: () => setNewFeedback(''),
     });
@@ -56,9 +61,7 @@ export default function FeedbackSection({ submissionId, initialFeedbacks, initia
                   content: data.content,
                 })
               }
-              onDelete={(id)=> 
-                deleteMutation.mutate(id)
-              }
+              onDelete={(id) => deleteMutation.mutate(id)}
             />
           ))}
         </div>

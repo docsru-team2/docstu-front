@@ -1,8 +1,16 @@
 'use client';
 
-import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { createSubmissionFeedback, fetchSubmissionFeedbackList, removeFeedback, updateFeedback } from '../api/feedbackApi';
-
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
+import {
+  createSubmissionFeedback,
+  fetchSubmissionFeedbackList,
+  removeFeedback,
+  updateFeedback,
+} from '../api/feedbackApi';
 
 export function useFeedbackThread({
   submissionId,
@@ -18,12 +26,17 @@ export function useFeedbackThread({
       queryFn: ({ pageParam = 1 }) =>
         fetchSubmissionFeedbackList({
           submissionId,
-          limit: 10,
+          limit: 3,
           page: pageParam,
         }),
       initialData: initialFeedbacks.length
         ? {
-            pages: [{list:initialFeedbacks}],
+            pages: [
+              {
+                list: initialFeedbacks,
+                pagination: { hasNext: !!initialNextCursor },
+              },
+            ],
             pageParams: [1],
           }
         : undefined,
@@ -41,7 +54,13 @@ export function useFeedbackThread({
     onSuccess: (newFeedback) => {
       queryClient.setQueryData(['feedbacks', submissionId], (oldData) => ({
         ...oldData,
-        pages: [[newFeedback, ...oldData.pages[0]], ...oldData.pages.slice(1)],
+        pages: [
+          {
+            list: [newFeedback, ...oldData.pages[0].list],
+            pagination: oldData.pages[0].pagination,
+          },
+          ...oldData.pages.slice(1),
+        ],
       }));
     },
   });
@@ -53,11 +72,12 @@ export function useFeedbackThread({
     onSuccess: (updatedFeedback) => {
       queryClient.setQueryData(['feedbacks', submissionId], (oldData) => ({
         ...oldData,
-        pages: oldData.pages.map((page) =>
-          page.map((fb) =>
+        pages: oldData.pages.map((page) => ({
+          ...page,
+          list: page.list.map((fb) =>
             fb.id === updatedFeedback.id ? updatedFeedback : fb,
           ),
-        ),
+        })),
       }));
     },
   });
@@ -67,9 +87,10 @@ export function useFeedbackThread({
     onSuccess: (_, feedbackId) => {
       queryClient.setQueryData(['feedbacks', submissionId], (oldData) => ({
         ...oldData,
-        pages: oldData.pages.map((page) =>
-          page.filter((fb) => fb.id !== feedbackId),
-        ),
+        pages: oldData.pages.map((page) => ({
+          ...page,
+          list: page.list.filter((fb) => fb.id !== feedbackId),
+        })),
       }));
     },
   });
