@@ -61,7 +61,7 @@ export default function AdminChallengesSettings() {
   });
 
   const challenges = data?.list ?? [];
-  const totalCount = data?.totalCount ?? 0;
+  const totalCount = data?.pagination?.totalCount ?? 0;
 
   return (
     <>
@@ -97,7 +97,11 @@ export default function AdminChallengesSettings() {
       )}
 
       {/* 페이지네이션 */}
-      {totalCount > 0 && <PaginationBar totalCount={totalCount} />}
+      {totalCount > 0 && (
+        <div className={styles.paginationWrapper}>
+          <PaginationBar totalCount={totalCount} />
+        </div>
+      )}
     </>
   );
 }

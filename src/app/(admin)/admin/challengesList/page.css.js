@@ -37,3 +37,8 @@ export const cardList = style({
     },
   },
 });
+
+export const paginationWrapper = style({
+  marginTop: '40px',
+  marginBottom: '40px',
+});
