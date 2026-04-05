@@ -34,7 +34,6 @@ export default function ChallengeCard({ data, onEdit, onDelete }) {
     { key: 'edit', label: '수정하기', action: () => onEdit?.(id) },
     { key: 'delete', label: '삭제하기', action: () => onDelete?.(data) },
   ];
-  console.log(data);
   return (
     <Link className={cardContainer} href={isAdmin ? `/admin/challengesSettings/${id}` : `/challenge/detail/${id}?page=1`}>
       <div>

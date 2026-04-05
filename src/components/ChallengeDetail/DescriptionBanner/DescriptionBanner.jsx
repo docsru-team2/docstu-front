@@ -32,10 +32,9 @@ export default function DescriptionBanner({
     _count,
     sourceUrl,
   } = challenge;
-  console.log(challenge);
   const fieldInfo = FIELD_MAP[field];
   const menuItems = [
-    { key: 'delete', label: '취소하기', action: () => console.log('취소') },
+    { key: 'delete', label: '취소하기', action: () => {} },
   ];
 
   return (

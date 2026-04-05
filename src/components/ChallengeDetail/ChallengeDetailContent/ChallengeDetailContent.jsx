@@ -29,7 +29,6 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
       })),
       getChallengeSubmissionsBest(id).catch(() => null),
     ]);
-  console.log(submissions, 'submissions');
   const {
     reviewStatus,
     rejectReason,
@@ -48,11 +47,8 @@ export default async function ChallengeDetailContent({ id, page = '1' }) {
   const reasonData = REASON_CONFIG[reviewStatus];
   const reason = reviewStatus === 'DELETED' ? deleteReason : rejectReason;
   const formattedDate = formatDate(updatedAt, 'shortDatetime');
-
   if (reviewStatus === 'PENDING' && !isOwner && me.userType !== 'ADMIN')
     redirect('/');
-  console.log(participants, '참가자목록');
-  console.log(me);
   return (
     <>
       {reviewStatus === 'APPROVED' && me.userType === 'ADMIN' && (

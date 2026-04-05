@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { fetchAdminChallenges } from '@/lib/api/adminChallengeApi.js';
@@ -30,6 +31,14 @@ const SORT_OPTIONS = [
 ];
 
 export default function AdminChallengesSettings() {
+  return (
+    <Suspense>
+      <AdminChallengesSettingsContent />
+    </Suspense>
+  );
+}
+
+function AdminChallengesSettingsContent() {
   const searchParams = useSearchParams();
 
   // URL searchParams에서 값 읽기

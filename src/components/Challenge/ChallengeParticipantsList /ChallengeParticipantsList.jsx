@@ -10,7 +10,6 @@ import { formatLikeCount } from '@/utils/formatLikeCount';
 
 
 export default function ChallengeParticipantsList({ dataList, totalCount, isAdmin }) {
-  console.log(dataList);
   return (
     <div className={styles.listContainer}>
       <div className={styles.listHeader}>

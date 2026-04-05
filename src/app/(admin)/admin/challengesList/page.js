@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
@@ -24,6 +24,14 @@ const MODAL_MODE = {
 };
 
 export default function AdminChallengesList() {
+  return (
+    <Suspense>
+      <AdminChallengesListContent />
+    </Suspense>
+  );
+}
+
+function AdminChallengesListContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();

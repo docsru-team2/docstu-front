@@ -18,7 +18,6 @@ export default function DescriptionBtn({
   isParticipant,
 }) {
   const router = useRouter();
-  console.log(count);
   const handleChallenge = async () => {
     try {
       await api.post(`/challenges/${challengeId}/participants`);
@@ -27,7 +26,6 @@ export default function DescriptionBtn({
       console.error('참가 신청 실패:', e);
     }
   };
-  console.log(isParticipant, '>>>>>');
   return (
     <div className={styles.container}>
       <div className={styles.infoGroup}>

@@ -45,7 +45,6 @@ export default function SubmissionEditor({
       async function fetchSubmission() {
         try {
           const data = await api.get(`/submissions/${submissionId}`);
-          console.log(data);
           setTitle(data.data.title || '');
           setContent(data.data.content || '');
           if (editorRef.current) {
@@ -152,7 +151,6 @@ export default function SubmissionEditor({
     execCommand('foreColor', color);
     setShowColorPicker(false);
   };
-  console.log(showDraftBar);
   const colors = [
     '#000000',
     '#FF0000',
