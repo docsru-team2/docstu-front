@@ -8,13 +8,13 @@ const PAGE_SIZE = 5;
 export const fetchAdminChallenges = async ({
   page = 1,
   pageSize = PAGE_SIZE,
-  viewType = 'MANAGE', //전체 조회
+  viewType = 'MANAGE',
   keyword,
   reviewStatus,
   field,
   sort,
 }) => {
-  const params = new URLSearchParams({ page, pageSize });
+  const params = new URLSearchParams({ page, limit: pageSize });
 
   // 값이 있을 때만 파라미터 추가, 빈 값이 API로 전달되는것 방지
   if (keyword) {
@@ -27,7 +27,10 @@ export const fetchAdminChallenges = async ({
     params.set('field', field);
   }
   if (sort) {
-    params.set('sort', sort);
+    params.set('orderBy', sort);
+  }
+  if (viewType) {
+    params.set('viewType', viewType);
   }
 
   return api.get(`/admin/challenges?${params}`);
@@ -59,10 +62,25 @@ export const updateChallenge = async (challengeId, data) => {
 };
 
 // 챌린지 삭제
-// DELETE /admin/challenges/:challengeId
+// PATCH /admin/challenges/:challengeId/delete
 // 삭제 시 신청자 + 참여자 전체에게 사유 포함 알림 발송 (BE 처리)
 export const deleteChallenge = async (challengeId, deleteReason) => {
-  return api.delete(`/admin/challenges/${challengeId}`, { deleteReason });
+  return api.patch(`/admin/challenges/${challengeId}/delete`, { deleteReason });
+};
+
+// ── 작업물 관련 ──
+
+// 작업물 상세 조회 (유저 API - 어드민도 사용)
+// GET /submissions/:submissionId
+export const fetchSubmissionDetail = async (submissionId) => {
+  const res = await api.get(`/submissions/${submissionId}`);
+  return res.data;
+};
+
+// 작업물 피드백 목록 조회 (유저 API - 어드민도 사용)
+// GET /submissions/:submissionId/feedbacks
+export const fetchSubmissionFeedbacks = async (submissionId) => {
+  return api.get(`/submissions/${submissionId}/feedbacks`);
 };
 
 // 어드민 작업물 수정
@@ -72,7 +90,13 @@ export const updateSubmission = async (submissionId, data) => {
 };
 
 // 어드민 작업물 삭제
-// DELETE /admin/submissions/:submissionId
+// PATCH /admin/submissions/:submissionId/delete
 export const deleteSubmission = async (submissionId) => {
-  return api.delete(`/admin/submissions/${submissionId}`);
+  return api.patch(`/admin/submissions/${submissionId}/delete`);
+};
+
+// 어드민 피드백 삭제
+// DELETE /admin/feedbacks/:feedbackId
+export const deleteFeedback = async (feedbackId) => {
+  return api.delete(`/admin/feedbacks/${feedbackId}`);
 };

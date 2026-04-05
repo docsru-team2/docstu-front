@@ -8,7 +8,7 @@ export const overlay = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  zIndex: 20,
+  zIndex: 200,
 });
 
 export const modal = style({
@@ -102,6 +102,8 @@ export const draftsList = style({
   display: 'flex',
   padding: '12px 0',
   flexDirection: 'column',
+  height: '440px',
+  overflowY: 'auto',
 });
 
 export const draftsCount = style({

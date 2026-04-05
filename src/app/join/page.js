@@ -2,8 +2,8 @@ import Image from 'next/image';
 import * as styles from './join.css.js';
 import LoginLogo from '@public/img/logo/LoginLogo.svg';
 import Link from 'next/link';
-import GoogleLogo from '@public/img/btn/Google.svg';
-import JoinFrom from '@/components/JoinForm/JoinForm.jsx';
+import { JoinForm } from '@/components/JoinForm/index.js';
+import GoogleLoginButton from '@/components/JoinForm/GoogleLoginButton.jsx';
 
 export default function UserJoin() {
   return (
@@ -12,11 +12,8 @@ export default function UserJoin() {
         <Link href="/">
           <Image src={LoginLogo} alt="LoginLogo" className={styles.mediaLogo} />
         </Link>
-        <JoinFrom />
-        <button className={styles.googleBtn}>
-          <Image src={GoogleLogo} alt="GoogleLogo" />
-          Google로 시작하기
-        </button>
+        <JoinForm />
+        <GoogleLoginButton />
         <div className={styles.fontGroup}>
           회원이신가요?{' '}
           <Link href="/" className={styles.LinkFont}>

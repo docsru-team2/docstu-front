@@ -33,20 +33,22 @@ export const active = style({
 });
 
 export const dropdownContent = style({
-  position: 'fixed',
-  inset: 0,
+  position: 'absolute',
+  inset: 'auto',
+  borderRadius: '12px',
+  top: 'calc(100% + 8px)',
+  left: 0,
+  width: '343px',
   background: '#fff',
   zIndex: 1000,
   overflowY: 'auto',
-
-  overflowY: 'auto',
   '@media': {
-    [media.belowIPadMini]: {
-      position: 'absolute',
-      inset: 'auto',
-      top: 'calc(100% + 8px)',
+    [media.belowMobile]: {
+      position: 'fixed',
+      inset: 0,
+      width: '100%',
+      top: 0,
       left: 0,
-      width: '343px',
     },
   },
 });
@@ -55,7 +57,7 @@ export const header = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: '12px',
+  padding: '24px 16px 12px 16px',
   color: vars.color.gray800,
   fontSize: vars.font.size.lg,
   fontWeight: vars.font.weight.semibold,
@@ -79,6 +81,10 @@ export const optionContainer = style({
   color: vars.color.gray800,
 });
 
+export const noBorder = style({
+  borderBottom: 'none',
+});
+
 export const options = style({
   display: 'flex',
   flexDirection: 'column',
@@ -94,4 +100,12 @@ export const option = style({
 
 export const hiddenInput = style({
   display: 'none',
+});
+
+export const buttons = style({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '16px',
+  padding: '16px 16px 24px 16px',
 });

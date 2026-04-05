@@ -18,7 +18,7 @@ export const input = style({
   padding: '12px 20px',
   border: `1px solid ${vars.color.gray200}`,
   borderRadius: '12px',
-  fontSize: '14px',
+  fontSize: vars.font.md,
 
   selectors: {
     '&::placeholder': {
@@ -44,4 +44,10 @@ export const inputIcon = style({
   top: '50%',
   transform: 'translateY(-50%)',
   cursor: 'pointer',
+});
+
+export const errorText = style({
+  marginTop: '8px',
+  fontSize: vars.font.size.xs,
+  color: vars.color.error,
 });

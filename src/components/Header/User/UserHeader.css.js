@@ -2,6 +2,11 @@ import { style } from '@vanilla-extract/css';
 import { media, vars } from '@/styles/tokens.css';
 
 export const wrapper = style({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 100,
   width: '100%',
   height: '60px',
   backgroundColor: 'white',
@@ -12,21 +17,21 @@ export const wrapper = style({
 });
 
 export const inner = style({
-  maxWidth: '1920px',
+  maxWidth: '1200px',
   width: '100%',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: '0 360px',
+  padding: '0 24px',
 
   fontStyle: vars.font.size.lg,
   color: vars.color.gray800,
   '@media': {
-    [media.iPadMini]: {
+    [media.belowIPadMini]: {
       padding: '0 24px',
     },
-    [media.mobile]: {
+    [media.belowMobile]: {
       padding: '0 16px',
     },
   },

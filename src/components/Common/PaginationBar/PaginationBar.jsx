@@ -7,8 +7,20 @@ import arrowRightInactive from '@public/img/arrow/arrowRightInactive.svg';
 import clsx from 'clsx';
 import * as styles from './PaginationBar.css';
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function PaginationBar({ page, totalPages, setPage }) {
+export default function PaginationBar({ totalCount }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const page = Number(searchParams.get('page') ?? 1);
+  const totalPages = Math.ceil(totalCount / 10);
+  if (totalCount <= 10) return null;
+  const setPage = (p) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', p);
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
   const maxVisiblePages = 5;
   let startPage;
 
